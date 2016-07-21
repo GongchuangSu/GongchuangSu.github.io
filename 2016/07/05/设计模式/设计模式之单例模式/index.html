@@ -62,7 +62,7 @@
 <meta property="og:site_name" content="贱贱的梦想">
 <meta property="og:description">
 <meta property="og:image" content="http://i.imgur.com/gwwC2wp.jpg">
-<meta property="og:updated_time" content="2016-07-05T03:08:54.069Z">
+<meta property="og:updated_time" content="2016-07-21T08:22:37.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式之单例模式">
 <meta name="twitter:description">
@@ -348,7 +348,7 @@
 <p><strong>通常单例模式在Java语言中，有两种构建方式</strong></p>
 <ul>
 <li>懒汉方式：指全局的单例实例在第一次被使用时构建</li>
-<li>饿汉方式：指全局的单例实例在类装载时构建</li>
+<li>饿汉方式：指全局的单例实例在类装载时构建<br>注意：这两种方式构建的单例类中，构造函数都是私有的，故此类不能被继承！</li>
 </ul>
 <h1 id="懒汉式，线程不安全"><a href="#懒汉式，线程不安全" class="headerlink" title="懒汉式，线程不安全"></a>懒汉式，线程不安全</h1><p>代码示例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;  </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">	    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;  </span><br><span class="line">	        instance = <span class="keyword">new</span> Singleton();  </span><br><span class="line">	    &#125;  </span><br><span class="line">	    <span class="keyword">return</span> instance;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这种方式是最基本的实现方式，这种实现最大的问题就是不支持多线程。当有多个线程并行调用 getInstance() 的时候，就会创建多个实例。因为没有加锁 <code>synchronized</code>，所以严格意义上它并不算单例模式。</p>
