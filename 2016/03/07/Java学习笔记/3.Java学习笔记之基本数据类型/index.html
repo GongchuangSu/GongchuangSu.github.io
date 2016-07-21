@@ -1,0 +1,1089 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="java,基本数据类型,参考数据类型,Java文本," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="变量只不过是为了存储数值而保存内存位置。也就是说，当创建一个变量时，将会得到内存中一些空间。
+根据变量的数据类型，操作系统将为其分配内存，并决定哪些可以存储在分配的内存中。因此，通过给变量分配不同的数据类型，我们可以在变量中存储整数（integers）、小数（decimals）或字符（characters ）。
+在Java中有两种可用的数据类型：
+
+基本数据类型（Primitive Data Ty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java学习笔记之基本数据类型">
+<meta property="og:url" content="http://gongchuangsu.com/2016/03/07/Java学习笔记/3.Java学习笔记之基本数据类型/index.html">
+<meta property="og:site_name" content="贱贱的梦想">
+<meta property="og:description" content="变量只不过是为了存储数值而保存内存位置。也就是说，当创建一个变量时，将会得到内存中一些空间。
+根据变量的数据类型，操作系统将为其分配内存，并决定哪些可以存储在分配的内存中。因此，通过给变量分配不同的数据类型，我们可以在变量中存储整数（integers）、小数（decimals）或字符（characters ）。
+在Java中有两种可用的数据类型：
+
+基本数据类型（Primitive Data Ty">
+<meta property="og:updated_time" content="2016-03-20T03:11:26.519Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java学习笔记之基本数据类型">
+<meta name="twitter:description" content="变量只不过是为了存储数值而保存内存位置。也就是说，当创建一个变量时，将会得到内存中一些空间。
+根据变量的数据类型，操作系统将为其分配内存，并决定哪些可以存储在分配的内存中。因此，通过给变量分配不同的数据类型，我们可以在变量中存储整数（integers）、小数（decimals）或字符（characters ）。
+在Java中有两种可用的数据类型：
+
+基本数据类型（Primitive Data Ty">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Java学习笔记之基本数据类型 | 贱贱的梦想 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ed06c68bea374fddbd50d8820ec27cbd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">贱贱的梦想</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java学习笔记之基本数据类型
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-07T11:22:43+08:00" content="2016-03-07">
+              2016-03-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/07/Java学习笔记/3.Java学习笔记之基本数据类型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/07/Java学习笔记/3.Java学习笔记之基本数据类型/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/03/07/Java学习笔记/3.Java学习笔记之基本数据类型/" class="leancloud_visitors" data-flag-title="Java学习笔记之基本数据类型">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-text">阅读次数 </span>             
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>变量只不过是为了存储数值而保存内存位置。也就是说，当创建一个变量时，将会得到内存中一些空间。</p>
+<p>根据变量的数据类型，操作系统将为其分配内存，并决定哪些可以存储在分配的内存中。因此，通过给变量分配不同的数据类型，我们可以在变量中存储整数（integers）、小数（decimals）或字符（characters ）。</p>
+<p>在Java中有两种可用的数据类型：</p>
+<ul>
+<li>基本数据类型（Primitive Data Types）</li>
+<li>参考/对象数据类型（Reference/Object Data Types）</li>
+</ul>
+<h1 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h1><p>这里列出了8类Java所支持的基本数据类型。基本数据类型是由语言预定义并且由关键字来命名的。</p>
+<a id="more"></a>
+<h2 id="byte"><a href="#byte" class="headerlink" title="byte"></a>byte</h2><ul>
+<li>字节数据类型是一个8位的有符号的二进制补码整数</li>
+<li>最小值为-128（-2^7）</li>
+<li>最大值为127（2^7-1）</li>
+<li>默认值为<code>0</code></li>
+<li>字节数据类型用于在大型阵列中节省空间，主要是替换整数，因为一个字节（byte）比一个整型（int）要小四倍</li>
+<li>例如：<code>byte a = 100，byte b = -50</code></li>
+</ul>
+<h2 id="short"><a href="#short" class="headerlink" title="short"></a>short</h2><ul>
+<li>短数据类型是一个16位的有符号的二进制补码整数</li>
+<li>最小值为-32,768 (-2^15)</li>
+<li>最大值为32,767 (2^15 -1)</li>
+<li>默认值为<code>0</code></li>
+<li>短数据类型也可以作为字节数据类型用来节省空间，一个短数据类型（short）比一个整型（int）要小两倍</li>
+<li>例如：<code>short s = 10000, short r = -20000</code></li>
+</ul>
+<h2 id="int"><a href="#int" class="headerlink" title="int"></a>int</h2><ul>
+<li>整数数据类型是一个32位的有符号的二进制补码整数</li>
+<li>最小值为- 2,147,483,648.(-2^31)</li>
+<li>最大值为 2,147,483,647.(2^31 -1)</li>
+<li>默认值为<code>0</code></li>
+<li>整数数据类型一般用作整数值的默认数据类型</li>
+<li>例如：<code>int a = 100000, int b = -200000</code></li>
+</ul>
+<h2 id="long"><a href="#long" class="headerlink" title="long"></a>long</h2><ul>
+<li>长数据类型是一个64位的有符号的二进制补码整数</li>
+<li>最小值为-9,223,372,036,854,775,808.(-2^63)</li>
+<li>最大值为 9,223,372,036,854,775,807. (2^63 -1)</li>
+<li>默认值为<code>0L</code></li>
+<li>长数据类型一般用于一个数值超过整型范围</li>
+<li>例如： <code>long a = 100000L, long b = -200000L</code></li>
+</ul>
+<h2 id="float"><a href="#float" class="headerlink" title="float"></a>float</h2><ul>
+<li>float数据类型是32位IEEE 754单精确度的浮点</li>
+<li>float数据类型主要用于在大型的浮点数阵列中节省空间</li>
+<li>默认值为 <code>0.0f</code></li>
+<li>float数据类型从来不用于精确值，如货币</li>
+<li>例如： <code>float f1 = 234.5f</code></li>
+</ul>
+<h2 id="double"><a href="#double" class="headerlink" title="double"></a>double</h2><ul>
+<li>double数据类型是64位IEEE 754双精确度的浮点</li>
+<li>这种数据类型一般用于小数值的默认数据类型</li>
+<li>double数据类型从来不用于精确值，如货币</li>
+<li>默认值为<code>0.0d</code></li>
+<li>例如：<code>double d1 = 123.4</code></li>
+</ul>
+<h2 id="boolean"><a href="#boolean" class="headerlink" title="boolean"></a>boolean</h2><ul>
+<li>布尔数据类型代表一个比特的信息</li>
+<li>仅存在两种可能值：<code>true</code> and <code>false</code></li>
+<li>这种数据类型用于追踪真/假条件的简单标记</li>
+<li>默认值为<code>false</code></li>
+<li>例如：<code>boolean one = true</code></li>
+</ul>
+<h2 id="char"><a href="#char" class="headerlink" title="char"></a>char</h2><ul>
+<li>char数据类型是一个16位的Unicode字符</li>
+<li>最小值为’\u0000’ (or 0)</li>
+<li>最大值为 ‘\uffff’ (or 65,535 inclusive)</li>
+<li>char数据类型用于存储任意字符</li>
+<li>例如：<code>char letterA =&#39;A&#39;</code></li>
+</ul>
+<h1 id="参考数据类型"><a href="#参考数据类型" class="headerlink" title="参考数据类型"></a>参考数据类型</h1><ul>
+<li>参考变量是使用类定义的构造函数创建的。他们被用来访问对象。这些变量被声明为一种不能改变的特定类型。例如：<code>Employee</code>, <code>Puppy</code>等</li>
+<li>类对象以及数组变量的各种类型应归入参考变量类型</li>
+<li>任何参考变量的默认值为<code>null</code></li>
+<li>一个参考变量可被用于访问任一声明类型或相容类型的对象</li>
+<li>例如: <code>Animal animal = new Animal(&quot;giraffe&quot;)</code></li>
+</ul>
+<h1 id="Java文本（Literals）"><a href="#Java文本（Literals）" class="headerlink" title="Java文本（Literals）"></a>Java文本（Literals）</h1><p>文本是一个固定值的源代码表示。他们在没有任何计算的代码中直接表示。</p>
+<p>文本可以被分配到任一原始类型的变量中。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span> a = <span class="number">68</span>;</span><br><span class="line"><span class="keyword">char</span> a = <span class="string">'A'</span></span><br></pre></td></tr></table></figure>
+<p>byte, int, long, and short可以用十进制、十六进制或八进制的数字系统表示。</p>
+<p>当用这些数字系统表示文本时，经常用前缀0用来表示八进制，前缀0x用来表示十六进制。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> decimal = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">int</span> octal = <span class="number">0144</span>;</span><br><span class="line"><span class="keyword">int</span> hexa =  <span class="number">0x64</span>;</span><br></pre></td></tr></table></figure>
+<p>Java中的字符串跟大多数语言中的一样，都是指被一对封闭的双引号所包含的字符序列。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"Hello World"</span></span><br><span class="line"><span class="string">"two\nlines"</span></span><br><span class="line"><span class="string">"\"This is in quotes\""</span></span><br></pre></td></tr></table></figure>
+<p><code>String</code> and <code>char</code>文本可以包含任一Unicode字符。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> a = <span class="string">'\u0001'</span>;</span><br><span class="line">String a = <span class="string">"\u0001"</span>;</span><br></pre></td></tr></table></figure>
+<p>Java语言支持一些<code>string</code> and <code>char</code>文本特殊的转义字符。如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">符号</th>
+<th style="text-align:left">所代表字符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">\n</td>
+<td style="text-align:left">换行 (0x0a)</td>
+</tr>
+<tr>
+<td style="text-align:left">\r</td>
+<td style="text-align:left">回车符 (0x0d)</td>
+</tr>
+<tr>
+<td style="text-align:left">\f</td>
+<td style="text-align:left">换页 (0x0c)</td>
+</tr>
+<tr>
+<td style="text-align:left">\b</td>
+<td style="text-align:left">退格 (0x08)</td>
+</tr>
+<tr>
+<td style="text-align:left">\s</td>
+<td style="text-align:left">空格 (0x20)</td>
+</tr>
+<tr>
+<td style="text-align:left">\t</td>
+<td style="text-align:left">tab</td>
+</tr>
+<tr>
+<td style="text-align:left">\”</td>
+<td style="text-align:left">双引号</td>
+</tr>
+<tr>
+<td style="text-align:left">\’</td>
+<td style="text-align:left">单引号</td>
+</tr>
+<tr>
+<td style="text-align:left">\ \</td>
+<td style="text-align:left">反斜线</td>
+</tr>
+<tr>
+<td style="text-align:left">\ddd</td>
+<td style="text-align:left">八进制字符（ddd）</td>
+</tr>
+<tr>
+<td style="text-align:left">\uxxxx</td>
+<td style="text-align:left">十六进制UNICODE字符（xxxx）</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag">#java</a>
+          
+            <a href="/tags/基本数据类型/" rel="tag">#基本数据类型</a>
+          
+            <a href="/tags/参考数据类型/" rel="tag">#参考数据类型</a>
+          
+            <a href="/tags/Java文本/" rel="tag">#Java文本</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/04/Java学习笔记/2.Java学习笔记之对象与类/" rel="next" title="Java学习笔记之对象与类">
+                <i class="fa fa-chevron-left"></i> Java学习笔记之对象与类
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/09/Java学习笔记/4.Java学习笔记之变量类型/" rel="prev" title="Java学习笔记之变量类型">
+                Java学习笔记之变量类型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/07/Java学习笔记/3.Java学习笔记之基本数据类型/"
+           data-title="Java学习笔记之基本数据类型" data-url="http://gongchuangsu.com/2016/03/07/Java学习笔记/3.Java学习笔记之基本数据类型/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Gongchuang Su" />
+          <p class="site-author-name" itemprop="name">Gongchuang Su</p>
+          <p class="site-description motion-element" itemprop="description">Stay Hungry, Stay Foolish.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">100</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/GongchuangSu" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/gongchuangsu" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> CSDN
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" target="_blank">MacTalk</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://mindhacks.cn/" target="_blank">Mind Hacks</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本数据类型"><span class="nav-number">1.</span> <span class="nav-text">基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#byte"><span class="nav-number">1.1.</span> <span class="nav-text">byte</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#short"><span class="nav-number">1.2.</span> <span class="nav-text">short</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#int"><span class="nav-number">1.3.</span> <span class="nav-text">int</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#long"><span class="nav-number">1.4.</span> <span class="nav-text">long</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#float"><span class="nav-number">1.5.</span> <span class="nav-text">float</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#double"><span class="nav-number">1.6.</span> <span class="nav-text">double</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#boolean"><span class="nav-number">1.7.</span> <span class="nav-text">boolean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#char"><span class="nav-number">1.8.</span> <span class="nav-text">char</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考数据类型"><span class="nav-number">2.</span> <span class="nav-text">参考数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java文本（Literals）"><span class="nav-number">3.</span> <span class="nav-text">Java文本（Literals）</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gongchuang Su</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+		
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gongchuangsu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("YNAqO4Guiyi9lFpJmPo6DIJF-gzGzoHsz", "AVRJEYpDPTwtz3peAJVymqeP");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = $(document.getElementById(url)).text() + ': 0';
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
+
+
+
+  
+</body>
+</html>

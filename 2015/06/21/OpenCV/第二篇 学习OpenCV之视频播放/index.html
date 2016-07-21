@@ -1,0 +1,944 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="OpenCV,视频播放," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="使用OpenCV播放视频，就是将视频中的每一帧顺序的读取出来。例1：一个简单的OpenCV程序，用于播放事先存储在特定位置的视频文件12345678910111213141516171819202122#include &quot;highgui.h&quot;#pragma comment(linker, &quot;/subsystem:\&quot;windows\&quot; /entry:\&quot;mainCRTStartup\&quot;&quot;)  //">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第二篇 学习OpenCV之视频播放">
+<meta property="og:url" content="http://gongchuangsu.com/2015/06/21/OpenCV/第二篇 学习OpenCV之视频播放/index.html">
+<meta property="og:site_name" content="贱贱的梦想">
+<meta property="og:description" content="使用OpenCV播放视频，就是将视频中的每一帧顺序的读取出来。例1：一个简单的OpenCV程序，用于播放事先存储在特定位置的视频文件12345678910111213141516171819202122#include &quot;highgui.h&quot;#pragma comment(linker, &quot;/subsystem:\&quot;windows\&quot; /entry:\&quot;mainCRTStartup\&quot;&quot;)  //">
+<meta property="og:updated_time" content="2016-03-20T05:36:35.910Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第二篇 学习OpenCV之视频播放">
+<meta name="twitter:description" content="使用OpenCV播放视频，就是将视频中的每一帧顺序的读取出来。例1：一个简单的OpenCV程序，用于播放事先存储在特定位置的视频文件12345678910111213141516171819202122#include &quot;highgui.h&quot;#pragma comment(linker, &quot;/subsystem:\&quot;windows\&quot; /entry:\&quot;mainCRTStartup\&quot;&quot;)  //">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 第二篇 学习OpenCV之视频播放 | 贱贱的梦想 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ed06c68bea374fddbd50d8820ec27cbd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">贱贱的梦想</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                第二篇 学习OpenCV之视频播放
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-06-21T11:30:13+08:00" content="2015-06-21">
+              2015-06-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/OpenCV/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenCV</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/06/21/OpenCV/第二篇 学习OpenCV之视频播放/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/21/OpenCV/第二篇 学习OpenCV之视频播放/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/06/21/OpenCV/第二篇 学习OpenCV之视频播放/" class="leancloud_visitors" data-flag-title="第二篇 学习OpenCV之视频播放">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-text">阅读次数 </span>             
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>使用OpenCV播放视频，就是将视频中的每一帧顺序的读取出来。<br>例1：一个简单的OpenCV程序，用于播放事先存储在特定位置的视频文件<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"highgui.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(linker, <span class="string">"/subsystem:\"windows\" /entry:\"mainCRTStartup\""</span>)  <span class="comment">//用于屏蔽控制台应用程序的窗口</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>*AviName=<span class="string">"MV.mp4"</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>*WindowsTitle=<span class="string">"MV"</span>;</span><br><span class="line">    cvNamedWindow(WindowsTitle,<span class="number">0</span>);</span><br><span class="line">    CvCapture*capture=cvCreateFileCapture(AviName);</span><br><span class="line">    IplImage*frame;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        frame=cvQueryFrame(capture);</span><br><span class="line">        <span class="keyword">if</span>(!frame)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        cvShowImage(WindowsTitle,frame);</span><br><span class="line">        <span class="keyword">char</span> c=cvWaitKey(<span class="number">33</span>);  <span class="comment">//当前帧被显示后，等待33ms，如果其间触发了一个按键，则返回该键的ASCII码值；否则，返回-1</span></span><br><span class="line">        <span class="keyword">if</span>(c==<span class="number">27</span>)  <span class="comment">//如果用户触发了ESC键（ASCII 27），跳出循环</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cvReleaseCapture(&amp;capture);</span><br><span class="line">    cvDestroyWindow(<span class="string">"WindowsTitle"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h1 id="关键函数"><a href="#关键函数" class="headerlink" title="关键函数"></a>关键函数</h1><h2 id="cvCreateFileCapture"><a href="#cvCreateFileCapture" class="headerlink" title="cvCreateFileCapture"></a>cvCreateFileCapture</h2><p><strong>函数原型</strong>：<code>CVAPI(CvCapture*) cvCreateFileCapture( const char* filename )</code><br><strong>函数说明</strong>：初始化从视频文件获取帧。其中，<code>filename</code>为视频文件名。通过参数设置确定要读入的视频文件，返回一个<code>CvCapture</code>结构的指针。该结构包含了关于要读入视频文件的所有信息。当分配的结构不再使用时，应当使用函数<code>cvReleaseCapture</code>释放掉。</p>
+<h2 id="cvQueryFrame"><a href="#cvQueryFrame" class="headerlink" title="cvQueryFrame"></a>cvQueryFrame</h2><p><strong>函数原型</strong>：<code>IplImage* cvQueryFrame( CvCapture* capture )</code><br><strong>函数说明</strong>：从摄像头或者文件中抓取一帧，然后解压并返回这一帧。返回的图像不可以被用户释放或修改。抓取后，<code>capture</code>被指向下一帧，可用<code>cvSetCaptureProperty</code>调整<code>capture</code>到合适的帧。如果没有帧可以被获取（摄像头断开或文件中的帧已读完），函数返回<code>NULL</code>。这个函数可以看做是函数<code>cvGrabFrame</code>和函数<code>cvRetrieveFrame</code>的组合。</p>
+<h2 id="cvSetCaptureProperty"><a href="#cvSetCaptureProperty" class="headerlink" title="cvSetCaptureProperty"></a>cvSetCaptureProperty</h2><p><strong>函数原型</strong>：<code>int cvSetCaptureProperty(CvCapture* capture, int property_id, double value)</code><br><strong>函数说明</strong>：设置指定获取视频的属性。<br><code>capture</code>：获取视频结构。<br><code>property_id</code>：属性标识符。可以是下面参数之一。<br><code>CV_CAP_PROP_POS_MSEC</code> - 从文件开始的位置，单位为毫秒<br><code>CV_CAP_PROP_POS_FRAMES</code> - 单位为帧数的位置（只对视频文件有效）<br><code>CV_CAP_PROP_POS_AVI_RATIO</code> - 视频文件的相对位置（0 - 影片的开始，1 - 影片的结尾)<br><code>CV_CAP_PROP_FRAME_WIDTH</code> - 视频流的帧宽度（只对摄像头有效）<br><code>CV_CAP_PROP_FRAME_HEIGHT</code> - 视频流的帧高度（只对摄像头有效）<br><code>CV_CAP_PROP_FPS</code> - 帧率（只对摄像头有效）<br><code>CV_CAP_PROP_FOURCC</code> - 表示codec的四个字符（只对摄像头有效）<br><code>value</code>：属性的值。</p>
+<h2 id="cvGetCaptureProperty"><a href="#cvGetCaptureProperty" class="headerlink" title="cvGetCaptureProperty"></a>cvGetCaptureProperty</h2><p><strong>函数原型</strong>：<code>double cvGetCaptureProperty(CvCapture* capture, int property_id)</code><br><strong>函数说明</strong>：获得摄像头或视频文件的指定属性。当查询不支持所使用的VideoCapture类后端的属性时，返回0。<br><code>capture</code>：获取视频结构。<br><code>property_id</code>：属性标识符。可以是下面参数之一。<br><code>CV_CAP_PROP_POS_MSEC</code> - 影片目前位置，为毫秒数或者视频获取时间戳<br><code>CV_CAP_PROP_POS_FRAMES</code> - 将被下一步解压／获取的帧索引，以0为起点<br><code>CV_CAP_PROP_POS_AVI_RATIO</code> - 视频文件的相对位置（0 - 影片的开始，1 - 影片的结尾)<br><code>CV_CAP_PROP_FRAME_WIDTH</code> - 视频流中的帧宽度<br><code>CV_CAP_PROP_FRAME_HEIGHT</code> - 视频流中的帧高度<br><code>CV_CAP_PROP_FPS</code> - 帧率<br><code>CV_CAP_PROP_FOURCC</code> - 表示codec的四个字符<br><code>CV_CAP_PROP_FRAME_COUNT</code> - 视频文件中帧的总数</p>
+<h2 id="cvGrabFrame"><a href="#cvGrabFrame" class="headerlink" title="cvGrabFrame"></a>cvGrabFrame</h2><p><strong>函数原型</strong>：<code>int cvGrabFrame(CvCapture* capture)</code><br><strong>函数说明</strong>：从摄像头或视频文件中抓取帧。主要用于快速的抓取帧，被抓取的帧存储在视频获取结构中。在多个摄像机环境下，特别是摄像机没有硬件同步功能时显得很重要。由于被抓取的帧可能是压缩格式（由摄像头/驱动定义），这时需要调用函数<code>cvRetrieveFrame</code>来解码并获取帧。</p>
+<h2 id="cvRetrieveFrame"><a href="#cvRetrieveFrame" class="headerlink" title="cvRetrieveFrame"></a>cvRetrieveFrame</h2><p><strong>函数原型</strong>：<code>IplImage* cvRetrieveFrame(CvCapture* capture, int streamIdx=0 )</code><br><strong>函数说明</strong>：解码并返回刚才被抓取的帧。如果没有帧被抓取（摄像头断开或文件中的帧已读完），函数返回<code>NULL</code>。函数返回的帧存储在视频获取结构中。返回的图像不可以被用户释放或修改。</p>
+<h1 id="CvCapture"><a href="#CvCapture" class="headerlink" title="CvCapture"></a>CvCapture</h1><p><code>CvCapture</code>是一种视频获取结构体，用来保存捕获图像的相关信息，在处理视频时，让程序一帧帧的读取并更新。没有公共接口，只能用来作为视频获取函数的一个参数。</p>
+<p>上面的例程只是简单的利用OpenCV实现视频的播放，并不能对视频的播放进度进行控制。下面，将编程实现添加进度条到基本浏览窗口，进度条可显示并控制视频播放的进度。<br>例2：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 作者：GongchuangSu ( http://gongchuangsu.com/ )</span></span><br><span class="line"><span class="comment">// 时间：2015.06.21                          </span></span><br><span class="line"><span class="comment">// 说明：通过创建进度条显示并控制视频播放的进度。实质上，是通过添加一个全局</span></span><br><span class="line"><span class="comment">//      变量（获取视频结构的指针g_capture ）来表示进度条位置并添加一个回</span></span><br><span class="line"><span class="comment">//      调函数更新变量以及重新设置视频读入的位置。                                        </span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"cv.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"highgui.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(linker, <span class="string">"/subsystem:\"windows\" /entry:\"mainCRTStartup\""</span>)  <span class="comment">//用于屏蔽控制台应用程序的窗口</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> g_slider_position=<span class="number">0</span>;</span><br><span class="line">CvCapture* g_capture=<span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义回调函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">onTrackbarSlide</span><span class="params">(<span class="keyword">int</span> pos)</span></span>&#123;</span><br><span class="line">    cvSetCaptureProperty(</span><br><span class="line">        g_capture,</span><br><span class="line">        CV_CAP_PROP_POS_FRAMES,</span><br><span class="line">        pos</span><br><span class="line">        );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>*AviName=<span class="string">"MV.mp4"</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>*WindowsTitle=<span class="string">"视频播放控制"</span>;</span><br><span class="line"></span><br><span class="line">    cvNamedWindow(WindowsTitle,<span class="number">0</span>);</span><br><span class="line">    g_capture = cvCreateFileCapture( AviName );</span><br><span class="line"></span><br><span class="line">    <span class="comment">//查询视频文件的总帧数</span></span><br><span class="line">    <span class="keyword">int</span> frames = (<span class="keyword">int</span>) cvGetCaptureProperty(</span><br><span class="line">        g_capture,</span><br><span class="line">        CV_CAP_PROP_FRAME_COUNT</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( frames!= <span class="number">0</span> )&#123;</span><br><span class="line">        IplImage* frame;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">            frame=cvQueryFrame(g_capture);</span><br><span class="line">            <span class="keyword">if</span>(!frame) <span class="keyword">break</span>;</span><br><span class="line">            <span class="comment">//取得将被获取帧的帧数（第N帧）</span></span><br><span class="line">            <span class="keyword">int</span> g_slider_position = (<span class="keyword">int</span>)cvGetCaptureProperty(</span><br><span class="line">                g_capture,</span><br><span class="line">                CV_CAP_PROP_POS_FRAMES</span><br><span class="line">                );</span><br><span class="line">            <span class="comment">//创建进度条，实时显示并控制视频播放进度</span></span><br><span class="line">            cvCreateTrackbar(</span><br><span class="line">                <span class="string">"进度条"</span>,</span><br><span class="line">                WindowsTitle,</span><br><span class="line">                &amp;g_slider_position,</span><br><span class="line">                frames,</span><br><span class="line">                onTrackbarSlide</span><br><span class="line">                );</span><br><span class="line">            <span class="comment">//显示图像</span></span><br><span class="line">            cvShowImage(WindowsTitle,frame);</span><br><span class="line">            <span class="keyword">char</span> c=cvWaitKey(<span class="number">33</span>);</span><br><span class="line">            <span class="keyword">if</span>( c ==<span class="number">27</span>) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//释放内存</span></span><br><span class="line">    cvReleaseCapture(&amp;g_capture);</span><br><span class="line">    <span class="comment">//销毁窗口</span></span><br><span class="line">    cvDestroyWindow(WindowsTitle);</span><br><span class="line">    <span class="keyword">return</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>整个编程实现关键在于函数<code>cvCreateTrackbar</code>的使用，以下是该函数的原型和说明。</strong><br><strong>函数原型</strong>：<code>int cvCreateTrackbar(const char* trackbar_name, const char* window_name, int* value, int count,CvTrackbarCallback on_change=NULL )</code><br><strong>函数说明</strong>：创建<code>trackbar</code>并将它添加到指定的窗口，同时设置回调函数。<br><code>trackbar_name</code>：被创建的进度条名称。<br><code>window_name</code>：窗口名字，这个窗口将为被创建<code>trackbar</code>的父对象。<br><code>value</code>：整型变量指针，其值反应进度条的位置。<br><code>count</code>：进度条的最大值。最小值总为<code>0</code>。<br><code>on_change</code>：每次进度条改变位置时，函数指针将被调用。这个函数的原型应为<code>void Foo（int）</code>，其函数中的参数是进度条改变后的位置（内部自动获取）。获取进度条改变后的位置后，然后再更新全局变量<code>g_capture</code>，读取的帧便从改变后的位置开始。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OpenCV/" rel="tag">#OpenCV</a>
+          
+            <a href="/tags/视频播放/" rel="tag">#视频播放</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/14/OpenCV/第一篇 学习OpenCV之图像显示/" rel="next" title="第一篇 学习OpenCV之图像显示">
+                <i class="fa fa-chevron-left"></i> 第一篇 学习OpenCV之图像显示
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/06/22/OpenCV/第三篇 学习OpenCV之图像变换（1）/" rel="prev" title="第三篇 学习OpenCV之图像变换（1）">
+                第三篇 学习OpenCV之图像变换（1） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/06/21/OpenCV/第二篇 学习OpenCV之视频播放/"
+           data-title="第二篇 学习OpenCV之视频播放" data-url="http://gongchuangsu.com/2015/06/21/OpenCV/第二篇 学习OpenCV之视频播放/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Gongchuang Su" />
+          <p class="site-author-name" itemprop="name">Gongchuang Su</p>
+          <p class="site-description motion-element" itemprop="description">Stay Hungry, Stay Foolish.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">100</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/GongchuangSu" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/gongchuangsu" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> CSDN
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" target="_blank">MacTalk</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://mindhacks.cn/" target="_blank">Mind Hacks</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关键函数"><span class="nav-number">1.</span> <span class="nav-text">关键函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cvCreateFileCapture"><span class="nav-number">1.1.</span> <span class="nav-text">cvCreateFileCapture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cvQueryFrame"><span class="nav-number">1.2.</span> <span class="nav-text">cvQueryFrame</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cvSetCaptureProperty"><span class="nav-number">1.3.</span> <span class="nav-text">cvSetCaptureProperty</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cvGetCaptureProperty"><span class="nav-number">1.4.</span> <span class="nav-text">cvGetCaptureProperty</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cvGrabFrame"><span class="nav-number">1.5.</span> <span class="nav-text">cvGrabFrame</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cvRetrieveFrame"><span class="nav-number">1.6.</span> <span class="nav-text">cvRetrieveFrame</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CvCapture"><span class="nav-number">2.</span> <span class="nav-text">CvCapture</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gongchuang Su</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+		
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gongchuangsu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("YNAqO4Guiyi9lFpJmPo6DIJF-gzGzoHsz", "AVRJEYpDPTwtz3peAJVymqeP");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = $(document.getElementById(url)).text() + ': 0';
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
+
+
+
+  
+</body>
+</html>

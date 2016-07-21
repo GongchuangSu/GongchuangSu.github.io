@@ -1,0 +1,1009 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="java,局部变量,实例变量,类/静态变量," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="一个变量为我们提供了被命名的存储空间。Java中的每个变量都一个特定的类型，其能够决定变量内存的大小和布局；值的范围可以存储在这个内存中；并且操作集可以应用于该变量。
+在使用变量之前，必须先声明该变量。一个变量声明的基本形式如下：
+1data type variable [ = value][, variable [= value] ...] ;
+这里，data type是Java数据类型之一，v">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java学习笔记之变量类型">
+<meta property="og:url" content="http://gongchuangsu.com/2016/03/09/Java学习笔记/4.Java学习笔记之变量类型/index.html">
+<meta property="og:site_name" content="贱贱的梦想">
+<meta property="og:description" content="一个变量为我们提供了被命名的存储空间。Java中的每个变量都一个特定的类型，其能够决定变量内存的大小和布局；值的范围可以存储在这个内存中；并且操作集可以应用于该变量。
+在使用变量之前，必须先声明该变量。一个变量声明的基本形式如下：
+1data type variable [ = value][, variable [= value] ...] ;
+这里，data type是Java数据类型之一，v">
+<meta property="og:updated_time" content="2016-07-03T14:17:40.103Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java学习笔记之变量类型">
+<meta name="twitter:description" content="一个变量为我们提供了被命名的存储空间。Java中的每个变量都一个特定的类型，其能够决定变量内存的大小和布局；值的范围可以存储在这个内存中；并且操作集可以应用于该变量。
+在使用变量之前，必须先声明该变量。一个变量声明的基本形式如下：
+1data type variable [ = value][, variable [= value] ...] ;
+这里，data type是Java数据类型之一，v">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Java学习笔记之变量类型 | 贱贱的梦想 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ed06c68bea374fddbd50d8820ec27cbd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">贱贱的梦想</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java学习笔记之变量类型
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-09T16:48:43+08:00" content="2016-03-09">
+              2016-03-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/09/Java学习笔记/4.Java学习笔记之变量类型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/09/Java学习笔记/4.Java学习笔记之变量类型/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/03/09/Java学习笔记/4.Java学习笔记之变量类型/" class="leancloud_visitors" data-flag-title="Java学习笔记之变量类型">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-text">阅读次数 </span>             
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>一个变量为我们提供了被命名的存储空间。Java中的每个变量都一个特定的类型，其能够决定变量内存的大小和布局；值的范围可以存储在这个内存中；并且操作集可以应用于该变量。</p>
+<p>在使用变量之前，必须先声明该变量。一个变量声明的基本形式如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data type variable [ = value][, variable [= value] ...] ;</span><br></pre></td></tr></table></figure>
+<p>这里，<code>data type</code>是Java数据类型之一，<code>variable</code>是变量名。如果要声明指定类型的多个变量，可以使用逗号分离的列表。</p>
+<p>Java中变量的声明和初始化如下：</p>
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a, b, c;         <span class="comment">// Declares three ints, a, b, and c.</span></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>, b = <span class="number">10</span>;  <span class="comment">// Example of initialization</span></span><br><span class="line"><span class="keyword">byte</span> B = <span class="number">22</span>;         <span class="comment">// initializes a byte type variable B.</span></span><br><span class="line"><span class="keyword">double</span> pi = <span class="number">3.14159</span>; <span class="comment">// declares and assigns a value of PI.</span></span><br><span class="line"><span class="keyword">char</span> a = <span class="string">'a'</span>;        <span class="comment">// the char variable a iis initialized with value 'a'</span></span><br></pre></td></tr></table></figure>
+<p>本节将介绍Java语言中可用的各种变量类型。这里列出了三种变量：</p>
+<ul>
+<li>局部变量(local variables)</li>
+<li>成员变量(member variables)<ul>
+<li>实例变量(instance variables)</li>
+<li>类/静态变量(class/static variables)</li>
+</ul>
+</li>
+</ul>
+<h1 id="局部变量（Local-variables）"><a href="#局部变量（Local-variables）" class="headerlink" title="局部变量（Local variables）"></a>局部变量（Local variables）</h1><ul>
+<li>局部变量是在方法、构造函数或块中进行声明的。</li>
+<li>当程序进入方法、构造函数或块中时，局部变量就会被创建；而一旦程序退出了方法、构造函数或块时，该变量就会被摧毁。</li>
+<li>访问修饰符不能用于局部变量。</li>
+<li>局部变量只能在声明的方法，构造函数或块中可见。</li>
+<li>局部变量是在堆栈层内部实现。</li>
+<li>局部变量是没有默认值的，所以在使用之前，必须先声明且初始化赋初值。</li>
+</ul>
+<p>如下，<code>age</code>是一个局部变量，其是在<code>pupAge()</code>方法内部定义的，故其作用范围仅限于该方法内。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123; </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pupAge</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">int</span> age = <span class="number">0</span>;</span><br><span class="line">      age = age + <span class="number">7</span>;</span><br><span class="line">      System.out.println(<span class="string">"Puppy age is : "</span> + age);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">      Test test = <span class="keyword">new</span> Test();</span><br><span class="line">      test.pupAge();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Puppy age is: 7</span><br></pre></td></tr></table></figure>
+<p>下面是<code>age</code>没有被初始化，结果就报错了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123; </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pupAge</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">int</span> age;</span><br><span class="line">      age = age + <span class="number">7</span>;</span><br><span class="line">      System.out.println(<span class="string">"Puppy age is : "</span> + age);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">      Test test = <span class="keyword">new</span> Test();</span><br><span class="line">      test.pupAge();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Test.java:<span class="number">4</span>:variable number might not have been initialized</span><br></pre></td></tr></table></figure></p>
+<h1 id="实例变量（Instance-variables）"><a href="#实例变量（Instance-variables）" class="headerlink" title="实例变量（Instance variables）"></a>实例变量（Instance variables）</h1><ul>
+<li>实例变量是在类中，但在方法、构造函数或块之外声明的。</li>
+<li>当空间被分配给堆中的对象时，将为每个实例变量值创建插槽。</li>
+<li>当一个对象用<code>new</code>关键字被创建时，其实例变量即被创建，而当对象被摧毁时，其实例变量也将被摧毁。</li>
+<li>访问修饰符可用来修饰实例变量。</li>
+<li>实例变量对类中所有的方法、构造函数和块都是可见的。通常，建议将这些变量设置为<code>private</code>（访问级别）。然而，子类的可见性可通过这些运用访问修饰符的变量给出。</li>
+<li>实例变量有默认值。对于数字，其默认值为<code>0</code>，对于布尔值，其默认值为<code>false</code>，对于对象的引用，其默认值为<code>null</code>。其默认值可在声明期间或构造函数中进行分配。</li>
+<li>实例变量可直接通过调用类里面的变量名来访问。然而，在<code>static</code>方法和不同的类中调用时需使用全名，如 <code>ObjectReference.VariableName</code></li>
+</ul>
+<p>例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span></span>&#123;</span><br><span class="line">   <span class="comment">// this instance variable is visible for any child class.</span></span><br><span class="line">   <span class="keyword">public</span> String name;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">// salary  variable is visible in Employee class only.</span></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">double</span> salary;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">// The name variable is assigned in the constructor. </span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">Employee</span> <span class="params">(String empName)</span></span>&#123;</span><br><span class="line">      name = empName;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// The salary variable is assigned a value.</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSalary</span><span class="params">(<span class="keyword">double</span> empSal)</span></span>&#123;</span><br><span class="line">      salary = empSal;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">// This method prints the employee details.</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printEmp</span><span class="params">()</span></span>&#123;</span><br><span class="line">      System.out.println(<span class="string">"name  : "</span> + name );</span><br><span class="line">      System.out.println(<span class="string">"salary :"</span> + salary);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">      Employee empOne = <span class="keyword">new</span> Employee(<span class="string">"Ransika"</span>);</span><br><span class="line">      empOne.setSalary(<span class="number">1000</span>);</span><br><span class="line">      empOne.printEmp();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name  : Ransika</span><br><span class="line">salary :<span class="number">1000.0</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="类-静态变量（Class-static-variables）"><a href="#类-静态变量（Class-static-variables）" class="headerlink" title="类/静态变量（Class/static variables）"></a>类/静态变量（Class/static variables）</h1><p>有些面向对象语言采用<strong>类变量（类数据）</strong>和<strong>类方法</strong>两个术语，但意思都是一样，都代表着变量和方法只是作为整个类，而不是类的某个特定的对象而存在的。</p>
+<ul>
+<li>类变量也称为静态变量，其在类中，但在方法、构造函数或块之外利用<code>static</code>关键字进行声明。</li>
+<li>每个类只存在一个类变量的副本，而与被创建的对象个数无关。</li>
+<li>静态变量除了被声明为常量，很少使用到。常量是被声明为<code>public</code>/<code>private</code>, <code>final</code> and <code>static</code>的变量。常变量初始化后就不会再改变。</li>
+<li>静态变量存储在静态内存中。</li>
+<li>静态变量在程序开始执行时被创建，在程序停止时被摧毁。</li>
+<li>其可见性跟实例变量类似。然而，大多数静态变量被声明为<code>public</code>，因为它们必须对类用户可见。</li>
+<li>其默认值也和实例变量类似。</li>
+<li>引用静态变量有两种方法：一、可通过一个对象去定位它，如<code>className.VariableName</code>，二、可通过调用类名<code>ClassName.VariableName</code>进行访问。其静态方法也一样。</li>
+<li><code>static</code>方法的一个重要方法就是在不创建任何对象的前提下就可以调用它。</li>
+<li>当类变量声明为<code>public static final</code>，其变量名要全部大写；如果静态变量不是<code>public</code>和 <code>final</code>，其变量名语法与实例变量和局部变量一样。</li>
+</ul>
+<blockquote>
+<p>特别注意：当类变量声明为static final时，必须得赋初始值。这是由final变量的性质所决定的。</p>
+</blockquote>
+<p>例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span></span>&#123;</span><br><span class="line">   <span class="comment">// salary  variable is a private static variable</span></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">double</span> salary;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// DEPARTMENT is a constant</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEPARTMENT = <span class="string">"Development "</span>;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">      salary = <span class="number">1000</span>;</span><br><span class="line">      System.out.println(DEPARTMENT + <span class="string">"average salary:"</span> + salary);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Development average salary:<span class="number">1000</span></span><br></pre></td></tr></table></figure>
+<p>注意：如果变量是从外部类进行访问，其常变量应该这样访问：<code>Employee.DEPARTMENT</code>。</p>
+<h1 id="静态变量与实例变量的区别"><a href="#静态变量与实例变量的区别" class="headerlink" title="静态变量与实例变量的区别"></a>静态变量与实例变量的区别</h1><p>静态变量不属于某个实例对象，而是属于类，故能够通过类名来访问，不需要创建一个类的对象来访问该类的静态变量(当然也可以通过一个类的对象来访问静态变量，但是不提倡)；而实例变量属于某个对象的属性，必须创建了实例对象，其中的实例变量才会被分配空间，才能够使用这个实例变量。<br>每个类只存在一个类变量的副本，而与被创建的对象个数无关，静态变量位于方法区，被类的所有实例共享，其生命周期取决于类的生命周期；而实例变量则是没创建一个实例，java虚拟机就会为实例变量分配一次内存，实例变量位于堆区，其生命周期取决于实例的生命周期。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> a;</span><br><span class="line">	<span class="keyword">int</span> b;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	  Test test1 = <span class="keyword">new</span> Test();</span><br><span class="line">	  System.out.println(a);</span><br><span class="line">	  <span class="comment">//System.out.println(b);       //It's not OK!   </span></span><br><span class="line">	  System.out.println(test1.b);   <span class="comment">//It's OK!</span></span><br><span class="line">	  </span><br><span class="line">	  Test test2 = <span class="keyword">new</span> Test();</span><br><span class="line">	  a = <span class="number">1</span>;</span><br><span class="line">	  test2.b = <span class="number">1</span>;</span><br><span class="line">	  System.out.println(a); </span><br><span class="line">	  System.out.println(test1.b);</span><br><span class="line">	  System.out.println(test2.b);</span><br><span class="line">  &#125;</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">/** output</span><br><span class="line">0</span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">*/</span></span><br></pre></td></tr></table></figure></p>
+<p>注意：如果变量是从外部类进行访问，其常变量应该这样访问：<code>Employee.DEPARTMENT</code>。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag">#java</a>
+          
+            <a href="/tags/局部变量/" rel="tag">#局部变量</a>
+          
+            <a href="/tags/实例变量/" rel="tag">#实例变量</a>
+          
+            <a href="/tags/类-静态变量/" rel="tag">#类/静态变量</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/07/Java学习笔记/3.Java学习笔记之基本数据类型/" rel="next" title="Java学习笔记之基本数据类型">
+                <i class="fa fa-chevron-left"></i> Java学习笔记之基本数据类型
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/11/Java学习笔记/5.Java学习笔记之自定义类数组的创建和使用/" rel="prev" title="Java学习笔记之自定义类数组的创建和使用">
+                Java学习笔记之自定义类数组的创建和使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/09/Java学习笔记/4.Java学习笔记之变量类型/"
+           data-title="Java学习笔记之变量类型" data-url="http://gongchuangsu.com/2016/03/09/Java学习笔记/4.Java学习笔记之变量类型/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Gongchuang Su" />
+          <p class="site-author-name" itemprop="name">Gongchuang Su</p>
+          <p class="site-description motion-element" itemprop="description">Stay Hungry, Stay Foolish.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">100</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/GongchuangSu" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/gongchuangsu" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> CSDN
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" target="_blank">MacTalk</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://mindhacks.cn/" target="_blank">Mind Hacks</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#局部变量（Local-variables）"><span class="nav-number">1.</span> <span class="nav-text">局部变量（Local variables）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例变量（Instance-variables）"><span class="nav-number">2.</span> <span class="nav-text">实例变量（Instance variables）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类-静态变量（Class-static-variables）"><span class="nav-number">3.</span> <span class="nav-text">类/静态变量（Class/static variables）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#静态变量与实例变量的区别"><span class="nav-number">4.</span> <span class="nav-text">静态变量与实例变量的区别</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gongchuang Su</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+		
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gongchuangsu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("YNAqO4Guiyi9lFpJmPo6DIJF-gzGzoHsz", "AVRJEYpDPTwtz3peAJVymqeP");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = $(document.getElementById(url)).text() + ': 0';
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
+
+
+
+  
+</body>
+</html>

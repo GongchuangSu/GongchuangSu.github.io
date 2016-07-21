@@ -1,0 +1,948 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="OpenCV,图像变换," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="图像可以进行多种方式的变换，其中一种简单的变换就是对图像进行平滑处理，通过对图像数据与高斯或者其他核函数进行卷积，有效的减少图像信息内容。高斯模糊，也叫高斯平滑，根据高斯曲线调节象素色值，有选择地模糊图像，通常用它来减少图像噪声以及降低细节层次。接下来，将编程实现载入一幅图像并进行平滑处理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第三篇 学习OpenCV之图像变换（1）">
+<meta property="og:url" content="http://gongchuangsu.com/2015/06/22/OpenCV/第三篇 学习OpenCV之图像变换（1）/index.html">
+<meta property="og:site_name" content="贱贱的梦想">
+<meta property="og:description" content="图像可以进行多种方式的变换，其中一种简单的变换就是对图像进行平滑处理，通过对图像数据与高斯或者其他核函数进行卷积，有效的减少图像信息内容。高斯模糊，也叫高斯平滑，根据高斯曲线调节象素色值，有选择地模糊图像，通常用它来减少图像噪声以及降低细节层次。接下来，将编程实现载入一幅图像并进行平滑处理。">
+<meta property="og:image" content="http://i.imgur.com/WDV7C2w.jpg">
+<meta property="og:image" content="http://i.imgur.com/I80bVXx.jpg">
+<meta property="og:updated_time" content="2016-03-20T05:42:55.301Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第三篇 学习OpenCV之图像变换（1）">
+<meta name="twitter:description" content="图像可以进行多种方式的变换，其中一种简单的变换就是对图像进行平滑处理，通过对图像数据与高斯或者其他核函数进行卷积，有效的减少图像信息内容。高斯模糊，也叫高斯平滑，根据高斯曲线调节象素色值，有选择地模糊图像，通常用它来减少图像噪声以及降低细节层次。接下来，将编程实现载入一幅图像并进行平滑处理。">
+<meta name="twitter:image" content="http://i.imgur.com/WDV7C2w.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 第三篇 学习OpenCV之图像变换（1） | 贱贱的梦想 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ed06c68bea374fddbd50d8820ec27cbd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">贱贱的梦想</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                第三篇 学习OpenCV之图像变换（1）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-06-22T17:27:43+08:00" content="2015-06-22">
+              2015-06-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/OpenCV/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenCV</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/06/22/OpenCV/第三篇 学习OpenCV之图像变换（1）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/22/OpenCV/第三篇 学习OpenCV之图像变换（1）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/06/22/OpenCV/第三篇 学习OpenCV之图像变换（1）/" class="leancloud_visitors" data-flag-title="第三篇 学习OpenCV之图像变换（1）">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-text">阅读次数 </span>             
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>图像可以进行多种方式的变换，其中一种简单的变换就是对图像进行平滑处理，通过对图像数据与高斯或者其他核函数进行卷积，有效的减少图像信息内容。<br><strong>高斯模糊</strong>，也叫高斯平滑，根据高斯曲线调节象素色值，有选择地模糊图像，通常用它来减少图像噪声以及降低细节层次。<br>接下来，将编程实现载入一幅图像并进行平滑处理。</p>
+<a id="more"></a>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 作者：GongchuangSu (http://gongchuangsu.com/)</span></span><br><span class="line"><span class="comment">// 时间：2015.06.22</span></span><br><span class="line"><span class="comment">// 说明：载入图像并利用高斯模糊进行平滑处理</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"cv.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"highgui.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(linker, <span class="string">"/subsystem:\"windows\" /entry:\"mainCRTStartup\""</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//图像平滑处理函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">doSmooth</span><span class="params">(IplImage* in)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    cvNamedWindow(<span class="string">"Image_dst"</span>);</span><br><span class="line">    <span class="comment">//为处理后的图像分配存储空间</span></span><br><span class="line">    IplImage* dst = cvCreateImage(</span><br><span class="line">        cvGetSize(in),</span><br><span class="line">        IPL_DEPTH_8U,</span><br><span class="line">        <span class="number">3</span></span><br><span class="line">    );</span><br><span class="line">    <span class="comment">//平滑处理</span></span><br><span class="line">    cvSmooth( in, dst, CV_GAUSSIAN, <span class="number">5</span>, <span class="number">5</span> );</span><br><span class="line">    cvShowImage(<span class="string">"Image_dst"</span>,dst);</span><br><span class="line">    cvReleaseImage( &amp;dst );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>*ImageName=<span class="string">"人物.jpg"</span>;</span><br><span class="line">    IplImage* src = cvLoadImage( ImageName );</span><br><span class="line">    cvNamedWindow(<span class="string">"Image_src"</span>);</span><br><span class="line">    cvShowImage(<span class="string">"Image_src"</span>,src);</span><br><span class="line">    <span class="comment">//调用处理函数</span></span><br><span class="line">    doSmooth( src );</span><br><span class="line">    cvWaitKey(<span class="number">0</span>);</span><br><span class="line">    cvReleaseImage( &amp;src );</span><br><span class="line">    cvDestroyAllWindows();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="cvCreateImage"><a href="#cvCreateImage" class="headerlink" title="cvCreateImage"></a>cvCreateImage</h1><p><strong>函数原型</strong>：<code>IplImage* cvCreateImage(CvSize size, int depth, int channels)</code><br><strong>函数说明</strong>：创建图像头并分配数据。<br><code>size</code>：图像的宽度和高度。可直接用函数<code>CvGetSize</code>取得某个图像的大小并返回，也可用函数<code>cvSize( int width, int height )</code>赋值，具体如下。该函数<code>cvSize</code>内部已定义，可直接调用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">CvSize  <span class="title">cvSize</span><span class="params">( <span class="keyword">int</span> width, <span class="keyword">int</span> height )</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    CvSize s;</span><br><span class="line"></span><br><span class="line">    s.width = width;</span><br><span class="line">    s.height = height;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>depth</code>：图像元素的位深度，可以是下面的其中之一：<br><code>IPL_DEPTH_8U</code> - 无符号8位整型<br><code>IPL_DEPTH_8S</code> - 有符号8位整型<br><code>IPL_DEPTH_16U</code> - 无符号16位整型<br><code>IPL_DEPTH_16S</code> - 有符号16位整型<br><code>IPL_DEPTH_32S</code> - 有符号32位整型<br><code>IPL_DEPTH_32F</code> - 单精度浮点数<br><code>IPL_DEPTH_64F</code> - 双精度浮点数<br><code>channels</code>：每个像素的颜色通道数。可选择1,2,3或4。该函数只能创建通道是交叉存取的图像，例如通常的彩色图像数据排列是：<code>b0 g0 r0 b1 g1 r1···</code></p>
+<h1 id="CvSize"><a href="#CvSize" class="headerlink" title="CvSize"></a>CvSize</h1><p>结构体<code>CvSize</code>表示一个矩阵或一个图像的大小。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> strcut CvSize</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">int</span> width;   <span class="comment">//宽度</span></span><br><span class="line">  <span class="keyword">int</span> height;  <span class="comment">//高度</span></span><br><span class="line">&#125;size;</span><br></pre></td></tr></table></figure>
+<h1 id="CvGetSize"><a href="#CvGetSize" class="headerlink" title="CvGetSize"></a>CvGetSize</h1><p><strong>函数原型</strong>：<code>CvSize cvGetSize(const CvArr* arr)</code><br><strong>函数说明</strong>：返回矩阵或图像ROI的大小（ROI：Region Of Interest 感兴趣区）。函数返回矩阵或图像的行数（<code>CvSize::height</code>）和列数（<code>CvSize::width</code>），如果是图像就返回ROI的大小。</p>
+<h1 id="CvArr"><a href="#CvArr" class="headerlink" title="CvArr"></a>CvArr</h1><p>不确定数组 <code>typedef void CvArr</code>;<br><code>CvArr*</code> 仅仅是被用于作函数的参数，用于指示函数接收的数组类型可以不止一个，如 <code>IplImage*</code>, <code>CvMat*</code> 甚至 <code>CvSeq*</code>. 最终的数组类型是在运行时通过分析数组头的前4 个字节判断。</p>
+<h1 id="cvSmooth"><a href="#cvSmooth" class="headerlink" title="cvSmooth"></a>cvSmooth</h1><p><strong>函数原型</strong>：<code>void cvSmooth(const CvArr* src, CvArr* dst, int smoothtype=CV_GAUSSIAN, int param1=3, int param2=0, double param3=0, double param4=0 )</code><br><strong>函数说明</strong>：图像平滑处理的各种方法。<br><code>src</code>：输入图像。<br><code>dst</code>：输出图像。<br><code>smoothtype</code>：平滑方法。<br><code>CV_BLUR_NO_SCALE</code> (简单不带尺度变换的模糊) - 对每个象素的<code>param1×param2</code> 领域求和。如果邻域大小是变化的，可以事先利用函数 <code>cvIntegral</code> 计算积分图像；<br><code>CV_BLUR (simple blur)</code> - 对每个象素<code>param1×param2</code>邻域求和并做尺度变换<code>1/(param1?param2)</code>；<br><code>CV_GAUSSIAN (gaussian blur)</code> - 对图像进行核大小为 <code>param1×param2</code> 的高斯卷积 ；<br><code>CV_MEDIAN (median blur)</code> - 对图像进行核大小为<code>param1×param1</code> 的中值滤波；<br><code>CV_BILATERAL</code> (双向滤波) - 应用双向 3x3 滤波，彩色 <code>sigma=param1</code>，空间 <code>sigma=param2</code>。<br><code>param1</code>：平滑操作的第一个参数，孔径的宽度。一定是个正奇数（1,3,5···）<br><code>param2</code>：平滑操作的第二个参数，孔径的高度。对于<code>CV_MEDIAN</code> 和<code>CV_BILATERAL</code> ，该参数被忽略；对于简单/非尺度变换的高斯模糊的情况，如果<code>param2</code>的值为零，则表示其被设定为<code>param1</code>。其他情况下，它一定是个正奇数。<br><code>param3</code>：对应高斯参数的 <code>Gaussian sigma</code> (标准差)。具体参考手册。<br>注：简单模糊和高斯模糊支持1-或3-通道，8-比特和32-比特浮点图像。中值和双向滤波工作于1-或3-通道，8-位图像。</p>
+<h1 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h1><p><strong>处理前：</strong><br><img src="http://i.imgur.com/WDV7C2w.jpg" alt=""></p>
+<p><strong>处理后：</strong><br><img src="http://i.imgur.com/I80bVXx.jpg" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OpenCV/" rel="tag">#OpenCV</a>
+          
+            <a href="/tags/图像变换/" rel="tag">#图像变换</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/21/OpenCV/第二篇 学习OpenCV之视频播放/" rel="next" title="第二篇 学习OpenCV之视频播放">
+                <i class="fa fa-chevron-left"></i> 第二篇 学习OpenCV之视频播放
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/06/28/OpenCV/第三篇 学习OpenCV之图像变换（2）/" rel="prev" title="第三篇 学习OpenCV之图像变换（2）">
+                第三篇 学习OpenCV之图像变换（2） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/06/22/OpenCV/第三篇 学习OpenCV之图像变换（1）/"
+           data-title="第三篇 学习OpenCV之图像变换（1）" data-url="http://gongchuangsu.com/2015/06/22/OpenCV/第三篇 学习OpenCV之图像变换（1）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Gongchuang Su" />
+          <p class="site-author-name" itemprop="name">Gongchuang Su</p>
+          <p class="site-description motion-element" itemprop="description">Stay Hungry, Stay Foolish.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">100</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/GongchuangSu" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/gongchuangsu" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> CSDN
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" target="_blank">MacTalk</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://mindhacks.cn/" target="_blank">Mind Hacks</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cvCreateImage"><span class="nav-number">1.</span> <span class="nav-text">cvCreateImage</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CvSize"><span class="nav-number">2.</span> <span class="nav-text">CvSize</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CvGetSize"><span class="nav-number">3.</span> <span class="nav-text">CvGetSize</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CvArr"><span class="nav-number">4.</span> <span class="nav-text">CvArr</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cvSmooth"><span class="nav-number">5.</span> <span class="nav-text">cvSmooth</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运行结果"><span class="nav-number">6.</span> <span class="nav-text">运行结果</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gongchuang Su</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+		
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gongchuangsu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("YNAqO4Guiyi9lFpJmPo6DIJF-gzGzoHsz", "AVRJEYpDPTwtz3peAJVymqeP");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = $(document.getElementById(url)).text() + ': 0';
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
+
+
+
+  
+</body>
+</html>

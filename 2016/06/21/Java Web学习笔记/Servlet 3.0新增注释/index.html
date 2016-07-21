@@ -1,0 +1,1129 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="servlet,注释," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="新增注释是Servlet 3.0中的重大革新之一。通过使用注释就无需在web.xml文件中对Servlet或者过滤器进行配置。
+
+新增的注释支持：Servlet 3.0的部署描述文件web.xml的顶层标签  有一个 metadata-complete 属性，该属性指定当前的部署描述文件是否是完全的。如果设置为 true，则容器在部署时将只依赖部署描述文件，忽略所有的注解如果不配置该属性，或者将其">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Servlet 3.0新增注释">
+<meta property="og:url" content="http://gongchuangsu.com/2016/06/21/Java Web学习笔记/Servlet 3.0新增注释/index.html">
+<meta property="og:site_name" content="贱贱的梦想">
+<meta property="og:description" content="新增注释是Servlet 3.0中的重大革新之一。通过使用注释就无需在web.xml文件中对Servlet或者过滤器进行配置。
+
+新增的注释支持：Servlet 3.0的部署描述文件web.xml的顶层标签  有一个 metadata-complete 属性，该属性指定当前的部署描述文件是否是完全的。如果设置为 true，则容器在部署时将只依赖部署描述文件，忽略所有的注解如果不配置该属性，或者将其">
+<meta property="og:updated_time" content="2016-06-21T14:41:42.718Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Servlet 3.0新增注释">
+<meta name="twitter:description" content="新增注释是Servlet 3.0中的重大革新之一。通过使用注释就无需在web.xml文件中对Servlet或者过滤器进行配置。
+
+新增的注释支持：Servlet 3.0的部署描述文件web.xml的顶层标签  有一个 metadata-complete 属性，该属性指定当前的部署描述文件是否是完全的。如果设置为 true，则容器在部署时将只依赖部署描述文件，忽略所有的注解如果不配置该属性，或者将其">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Servlet 3.0新增注释 | 贱贱的梦想 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ed06c68bea374fddbd50d8820ec27cbd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">贱贱的梦想</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Servlet 3.0新增注释
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-21T21:42:07+08:00" content="2016-06-21">
+              2016-06-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/21/Java Web学习笔记/Servlet 3.0新增注释/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/21/Java Web学习笔记/Servlet 3.0新增注释/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/21/Java Web学习笔记/Servlet 3.0新增注释/" class="leancloud_visitors" data-flag-title="Servlet 3.0新增注释">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-text">阅读次数 </span>             
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新增注释是Servlet 3.0中的重大革新之一。通过使用注释就无需在web.xml文件中对Servlet或者过滤器进行配置。</p>
+<blockquote>
+<p>新增的注释支持：Servlet 3.0的部署描述文件web.xml的顶层标签 <web-app> 有一个 metadata-complete 属性，该属性指定当前的部署描述文件是否是完全的。<br>如果设置为 true，则容器在部署时将只依赖部署描述文件，忽略所有的注解<br>如果不配置该属性，或者将其设置为 false，则表示启用注解支持</web-app></p>
+</blockquote>
+<p>Servlet 3.0新增的注释有<code>@WebServlet</code>、<code>@WebFilter</code>、<code>@WebListener</code>和<code>@WebInitParam</code>等。</p>
+<a id="more"></a>
+<h1 id="WebServlet"><a href="#WebServlet" class="headerlink" title="@WebServlet"></a>@WebServlet</h1><p>@WebServlet注释定义在Servlet的类声明之前，用于定义Servlet组件。使用该注释，就无需在web.xml文件中对Servlet进行配置。@WebServlet主要属性如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性名</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">指定 Servlet 的 name 属性，等价于 <servlet-name>。如果没有显式指定，则该 Servlet 的取值即为类的全限定名</servlet-name></td>
+</tr>
+<tr>
+<td style="text-align:left">value</td>
+<td style="text-align:left">String[]</td>
+<td style="text-align:left">该属性等价于 urlPatterns 属性。两个属性不能同时使用</td>
+</tr>
+<tr>
+<td style="text-align:left">urlPatterns</td>
+<td style="text-align:left">String[]</td>
+<td style="text-align:left">指定一组 Servlet 的 URL 匹配模式。等价于 <url-pattern> 标签</url-pattern></td>
+</tr>
+<tr>
+<td style="text-align:left">loadOnStartup</td>
+<td style="text-align:left">int</td>
+<td style="text-align:left">指定 Servlet 的加载顺序，等价于 <load-on-startup> 标签</load-on-startup></td>
+</tr>
+<tr>
+<td style="text-align:left">initParams</td>
+<td style="text-align:left">WebInitParam[]</td>
+<td style="text-align:left">指定一组 Servlet 初始化参数，等价于 <init-param> 标签</init-param></td>
+</tr>
+<tr>
+<td style="text-align:left">asyncSupported</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">声明 Servlet 是否支持异步操作模式，等价于 <async-supported> 标签</async-supported></td>
+</tr>
+<tr>
+<td style="text-align:left">description</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">该 Servlet 的描述信息，等价于 <description> 标签</description></td>
+</tr>
+<tr>
+<td style="text-align:left">displayName</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">该 Servlet 的显示名，通常配合工具使用，等价于 <display-name> 标签</display-name></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：以上所有属性均为可选属性，但<code>value</code>和<code>urlPatterns</code>其中一个必存在，若两个同时存在，一般忽略<code>value</code>取值。</p>
+</blockquote>
+<p>例：<br><strong>SimpleServlet.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(urlPatterns = &#123;<span class="string">"/simple"</span>&#125;, asyncSupported = <span class="keyword">true</span>, </span><br><span class="line">loadOnStartup = -<span class="number">1</span>, name = <span class="string">"SimpleServlet"</span>, displayName = <span class="string">"ss"</span>, </span><br><span class="line">initParams = &#123;<span class="meta">@WebInitParam</span>(name = <span class="string">"username"</span>, value = <span class="string">"tom"</span>)&#125;) </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span></span>&#123; … &#125;</span><br></pre></td></tr></table></figure></p>
+<p>其等价于以下的<strong>web.xml</strong>文件配置<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">display-name</span>&gt;</span>ss<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>SimpleServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>footmark.servlet.SimpleServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>-1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">async-supported</span>&gt;</span>true<span class="tag">&lt;/<span class="name">async-supported</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>username<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>tom<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>SimpleServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/simple<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="WebFilter"><a href="#WebFilter" class="headerlink" title="@WebFilter"></a>@WebFilter</h1><p>@WebFilter注释器用于声明过滤器，该注释将会在部署时被容器处理，容器根据具体的属性配置将相应的类部署为过滤器。</p>
+<p>@WebFilter主要属性如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性名</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">filterName</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">指定过滤器的 name 属性，等价于 <filter-name></filter-name></td>
+</tr>
+<tr>
+<td style="text-align:left">value</td>
+<td style="text-align:left">String[]</td>
+<td style="text-align:left">该属性等价于 urlPatterns 属性。但是两者不应该同时使用</td>
+</tr>
+<tr>
+<td style="text-align:left">urlPatterns</td>
+<td style="text-align:left">String[]</td>
+<td style="text-align:left">指定一组过滤器的 URL 匹配模式。等价于 <url-pattern> 标签</url-pattern></td>
+</tr>
+<tr>
+<td style="text-align:left">servletNames</td>
+<td style="text-align:left">String[]</td>
+<td style="text-align:left">指定过滤器将应用于哪些 Servlet。取值是 @WebServlet 中的 name 属性的取值，或者是 web.xml 中 <servlet-name> 的取值</servlet-name></td>
+</tr>
+<tr>
+<td style="text-align:left">dispatcherTypes</td>
+<td style="text-align:left">DispatcherType</td>
+<td style="text-align:left">指定过滤器的转发模式。具体取值包括：ASYNC、ERROR 、FORWARD、INCLUDE、REQUEST</td>
+</tr>
+<tr>
+<td style="text-align:left">initParams</td>
+<td style="text-align:left">WebInitParam[]</td>
+<td style="text-align:left">指定一组过滤器初始化参数，等价于 <init-param> 标签</init-param></td>
+</tr>
+<tr>
+<td style="text-align:left">asyncSupported</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">声明过滤器是否支持异步操作模式，等价于 <async-supported> 标签</async-supported></td>
+</tr>
+<tr>
+<td style="text-align:left">description</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">该过滤器的描述信息，等价于 <description> 标签</description></td>
+</tr>
+<tr>
+<td style="text-align:left">displayName</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">该过滤器的显示名，通常配合工具使用，等价于 <display-name> 标签</display-name></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：以上所有属性均为可选属性，但<code>value</code>、<code>urlPatterns</code>和<code>servletNames</code>三者必须至少包含一个，若<code>value</code>和<code>urlPatterns</code>两个同时存在，一般忽略<code>value</code>取值。</p>
+</blockquote>
+<p>例：<br><strong>LessThanSixFilter.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebFilter</span>(servletNames = &#123;<span class="string">"SimpleServlet"</span>&#125;,filterName=<span class="string">"SimpleFilter"</span>) </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LessThanSixFilter</span> <span class="keyword">implements</span> <span class="title">Filter</span></span>&#123;...&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其等价于以下的<strong>web.xml</strong>文件配置<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>SimpleFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>LessThanSixFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>SimpleFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>SimpleServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="WebListener"><a href="#WebListener" class="headerlink" title="@WebListener"></a>@WebListener</h1><p>@WebListener注释器用于声明监听器，还可以用于充当给定Web应用上下文中各种Web应用事件的监听器的类。被@WebListener标注的类必须实现以下至少一个接口：</p>
+<ul>
+<li>ServletContextListener</li>
+<li>ServletContextAttributeListener</li>
+<li>ServletRequestListener</li>
+<li>ServletRequestAttributeListener</li>
+<li>HttpSessionListener</li>
+<li>HttpSessionAttributeListener</li>
+</ul>
+<p>@WebListener的常用属性</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性名</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">是否可选</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">value</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">该监听器的描述信息</td>
+</tr>
+</tbody>
+</table>
+<p>例：<br><strong>SimpleListener.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebListener</span>(<span class="string">"This is only a demo listener"</span>) </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleListener</span> <span class="keyword">implements</span> <span class="title">ServletContextListener</span></span>&#123;...&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其等价于以下的<strong>web.xml</strong>文件配置<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>footmark.servlet.SimpleListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="WebInitParam"><a href="#WebInitParam" class="headerlink" title="@WebInitParam"></a>@WebInitParam</h1><p>@WebInitParam注释等价于web.xml文件中的<servlet>和<filter>的<init-parm>子标签，该注释通常不单独使用，而是配合@WebServlet和@WebFilter使用。其作用是为Servlet或者过滤器指定初始化参数。<br>@WebInitParam主要属性如下表所示：</init-parm></filter></servlet></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性名</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">是否可选</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">指定参数的名字，等价于 <param-name></param-name></td>
+</tr>
+<tr>
+<td style="text-align:left">value</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">指定参数的值，等价于 <param-value></param-value></td>
+</tr>
+<tr>
+<td style="text-align:left">description</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">关于参数的描述，等价于 <description></description></td>
+</tr>
+</tbody>
+</table>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><a href="http://item.jd.com/11078111.html" target="_blank" rel="external">Java Web从入门到精通</a></li>
+<li><a href="https://www.ibm.com/developerworks/cn/java/j-lo-servlet30/" target="_blank" rel="external">Servlet 3.0 新特性详解</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/servlet/" rel="tag">#servlet</a>
+          
+            <a href="/tags/注释/" rel="tag">#注释</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/21/Java Web学习笔记/JSP中的九大内置对象/" rel="next" title="JSP中的九大隐含对象">
+                <i class="fa fa-chevron-left"></i> JSP中的九大隐含对象
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/22/Spring/SpEL运算符/" rel="prev" title="SpEL运算符">
+                SpEL运算符 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/21/Java Web学习笔记/Servlet 3.0新增注释/"
+           data-title="Servlet 3.0新增注释" data-url="http://gongchuangsu.com/2016/06/21/Java Web学习笔记/Servlet 3.0新增注释/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Gongchuang Su" />
+          <p class="site-author-name" itemprop="name">Gongchuang Su</p>
+          <p class="site-description motion-element" itemprop="description">Stay Hungry, Stay Foolish.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">100</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/GongchuangSu" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/gongchuangsu" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> CSDN
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" target="_blank">MacTalk</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://mindhacks.cn/" target="_blank">Mind Hacks</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WebServlet"><span class="nav-number">1.</span> <span class="nav-text">@WebServlet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WebFilter"><span class="nav-number">2.</span> <span class="nav-text">@WebFilter</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WebListener"><span class="nav-number">3.</span> <span class="nav-text">@WebListener</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WebInitParam"><span class="nav-number">4.</span> <span class="nav-text">@WebInitParam</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gongchuang Su</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+		
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gongchuangsu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("YNAqO4Guiyi9lFpJmPo6DIJF-gzGzoHsz", "AVRJEYpDPTwtz3peAJVymqeP");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = $(document.getElementById(url)).text() + ': 0';
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
+
+
+
+  
+</body>
+</html>
