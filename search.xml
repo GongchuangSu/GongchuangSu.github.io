@@ -2137,6 +2137,7 @@
 <li>声明为final的方法不能被重写</li>
 <li>声明为static的方法不能被重写，但是能够被再次声明</li>
 <li>构造方法不能被重写</li>
+<li>重写方法不能抛出新的异常或者比被重写方法声明的检查异常更广的检查异常。但是可以抛出更少，更有限或者不抛出异常。</li>
 </ul>
 <h1 id="重载-Overloading"><a href="#重载-Overloading" class="headerlink" title="重载(Overloading)"></a>重载(Overloading)</h1><p>重载(overloading) 是在一个类里面，方法名字相同，而参数不同。返回类型呢？可以相同也可以不同。参数顺序也可以不相同。<br>每个重载的方法（或者构造函数）都必须有一个<strong>独一无二的参数类型列表</strong>。<br><strong>方法的重载规则：</strong></p>
 <ul>
