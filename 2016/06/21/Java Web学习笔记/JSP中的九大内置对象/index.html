@@ -1,0 +1,1674 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JSP,隐含对象,内置对象," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="JSP隐含对象（又称内置对象），是指可以不加声明和创建就可以在JSP页面脚本（Java程序片和Java表达式）中使用的成员变量。
+
+在JSP中一共预先定义了九个隐含对象，分别为request, response, pageContext, session, application, out, config, page和exception。JSP隐含对象的类型如下表所示：
+
+
+
+隐含对象
+类型
+作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSP中的九大隐含对象">
+<meta property="og:url" content="http://gongchuangsu.com/2016/06/21/Java Web学习笔记/JSP中的九大内置对象/index.html">
+<meta property="og:site_name" content="贱贱的梦想">
+<meta property="og:description" content="JSP隐含对象（又称内置对象），是指可以不加声明和创建就可以在JSP页面脚本（Java程序片和Java表达式）中使用的成员变量。
+
+在JSP中一共预先定义了九个隐含对象，分别为request, response, pageContext, session, application, out, config, page和exception。JSP隐含对象的类型如下表所示：
+
+
+
+隐含对象
+类型
+作">
+<meta property="og:updated_time" content="2016-06-21T11:32:42.467Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JSP中的九大隐含对象">
+<meta name="twitter:description" content="JSP隐含对象（又称内置对象），是指可以不加声明和创建就可以在JSP页面脚本（Java程序片和Java表达式）中使用的成员变量。
+
+在JSP中一共预先定义了九个隐含对象，分别为request, response, pageContext, session, application, out, config, page和exception。JSP隐含对象的类型如下表所示：
+
+
+
+隐含对象
+类型
+作">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> JSP中的九大隐含对象 | 贱贱的梦想 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ed06c68bea374fddbd50d8820ec27cbd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">贱贱的梦想</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JSP中的九大隐含对象
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-21T14:09:27+08:00" content="2016-06-21">
+              2016-06-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/21/Java Web学习笔记/JSP中的九大内置对象/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/21/Java Web学习笔记/JSP中的九大内置对象/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/21/Java Web学习笔记/JSP中的九大内置对象/" class="leancloud_visitors" data-flag-title="JSP中的九大隐含对象">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-text">阅读次数 </span>             
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>JSP隐含对象（又称内置对象），是指可以不加声明和创建就可以在JSP页面脚本（Java程序片和Java表达式）中使用的成员变量。</p>
+</blockquote>
+<p>在JSP中一共预先定义了九个隐含对象，分别为request, response, pageContext, session, application, out, config, page和exception。<br>JSP隐含对象的类型如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">隐含对象</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">作用域</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">request</td>
+<td style="text-align:left">javax.servlet.http.HttpServletRequest</td>
+<td style="text-align:left">request</td>
+</tr>
+<tr>
+<td style="text-align:left">response</td>
+<td style="text-align:left">javax.servlet.http.HttpServletResponse</td>
+<td style="text-align:left">page</td>
+</tr>
+<tr>
+<td style="text-align:left">pageContext</td>
+<td style="text-align:left">javax.servlet.jsp.PageContext</td>
+<td style="text-align:left">page</td>
+</tr>
+<tr>
+<td style="text-align:left">session</td>
+<td style="text-align:left">javax.servlet.http.HttpSession</td>
+<td style="text-align:left">session</td>
+</tr>
+<tr>
+<td style="text-align:left">application</td>
+<td style="text-align:left">javax.servlet.ServletContext</td>
+<td style="text-align:left">application</td>
+</tr>
+<tr>
+<td style="text-align:left">out</td>
+<td style="text-align:left">javax.servlet.jsp.JspWriter</td>
+<td style="text-align:left">page</td>
+</tr>
+<tr>
+<td style="text-align:left">config</td>
+<td style="text-align:left">javax.servlet.ServletConfig</td>
+<td style="text-align:left">page</td>
+</tr>
+<tr>
+<td style="text-align:left">page</td>
+<td style="text-align:left">java.lang.Object</td>
+<td style="text-align:left">page</td>
+</tr>
+<tr>
+<td style="text-align:left">exception</td>
+<td style="text-align:left">java.lang.Throwable</td>
+<td style="text-align:left">page</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h1 id="request"><a href="#request" class="headerlink" title="request"></a>request</h1><p>request对象代表的是javax.servlet.http.HttpServletRequest类的对象，它封装了由客户端生成的HTTP请求的所有细节，主要包括HTTP头信息、系统信息、请求方式和请求参数等。通过request对象提供的相应方法可以处理客户端浏览器提交的HTTP请求中的各项参数。<br>request获取客户端信息的常用方法如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">getHeader(String name)</td>
+<td style="text-align:left">获得HTTP协议定义的文件头信息</td>
+</tr>
+<tr>
+<td style="text-align:left">getHeaders(String name)</td>
+<td style="text-align:left">返回指定名字的request Header的所有值，其结果是一个枚举型的实例</td>
+</tr>
+<tr>
+<td style="text-align:left">getHeadersNames()</td>
+<td style="text-align:left">返回所有request Header的名字，其结果是一个枚举型的实例</td>
+</tr>
+<tr>
+<td style="text-align:left">getMethod()</td>
+<td style="text-align:left">获得客户端向服务器端传送数据的方法，如get、post、header、trace等</td>
+</tr>
+<tr>
+<td style="text-align:left">getProtocol()</td>
+<td style="text-align:left">获得客户端向服务器端传送数据所依据的协议名称</td>
+</tr>
+<tr>
+<td style="text-align:left">getRequestURI()</td>
+<td style="text-align:left">获得发出请求字符串的客户端地址，不包括请求的参数</td>
+</tr>
+<tr>
+<td style="text-align:left">getRequestURL()</td>
+<td style="text-align:left">获得发出请求字符串的客户端地址</td>
+</tr>
+<tr>
+<td style="text-align:left">getRealPath()</td>
+<td style="text-align:left">返回当前请求文件的绝对路径</td>
+</tr>
+<tr>
+<td style="text-align:left">getRemoteAddr()</td>
+<td style="text-align:left">获取客户端的IP地址</td>
+</tr>
+<tr>
+<td style="text-align:left">getRemoteHost()</td>
+<td style="text-align:left">获取客户端的主机名</td>
+</tr>
+<tr>
+<td style="text-align:left">getServerName()</td>
+<td style="text-align:left">获取服务器的名字</td>
+</tr>
+<tr>
+<td style="text-align:left">getServerPath()</td>
+<td style="text-align:left">获取客户端所请求的脚本文件的文件路径</td>
+</tr>
+<tr>
+<td style="text-align:left">getServerPort()</td>
+<td style="text-align:left">获取服务器的端口号</td>
+</tr>
+<tr>
+<td style="text-align:left">getParameter()</td>
+<td style="text-align:left">获取客户端通过表单提交过来的参数值</td>
+</tr>
+<tr>
+<td style="text-align:left">getScheme()</td>
+<td style="text-align:left">获取请求使用的模式（协议）名字</td>
+</tr>
+</tbody>
+</table>
+<p>例：<br><strong>request.jsp</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">%@</span> <span class="attr">page</span> <span class="attr">contentType</span>=<span class="string">"text/html;charset=UTF-8"</span> %&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span> request内置对象的实例 <span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">aciton</span>=<span class="string">"request.jsp"</span>&gt;</span></span><br><span class="line">Get request results:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"myname"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">name</span>=<span class="string">"get value"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">获取客户提交信息的方式:<span class="tag">&lt;<span class="name">%=request.getMethod()%</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">获取请求信息中的协议名名字和版本号:<span class="tag">&lt;<span class="name">%=request.getProtocol()%</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">获取发出请求字符串的客户端地址:<span class="tag">&lt;<span class="name">%=request.getRequestURI()%</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">获取发出请求字符串的客户端地址:<span class="tag">&lt;<span class="name">%=request.getRequestURL()%</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">获取提交请求的客户端的IP地址:<span class="tag">&lt;<span class="name">%=request.getRemoteAddr()%</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">获取服务器的端口号:<span class="tag">&lt;<span class="name">%=request.getServerPort()%</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">获取接受请求的服务器名称:<span class="tag">&lt;<span class="name">%=request.getServerName()%</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">获取客户端所请求的脚本文件的文件路径:<span class="tag">&lt;<span class="name">%=request.getServletPath()%</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">获取Http协议定义的文件头信息Host的值:<span class="tag">&lt;<span class="name">%=request.getHeader("host")%</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">获取Http协议定义的文件头信息User-Agent的值:<span class="tag">&lt;<span class="name">%=request.getHeader("user-agent")%</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">获取Http协议定义的文件头信息accept-language的值:<span class="tag">&lt;<span class="name">%=request.getHeader("accept-language")%</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">获取请求文件的绝对路径:<span class="tag">&lt;<span class="name">%=request.getRealPath("request.jsp")%</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span> </span><br><span class="line">获取客户端通过表单提交过来的参数值:<span class="tag">&lt;<span class="name">%=request.getParameter("myname")%</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">获取客户端的主机名:<span class="tag">&lt;<span class="name">%=request.getRemoteHost()%</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">获取请求中使用的模式（协议）名字:<span class="tag">&lt;<span class="name">%=request.getScheme()%</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">获取客户提交信息的方式:GET </span><br><span class="line">获取请求信息中的协议名名字和版本号:HTTP/1.1 </span><br><span class="line">获取发出请求字符串的客户端地址:/request.jsp </span><br><span class="line">获取发出请求字符串的客户端地址:http://localhost:8080/request.jsp </span><br><span class="line">获取提交请求的客户端的IP地址:127.0.0.1 </span><br><span class="line">获取服务器的端口号:8080 </span><br><span class="line">获取接受请求的服务器名称:localhost </span><br><span class="line">获取客户端所请求的脚本文件的文件路径:/request.jsp </span><br><span class="line">获取Http协议定义的文件头信息Host的值:localhost:8080 </span><br><span class="line">获取Http协议定义的文件头信息User-Agent的值:Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36 </span><br><span class="line">获取Http协议定义的文件头信息accept-language的值:zh-CN,zh;q=0.8,en;q=0.6 </span><br><span class="line">获取请求文件的绝对路径:D:\***\我的文档\Tomcat\apache-tomcat-8.0.35\webapps\ROOT\request.jsp </span><br><span class="line">获取客户端通过表单提交过来的参数值:request </span><br><span class="line">获取客户端的主机名:127.0.0.1 </span><br><span class="line">获取请求中使用的模式（协议）名字:http</span><br></pre></td></tr></table></figure></p>
+<h1 id="response"><a href="#response" class="headerlink" title="response"></a>response</h1><p>response对象用于响应客户请求，向客户端输出信息。它封装了JSP产生的响应，并发送到客户端以响应客户端的请求。<br>response对象提供了多个方法用来处理HTTP响应，比较常用的方法如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">setContentLength(int len)</td>
+<td style="text-align:left">设置响应头的长度</td>
+</tr>
+<tr>
+<td style="text-align:left">setContentType(String type)</td>
+<td style="text-align:left">设置HTTP响应的contentType中的MIME类型</td>
+</tr>
+<tr>
+<td style="text-align:left">getOutputStream()</td>
+<td style="text-align:left">返回一个Servlet的输出流</td>
+</tr>
+<tr>
+<td style="text-align:left">getWriter()</td>
+<td style="text-align:left">返回一个PrintWriter对象</td>
+</tr>
+<tr>
+<td style="text-align:left">getCharacterEncoding()</td>
+<td style="text-align:left">获得此时响应所采用的字符编码类型</td>
+</tr>
+<tr>
+<td style="text-align:left">sendRedirect(String location)</td>
+<td style="text-align:left">将请求重新定位到一个不同的URL（页面）上</td>
+</tr>
+<tr>
+<td style="text-align:left">setHeader(String headername, String value)</td>
+<td style="text-align:left">使用指定的头名字以及相应的值来设置头信息</td>
+</tr>
+<tr>
+<td style="text-align:left">addheader(String headername, String value)</td>
+<td style="text-align:left">把指定的头名字以及相应值添加到头信息当中去</td>
+</tr>
+</tbody>
+</table>
+<h1 id="session"><a href="#session" class="headerlink" title="session"></a>session</h1><p>session在网络中被称为会话，它是javax.servlet.http.HttpSession.session类的对象。由于HTTP协议是一种无状态协议，也就是当一个客户端向服务器发出请求，服务器接收请求，并返回响应后，该连接就结束了，而服务器是不保存相关的信息。为了弥补这一缺点，HTTP协议提供了session。通过session可以在应用程序的Web页面间进行跳转时，保存用户的状态，使整个用户会话一直存在下去，直到关闭浏览器。</p>
+<blockquote>
+<p>如果在一个会话中，客户端长时间不向服务器发出请求，session对象就会自动消失。这取决于服务器，Tomcat服务器默认为30分钟。</p>
+</blockquote>
+<p>session对象的常用方法如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">getId()</td>
+<td style="text-align:left">返回唯一的标识，这些标识为每个session而产生</td>
+</tr>
+<tr>
+<td style="text-align:left">getCreationTime()</td>
+<td style="text-align:left">返回session被创建的时间，最小单位为千分之一秒</td>
+</tr>
+<tr>
+<td style="text-align:left">getLastAccessedTime()</td>
+<td style="text-align:left">返回客户端最后一次与会话相关联的请求时间</td>
+</tr>
+<tr>
+<td style="text-align:left">getMaxInactiveInterval()</td>
+<td style="text-align:left">以秒为单位返回会话内两个请求最大时间间隔</td>
+</tr>
+<tr>
+<td style="text-align:left">setMaxInactiveInterval()</td>
+<td style="text-align:left">以秒为单位设置session的有效时间</td>
+</tr>
+<tr>
+<td style="text-align:left">getAttribute(String key)</td>
+<td style="text-align:left">通过给定的关键字获取一个存储在session中相对应的信息</td>
+</tr>
+<tr>
+<td style="text-align:left">setAttribute(String key, Object obj)</td>
+<td style="text-align:left">提供一个关键词和一个对象值，然后存在session当中</td>
+</tr>
+<tr>
+<td style="text-align:left">removeAttribute(String name)</td>
+<td style="text-align:left">从session会话中移除指定的绑定对象</td>
+</tr>
+<tr>
+<td style="text-align:left">invalidate()</td>
+<td style="text-align:left">销毁session</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：session中保存和查找的信息不能是基本数据类型，如int、double等，而必须是java对象，如Integer、Double等。</p>
+</blockquote>
+<p>具体例子可参考<a href="http://gongchuangsu.com/2016/06/21/Java%20Web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/JSP%E4%B8%AD%E7%9A%84%E5%9B%9B%E7%A7%8D%E8%8C%83%E5%9B%B4%E5%B1%9E%E6%80%A7/">JSP中的四种范围属性</a>。</p>
+<h1 id="application"><a href="#application" class="headerlink" title="application"></a>application</h1><p>application是javax.servlet.ServletContext类的对象。该对象用于保存所有应用程序中的公有数据。它在服务器启动时自动创建，在服务器停止时销毁。当application对象没有被销毁时，所有用户都可以共享该application对象。</p>
+<p>application对象的常用方法如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">getInitParameter(String name)</td>
+<td style="text-align:left">返回已命名的应用程序初始化参数值</td>
+</tr>
+<tr>
+<td style="text-align:left">getAttributeNames()</td>
+<td style="text-align:left">返回所有已定义的应用程序初始化参数名的枚举</td>
+</tr>
+<tr>
+<td style="text-align:left">getAttribute(String name)</td>
+<td style="text-align:left">从application对象中获取指定对象名</td>
+</tr>
+<tr>
+<td style="text-align:left">setAttribute(String name, Object obj)</td>
+<td style="text-align:left">保存一个对象信息，并指定给一个名称</td>
+</tr>
+<tr>
+<td style="text-align:left">removeAttribute(String name)</td>
+<td style="text-align:left">从application对象中去掉指定名称的属性</td>
+</tr>
+<tr>
+<td style="text-align:left">getServletInfo()</td>
+<td style="text-align:left">返回JSP引擎的相关信息</td>
+</tr>
+<tr>
+<td style="text-align:left">getRealPath(String path)</td>
+<td style="text-align:left">返回虚拟路径的真实路径</td>
+</tr>
+<tr>
+<td style="text-align:left">getContext(String URLPath)</td>
+<td style="text-align:left">返回执行Web应用的application对象</td>
+</tr>
+<tr>
+<td style="text-align:left">getMajorVersion()</td>
+<td style="text-align:left">返回服务器所支持的Servlet API最大版本号</td>
+</tr>
+<tr>
+<td style="text-align:left">getMinorVersion()</td>
+<td style="text-align:left">返回服务器所支持的Servlet API最小版本号</td>
+</tr>
+<tr>
+<td style="text-align:left">getMineType(String file)</td>
+<td style="text-align:left">返回指定文件的MIME类型</td>
+</tr>
+<tr>
+<td style="text-align:left">getResource(String path)</td>
+<td style="text-align:left">返回指定资源的URL路径</td>
+</tr>
+<tr>
+<td style="text-align:left">getResourceAsStream(String path)</td>
+<td style="text-align:left">返回指定资源的输入流</td>
+</tr>
+<tr>
+<td style="text-align:left">getRequestDispatcher(String URLPath)</td>
+<td style="text-align:left">返回指定资源的RequestDispatcher对象</td>
+</tr>
+<tr>
+<td style="text-align:left">getServlet(String name)</td>
+<td style="text-align:left">返回指定名称的Servlet</td>
+</tr>
+<tr>
+<td style="text-align:left">getServlets()</td>
+<td style="text-align:left">返回所有的Servlet，返回类型为枚举型</td>
+</tr>
+<tr>
+<td style="text-align:left">getServletNames()</td>
+<td style="text-align:left">返回所有的Servlet名称，返回类型为枚举型</td>
+</tr>
+<tr>
+<td style="text-align:left">log(String msg)</td>
+<td style="text-align:left">把指定信息写入到Servlet的日志文件中</td>
+</tr>
+<tr>
+<td style="text-align:left">log(String msg, Throwable throwable)</td>
+<td style="text-align:left">把栈轨迹以及给出的Throwable异常的说明信息写入Servlet的日志文件</td>
+</tr>
+</tbody>
+</table>
+<p>具体例子可参考<a href="http://gongchuangsu.com/2016/06/21/Java%20Web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/JSP%E4%B8%AD%E7%9A%84%E5%9B%9B%E7%A7%8D%E8%8C%83%E5%9B%B4%E5%B1%9E%E6%80%A7/">JSP中的四种范围属性</a>。</p>
+<h1 id="out"><a href="#out" class="headerlink" title="out"></a>out</h1><p>out对象用于在Web浏览器内输出信息，并且管理应用服务器上的输出缓冲区。out对象可以输出各种数据类型的数据，在输出非字符串类型的数据时，会自动转换为字符串进行输出。</p>
+<p>out对象的常用方法如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">print()</td>
+<td style="text-align:left">在页面中打印出字符串信息，不换行</td>
+</tr>
+<tr>
+<td style="text-align:left">println()</td>
+<td style="text-align:left">在页面中打印出字符串信息，并且换行</td>
+</tr>
+<tr>
+<td style="text-align:left">clear()</td>
+<td style="text-align:left">清除缓冲区中的内容</td>
+</tr>
+<tr>
+<td style="text-align:left">clearBuffer()</td>
+<td style="text-align:left">清除当前缓冲区中的内容</td>
+</tr>
+<tr>
+<td style="text-align:left">flush()</td>
+<td style="text-align:left">刷新流</td>
+</tr>
+<tr>
+<td style="text-align:left">getBufferSize()</td>
+<td style="text-align:left">获取缓冲区大小</td>
+</tr>
+<tr>
+<td style="text-align:left">isAutoFlush()</td>
+<td style="text-align:left">检测当前缓冲区已满时是自动清空还是抛出异常</td>
+</tr>
+<tr>
+<td style="text-align:left">close()</td>
+<td style="text-align:left">关闭输出流</td>
+</tr>
+</tbody>
+</table>
+<h1 id="config"><a href="#config" class="headerlink" title="config"></a>config</h1><p>config对象主要用于取得服务器的配置信息。当一个Servlet初始化时，容器把某些信息通过config对象传递给这个Servlet。</p>
+<p>config对象的常用方法如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">getServletContext()</td>
+<td style="text-align:left">获取Servlet上下文</td>
+</tr>
+<tr>
+<td style="text-align:left">getInitParameter(String name)</td>
+<td style="text-align:left">返回初始化参数的值</td>
+</tr>
+<tr>
+<td style="text-align:left">getInitParameterNames()</td>
+<td style="text-align:left">返回包含了Servlet初始化所需要的所有参数，返回类型是枚举型</td>
+</tr>
+<tr>
+<td style="text-align:left">getServletName()</td>
+<td style="text-align:left">获取Servlet服务器名</td>
+</tr>
+</tbody>
+</table>
+<h1 id="page"><a href="#page" class="headerlink" title="page"></a>page</h1><p>page对象代表JSP本身，只有在JSP页面内才是合法的。page对象本质上是包含当前Servlet接口引用的变量，可以看作是this关键字的别名。</p>
+<p>page对象的常用方法如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">getClass()</td>
+<td style="text-align:left">返回当前Object的类</td>
+</tr>
+<tr>
+<td style="text-align:left">hashCode()</td>
+<td style="text-align:left">返回此Object的哈希代码</td>
+</tr>
+<tr>
+<td style="text-align:left">toString()</td>
+<td style="text-align:left">把当前Object类转换成字符串</td>
+</tr>
+<tr>
+<td style="text-align:left">equals(Object o)</td>
+<td style="text-align:left">比较该对象和指定对象是否相等</td>
+</tr>
+<tr>
+<td style="text-align:left">copy(Object o)</td>
+<td style="text-align:left">把该对象复制到指定的对象当中去</td>
+</tr>
+<tr>
+<td style="text-align:left">clone()</td>
+<td style="text-align:left">对该对象进行克隆</td>
+</tr>
+</tbody>
+</table>
+<h1 id="exception"><a href="#exception" class="headerlink" title="exception"></a>exception</h1><p>exception对象用来处理JSP文件执行时发生的所有错误和异常，只有在page指令中设置为isErrorPage属性值为true的页面中才可以被使用，在一般的JSP页面中使用该对象将无法编译JSP文件。</p>
+<p>exception对象的常用方法如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">getMessage()</td>
+<td style="text-align:left">返回exception对象的异常信息字符串</td>
+</tr>
+<tr>
+<td style="text-align:left">getLocalizedMessage()</td>
+<td style="text-align:left">返回本地化的异常错误信息</td>
+</tr>
+<tr>
+<td style="text-align:left">toString()</td>
+<td style="text-align:left">返回关于异常错误的简单信息描述</td>
+</tr>
+<tr>
+<td style="text-align:left">fillInStackTrace()</td>
+<td style="text-align:left">重写异常错误的栈执行轨迹</td>
+</tr>
+</tbody>
+</table>
+<h1 id="pageContext"><a href="#pageContext" class="headerlink" title="pageContext"></a>pageContext</h1><p>pageContext对象是一个比较特殊的对象。它相当于页面中所有其他对象功能的最大集成者，即使用它可以访问到本页面中所有其他对象，例如request、response以及application等。<br>pageContext对象常用方法如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">getRequest()</td>
+<td style="text-align:left">获取当前页面中的request对象</td>
+</tr>
+<tr>
+<td style="text-align:left">getResponse()</td>
+<td style="text-align:left">获取当前页面中的response对象</td>
+</tr>
+<tr>
+<td style="text-align:left">getPage()</td>
+<td style="text-align:left">获取当前页面中的page对象</td>
+</tr>
+<tr>
+<td style="text-align:left">getSession()</td>
+<td style="text-align:left">获取当前页面中的session对象</td>
+</tr>
+<tr>
+<td style="text-align:left">getOut()</td>
+<td style="text-align:left">获取当前页面中的out对象</td>
+</tr>
+<tr>
+<td style="text-align:left">getException()</td>
+<td style="text-align:left">获取当前页面中的exception对象</td>
+</tr>
+<tr>
+<td style="text-align:left">getServletConfig()</td>
+<td style="text-align:left">获取当前页面中的config对象</td>
+</tr>
+<tr>
+<td style="text-align:left">getServletContext()</td>
+<td style="text-align:left">获取当前页面中的application对象</td>
+</tr>
+<tr>
+<td style="text-align:left">setAttribute(String name)</td>
+<td style="text-align:left">给指定的属性名设置属性值</td>
+</tr>
+<tr>
+<td style="text-align:left">getAttribute(String name)</td>
+<td style="text-align:left">根据属性名找到相应的属性值</td>
+</tr>
+<tr>
+<td style="text-align:left">setAttribute(String name, Object obj, int scope)</td>
+<td style="text-align:left">在给定的范围内设置相应的属性值</td>
+</tr>
+<tr>
+<td style="text-align:left">getAttribute(String name, int scope)</td>
+<td style="text-align:left">在指定的范围内获取到相应的属性值</td>
+</tr>
+<tr>
+<td style="text-align:left">findAttribute(String name)</td>
+<td style="text-align:left">寻找一个属性并返回，如果没有找到则返回一个null</td>
+</tr>
+<tr>
+<td style="text-align:left">removeAttribute(String name)</td>
+<td style="text-align:left">通过属性名删除掉某个属性</td>
+</tr>
+<tr>
+<td style="text-align:left">removeAttribute(String name, int scope)</td>
+<td style="text-align:left">在指定的某个范围内删除某个属性</td>
+</tr>
+<tr>
+<td style="text-align:left">getAttributeScope(String scope)</td>
+<td style="text-align:left">返回某属性的作用域</td>
+</tr>
+<tr>
+<td style="text-align:left">getAttributeNamesInScope(int scope)</td>
+<td style="text-align:left">返回指定范围内的所有属性名的枚举</td>
+</tr>
+<tr>
+<td style="text-align:left">release()</td>
+<td style="text-align:left">释放掉pageContext()所占的所有资源</td>
+</tr>
+<tr>
+<td style="text-align:left">forward(String relativeURLpath)</td>
+<td style="text-align:left">使用当前页面重导到另一个页面</td>
+</tr>
+<tr>
+<td style="text-align:left">include(String relativeURLpath)</td>
+<td style="text-align:left">使用当前位置包含的另一个页面</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>pageContext对象在实际JSP开发中一般很少使用，因为request和response等对象均为内置对象，如果通过pageContext来调用这些对象比较麻烦，都可以直接调用相关方法实现具体的功能。</p>
+</blockquote>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><a href="http://item.jd.com/11078111.html" target="_blank" rel="external">Java Web从入门到精通</a></li>
+<li><a href="http://item.jd.com/10066883.html" target="_blank" rel="external">《Servlet JSP深入详解 基于Tomcat的Web开发》</a></li>
+<li><a href="http://www.importnew.com/19128.html" target="_blank" rel="external">JSP九大内置对象</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JSP/" rel="tag">#JSP</a>
+          
+            <a href="/tags/隐含对象/" rel="tag">#隐含对象</a>
+          
+            <a href="/tags/内置对象/" rel="tag">#内置对象</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/21/Java Web学习笔记/JSP中的四种范围属性/" rel="next" title="JSP中的四种范围属性">
+                <i class="fa fa-chevron-left"></i> JSP中的四种范围属性
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/21/Java Web学习笔记/Servlet 3.0新增注释/" rel="prev" title="Servlet 3.0新增注释">
+                Servlet 3.0新增注释 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/21/Java Web学习笔记/JSP中的九大内置对象/"
+           data-title="JSP中的九大隐含对象" data-url="http://gongchuangsu.com/2016/06/21/Java Web学习笔记/JSP中的九大内置对象/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Gongchuang Su" />
+          <p class="site-author-name" itemprop="name">Gongchuang Su</p>
+          <p class="site-description motion-element" itemprop="description">Stay Hungry, Stay Foolish.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">63</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">102</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/GongchuangSu" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/gongchuangsu" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> CSDN
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" target="_blank">MacTalk</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://mindhacks.cn/" target="_blank">Mind Hacks</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.qiuchengjia.cn/" target="_blank">戎码人生</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://gaohueric.github.io/" target="_blank">GaoHu's BLOG</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#request"><span class="nav-number">1.</span> <span class="nav-text">request</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#response"><span class="nav-number">2.</span> <span class="nav-text">response</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#session"><span class="nav-number">3.</span> <span class="nav-text">session</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#application"><span class="nav-number">4.</span> <span class="nav-text">application</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#out"><span class="nav-number">5.</span> <span class="nav-text">out</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#config"><span class="nav-number">6.</span> <span class="nav-text">config</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#page"><span class="nav-number">7.</span> <span class="nav-text">page</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#exception"><span class="nav-number">8.</span> <span class="nav-text">exception</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pageContext"><span class="nav-number">9.</span> <span class="nav-text">pageContext</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">10.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gongchuang Su</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+		
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gongchuangsu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("YNAqO4Guiyi9lFpJmPo6DIJF-gzGzoHsz", "AVRJEYpDPTwtz3peAJVymqeP");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = $(document.getElementById(url)).text() + ': 0';
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
+
+
+
+  
+</body>
+</html>
