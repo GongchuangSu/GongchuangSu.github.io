@@ -39,7 +39,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java编译,JVM," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -55,19 +55,15 @@
 
 
 
-<meta name="description" content="编译型语言和解释型语言编译型语言：专门的编译器，针对特定的操作系统翻译成机器码，并包装成该操作系统可执行程序的格式。优点：执行速度快、效率高缺点：依赖编译器、跨平台性差代表语言：C、C++、Delphi、Pascal、Fortran">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java和JVM运行原理">
-<meta property="og:url" content="http://gongchuangsu.com/2016/03/01/Java学习笔记/Java和JVM运行原理/index.html">
+<meta name="description" content="Stay Hungry, Stay Foolish.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="贱贱的梦想">
+<meta property="og:url" content="http://gongchuangsu.com/tags/SQL/index.html">
 <meta property="og:site_name" content="贱贱的梦想">
-<meta property="og:description" content="编译型语言和解释型语言编译型语言：专门的编译器，针对特定的操作系统翻译成机器码，并包装成该操作系统可执行程序的格式。优点：执行速度快、效率高缺点：依赖编译器、跨平台性差代表语言：C、C++、Delphi、Pascal、Fortran">
-<meta property="og:image" content="http://i.imgur.com/wG9PZ4A.png">
-<meta property="og:image" content="http://i.imgur.com/jgzOLgu.png">
-<meta property="og:updated_time" content="2016-04-03T13:01:02.375Z">
+<meta property="og:description" content="Stay Hungry, Stay Foolish.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java和JVM运行原理">
-<meta name="twitter:description" content="编译型语言和解释型语言编译型语言：专门的编译器，针对特定的操作系统翻译成机器码，并包装成该操作系统可执行程序的格式。优点：执行速度快、效率高缺点：依赖编译器、跨平台性差代表语言：C、C++、Delphi、Pascal、Fortran">
-<meta name="twitter:image" content="http://i.imgur.com/wG9PZ4A.png">
+<meta name="twitter:title" content="贱贱的梦想">
+<meta name="twitter:description" content="Stay Hungry, Stay Foolish.">
 
 
 
@@ -85,7 +81,7 @@
   };
 </script>
 
-  <title> Java和JVM运行原理 | 贱贱的梦想 </title>
+  <title> 标签: SQL | 贱贱的梦想 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -116,7 +112,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -237,189 +233,53 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Java和JVM运行原理
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-01T10:07:43+08:00" content="2016-03-01">
-              2016-03-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/01/Java学习笔记/Java和JVM运行原理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/01/Java学习笔记/Java和JVM运行原理/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/03/01/Java学习笔记/Java和JVM运行原理/" class="leancloud_visitors" data-flag-title="Java和JVM运行原理">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-text">阅读次数 </span>             
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h1 id="编译型语言和解释型语言"><a href="#编译型语言和解释型语言" class="headerlink" title="编译型语言和解释型语言"></a>编译型语言和解释型语言</h1><p><strong>编译型语言</strong>：专门的编译器，针对特定的操作系统翻译成机器码，并包装成该操作系统可执行程序的格式。<br><strong>优点</strong>：执行速度快、效率高<br><strong>缺点</strong>：依赖编译器、跨平台性差<br><strong>代表语言</strong>：C、C++、Delphi、Pascal、Fortran</p>
-<a id="more"></a>
-<p><strong>解释型语言</strong>：在运行程序的时候进行翻译，专门的解释器负责在每个语句执行的时候解释程序代码。<br><strong>优点</strong>：依赖解释器、跨平台性强<br><strong>缺点</strong>：执行速度慢、效率低<br><strong>代表语言</strong>：Java、Basic</p>
-<h1 id="Java程序编译原理"><a href="#Java程序编译原理" class="headerlink" title="Java程序编译原理"></a>Java程序编译原理</h1><p>Java语言可以说是一种编译型-解释型语言，但这里的所谓的“编译”与传统的编译是不同的。Java程序很特殊，它也需要编译，但是没有直接编译成机器语言，而是将<strong>.java文件编译成与平台无关的字节码.class文件</strong>，class类文件不能在计算机上直接执行，它需要被<strong>Java虚拟机(JVM)</strong>翻译成本地的机器码后才能执行，而Java虚拟机(JVM)的翻译过程则是解释型的。</p>
-<p>java字节码首先被加载至计算机内存中，然后读出一条指令，翻译一条指令，执行一条指令，该过程被称为<strong>java语言的解释执行</strong>。该过程是由java虚拟机完成的。我们可通过两条重要的命令<code>javac XXX.java</code>和<code>java XXX</code>来分别完成上面的编译和解释过程。</p>
-<p><code>javac XXX.java</code>：将后缀名为.java的源文件编译为后缀名为.class的可以运行于Java虚拟机的字节码。</p>
-<p><code>java XXX</code>：解释前面生成的字节码，生成本地的机器码。</p>
-<p>具体编译过程如下：<br><img src="http://i.imgur.com/wG9PZ4A.png" alt=""></p>
-<h1 id="Java虚拟机-JVM"><a href="#Java虚拟机-JVM" class="headerlink" title="Java虚拟机(JVM)"></a>Java虚拟机(JVM)</h1><p>JVM是java的核心和基础，是一种能够运行java字节码的虚拟机。JVM屏蔽了与具体操作平台相关的信息，使得Java程序只需要生成在Java虚拟机上运行的目标代码（字节码），就可以在多种平台上不加修改地运行。</p>
-<p>JVM执行程序的过程：</p>
-<ul>
-<li>加载.class文件</li>
-<li>管理并分配内存</li>
-<li>执行垃圾收集</li>
-</ul>
-<p><img src="http://i.imgur.com/jgzOLgu.png" width="50%" height="50%"></p>
-
-      
+  <div id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        SQL
+        <small>标签</small>
+      </h2>
     </div>
 
-    <div>
+    
       
+
+  <article class="post post-type-categories" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-      
-    </div>
+            <a class="post-title-link" href="/2015/08/01/数据库/SQL学习笔记/" itemprop="url">
+              
+                <span itemprop="name">SQL学习笔记</span>
+              
+            </a>
+        
+      </h1>
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Java编译/" rel="tag">#Java编译</a>
-          
-            <a href="/tags/JVM/" rel="tag">#JVM</a>
-          
-        </div>
-      
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2015-08-01T18:42:06+08:00"
+              content="2015-08-01" >
+          08-01
+        </time>
+      </div>
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2015/08/01/数据库/SQL命令/" rel="next" title="SQL命令">
-                <i class="fa fa-chevron-left"></i> SQL命令
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/02/Java学习笔记/1.Java学习笔记之基本语法/" rel="prev" title="Java学习笔记之基本语法">
-                Java学习笔记之基本语法 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
-      
-        
-<script>
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-
-      
-    </div>
+    
   </div>
+
+  
 
 
           </div>
           
 
-  <p>热评文章</p>
-  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
-
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/03/01/Java学习笔记/Java和JVM运行原理/"
-           data-title="Java和JVM运行原理" data-url="http://gongchuangsu.com/2016/03/01/Java学习笔记/Java和JVM运行原理/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -439,17 +299,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -540,23 +391,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator">
-            <i class="fa fa-angle-double-up"></i>
-          </div>
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#编译型语言和解释型语言"><span class="nav-number">1.</span> <span class="nav-text">编译型语言和解释型语言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java程序编译原理"><span class="nav-number">2.</span> <span class="nav-text">Java程序编译原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java虚拟机-JVM"><span class="nav-number">3.</span> <span class="nav-text">Java虚拟机(JVM)</span></a></li></ol></div>
-            
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator">
-            <i class="fa fa-angle-double-down"></i>
-          </div>
-        </section>
       
 
     </div>
@@ -666,167 +500,6 @@
 
 
   
-  
-<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 1 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    NexT.motion.middleWares.sidebar = function () {
-      var $tocContent = $('.post-toc-content');
-
-      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          NexT.utils.displaySidebar();
-        }
-      }
-    };
-  });
-</script>
-
-
 
   
 

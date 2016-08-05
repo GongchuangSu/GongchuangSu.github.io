@@ -1,0 +1,1378 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="SQL," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="创建名为CUSTOMERS数据表：12345678CREATE TABLE CUSTOMERS(	ID INT NOT NULL,	NAME VARCHAR (20) NOT NULL,	AGE INT NOT NULL,	ADDRESS CHAR (25) ,	SALARY DECIMAL (18, 2),	PRIMARY KEY (ID));
+约束
+NOT NULL 约束：保证列中数据不能有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL学习笔记">
+<meta property="og:url" content="http://gongchuangsu.com/2015/08/01/数据库/SQL学习笔记/index.html">
+<meta property="og:site_name" content="贱贱的梦想">
+<meta property="og:description" content="创建名为CUSTOMERS数据表：12345678CREATE TABLE CUSTOMERS(	ID INT NOT NULL,	NAME VARCHAR (20) NOT NULL,	AGE INT NOT NULL,	ADDRESS CHAR (25) ,	SALARY DECIMAL (18, 2),	PRIMARY KEY (ID));
+约束
+NOT NULL 约束：保证列中数据不能有">
+<meta property="og:updated_time" content="2016-08-05T08:15:31.957Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL学习笔记">
+<meta name="twitter:description" content="创建名为CUSTOMERS数据表：12345678CREATE TABLE CUSTOMERS(	ID INT NOT NULL,	NAME VARCHAR (20) NOT NULL,	AGE INT NOT NULL,	ADDRESS CHAR (25) ,	SALARY DECIMAL (18, 2),	PRIMARY KEY (ID));
+约束
+NOT NULL 约束：保证列中数据不能有">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> SQL学习笔记 | 贱贱的梦想 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ed06c68bea374fddbd50d8820ec27cbd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">贱贱的梦想</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                SQL学习笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-08-01T18:42:06+08:00" content="2015-08-01">
+              2015-08-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/01/数据库/SQL学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/01/数据库/SQL学习笔记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/08/01/数据库/SQL学习笔记/" class="leancloud_visitors" data-flag-title="SQL学习笔记">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-text">阅读次数 </span>             
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>创建名为<code>CUSTOMERS</code>数据表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE CUSTOMERS(</span><br><span class="line">	ID INT NOT NULL,</span><br><span class="line">	NAME VARCHAR (20) NOT NULL,</span><br><span class="line">	AGE INT NOT NULL,</span><br><span class="line">	ADDRESS CHAR (25) ,</span><br><span class="line">	SALARY DECIMAL (18, 2),</span><br><span class="line">	PRIMARY KEY (ID)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<h1 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h1><ul>
+<li>NOT NULL 约束：保证列中数据不能有 NULL 值</li>
+<li>DEFAULT 约束：提供该列数据未指定时所采用的默认值</li>
+<li>UNIQUE 约束：保证列中的所有数据各不相同</li>
+<li>主键约束：唯一标识数据表中的行/记录</li>
+<li>外键约束：唯一标识其他表中的一条行/记录</li>
+<li>CHECK 约束：此约束保证列中的所有值满足某一条件</li>
+<li>索引：用于在数据库中快速创建或检索数据</li>
+</ul>
+<h2 id="NOT-NULL约束"><a href="#NOT-NULL约束" class="headerlink" title="NOT NULL约束"></a><code>NOT NULL</code>约束</h2><p>给某字段添加<code>NOT NULL</code>约束<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE CUSTOMERS</span><br><span class="line">	MODIFY SALARY DECIMAL (18, 2) NOT NULL;</span><br></pre></td></tr></table></figure></p>
+<h2 id="DEFAULT约束"><a href="#DEFAULT约束" class="headerlink" title="DEFAULT约束"></a><code>DEFAULT</code>约束</h2><p>给某字段添加<code>DEFAULT</code>约束<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE CUSTOMERS</span><br><span class="line">	MODIFY SALARY DECIMAL (18, 2) DEFAULT 5000.00;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>删除某字段<code>DEFAULT</code>约束<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE CUSTOMERS</span><br><span class="line">	ALTER COLUMN SALARY DROP DEFAULT;</span><br></pre></td></tr></table></figure></p>
+<h2 id="UNIQUE约束"><a href="#UNIQUE约束" class="headerlink" title="UNIQUE约束"></a><code>UNIQUE</code>约束</h2><p>给某字段添加<code>UNIQUE</code>约束<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE CUSTOMERS</span><br><span class="line">	MODIFY AGE INT NOT NULL UNIQUE;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>将多个列定义<code>UNIQUE</code>约束<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE CUSTOMERS</span><br><span class="line">	ADD CONSTRAINT myUniqueConstraint UNIQUE(AGE, SALARY);</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>删除<code>UNIQUE</code>约束<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE CUSTOMERS</span><br><span class="line">	DROP CONSTRAINT myUniqueConstraint;</span><br></pre></td></tr></table></figure></p>
+<h2 id="主键-Primary-Key-约束"><a href="#主键-Primary-Key-约束" class="headerlink" title="主键(Primary Key)约束"></a>主键(Primary Key)约束</h2><p>将某个字段定义为主键<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE CUSTOMERS</span><br><span class="line">	ADD PRIMARY (ID);</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>将多个字段定义为主键(组合键)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE CUSTOMERS</span><br><span class="line">	ADD CONSTRAINT PK_CUSTID PRIMARY KEY (ID, NAME);</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>删除主键<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE CUSTOMERS DROP PRIMARY KEY;</span><br></pre></td></tr></table></figure></p>
+<h2 id="外键-FOREIGN-KEY-约束"><a href="#外键-FOREIGN-KEY-约束" class="headerlink" title="外键(FOREIGN KEY)约束"></a>外键(FOREIGN KEY)约束</h2><p>设置外键<br><code>CUSTOMERS</code> 表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE CUSTOMERS(</span><br><span class="line">	ID INT NOT NULL,</span><br><span class="line">	NAME VARCHAR (20) NOT NULL,</span><br><span class="line">	AGE INT NOT NULL,</span><br><span class="line">	ADDRESS CHAR (25) ,</span><br><span class="line">	SALARY DECIMAL (18, 2),</span><br><span class="line">	PRIMARY KEY (ID)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p><code>ORDERS</code> 表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE ORDERS (</span><br><span class="line">	ID INT NOT NULL,</span><br><span class="line">	DATE DATETIME,</span><br><span class="line">	CUSTOMER_ID INT references CUSTOMERS(ID),</span><br><span class="line">	AMOUNT double,</span><br><span class="line">	PRIMARY KEY (ID)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p>如果 ORDERS 表已经存在，并且没有设置外键，那么可以使用下面的语法来修改数据表以指定外键<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE ORDERS</span><br><span class="line">	ADD FOREIGN KEY (Customer_ID) REFERENCES CUSTOMERS (ID);</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>删除外键约束<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE ORDERS</span><br><span class="line">	DROP FOREIGN KEY;</span><br></pre></td></tr></table></figure></p>
+<h2 id="CHECK约束"><a href="#CHECK约束" class="headerlink" title="CHECK约束"></a><code>CHECK</code>约束</h2><p>给某字段添加<code>CHECK</code>约束<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE CUSTOMERS</span><br><span class="line">	MODIFY AGE INT NOT NULL CHECK (AGE &gt;= 18 );</span><br><span class="line"></span><br><span class="line">// 或使用以下语法</span><br><span class="line">ALTER TABLE CUSTOMERS</span><br><span class="line">	ADD CONSTRAINT myCheckConstraint CHECK(AGE &gt;= 18);</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>删除<code>CHECK</code>约束<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE CUSTOMERS</span><br><span class="line">	DROP CONSTRAINT myCheckConstraint;</span><br></pre></td></tr></table></figure></p>
+<h2 id="索引约束"><a href="#索引约束" class="headerlink" title="索引约束"></a>索引约束</h2><p>创建索引<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX index_name</span><br><span class="line">	ON table_name ( column1, column2.....);</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>删除索引<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE table_name</span><br><span class="line">	DROP INDEX index_name;</span><br></pre></td></tr></table></figure></p>
+<h2 id="完整性约束"><a href="#完整性约束" class="headerlink" title="完整性约束"></a>完整性约束</h2><p>完整性约束用于保证关系型数据库中数据的精确性和一致性。对于关系型数据库来说，数据完整性由参照完整性（referential integrity，RI）来保证。<br>有很多种约束可以起到参照完整性的作用，这些约束包括主键约束（Primary Key）、外键约束（Foreign Key）、唯一性约束（Unique Constraint）以及上面提到的其他约束。</p>
+<h1 id="数据完整性"><a href="#数据完整性" class="headerlink" title="数据完整性"></a>数据完整性</h1><ul>
+<li>实体完整性：表中没有重复的行</li>
+<li>域完整性：通过限制数据类型、格式或者范围来保证给定列的数据有效性</li>
+<li>参照完整性：不能删除被其他记录引用的行</li>
+<li>用户定义完整性：施加某些不属于上述三种完整性的业务规则</li>
+</ul>
+<h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><p>在 RDBMS 中，数据库名应该是唯一的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE DatabaseName;</span><br></pre></td></tr></table></figure></p>
+<h2 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP DATABASE DatabaseName;</span><br></pre></td></tr></table></figure>
+<h2 id="选择数据库"><a href="#选择数据库" class="headerlink" title="选择数据库"></a>选择数据库</h2><p>如果你的数据库架构中有多个数据库同时存在，那么在开始操作之前必须先选定其中一个。<br><code>USE DatabaseName;</code></p>
+<h2 id="显示现有数据库列表"><a href="#显示现有数据库列表" class="headerlink" title="显示现有数据库列表"></a>显示现有数据库列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW DATABASES;</span><br></pre></td></tr></table></figure>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><h2 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h2><p>创建一个基本的表需要做的工作包括：命名表、定义列和各列的数据类型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE table_name(</span><br><span class="line">	column1 datatype,</span><br><span class="line">	column2 datatype,</span><br><span class="line">	column3 datatype,</span><br><span class="line">	.....</span><br><span class="line">	columnN datatype,</span><br><span class="line">	PRIMARY KEY( one or more columns )</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<h2 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h2><p>SQL DROP TABLE 语句用于移除表定义以及表中所有的数据、索引、触发器、约束和权限设置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE table_name;</span><br></pre></td></tr></table></figure></p>
+<h2 id="INSERT-语句"><a href="#INSERT-语句" class="headerlink" title="INSERT 语句"></a>INSERT 语句</h2><p>SQL INSERT INTO 语句用于向数据库中的表添加新行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 第一种语法格式</span><br><span class="line">INSERT INTO TABLE_NAME (column1, column2, column3,...columnN)</span><br><span class="line">VALUES (value1, value2, value3,...valueN);</span><br></pre></td></tr></table></figure></p>
+<p>如果要为表中所有的字段都添加数据的话，就不需要指定字段名了。不过这种情况下，必须保证值的顺序按照表中字段出现的顺序排列。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 第二种语法格式</span><br><span class="line">INSERT INTO TABLE_NAME VALUES (value1,value2,value3,...valueN);</span><br></pre></td></tr></table></figure></p>
+<h2 id="SELECT-语句"><a href="#SELECT-语句" class="headerlink" title="SELECT 语句"></a>SELECT 语句</h2><p>SQL SELECT 语句用于从数据库的表中取回所需的数据，并以表的形式返回。返回的表被称作结果集。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2, columnN FROM table_name;</span><br></pre></td></tr></table></figure></p>
+<p>这里，column1, column2…是你想要从表中取回的字段。如果要取回表中所有字段的话，可以使用下面的语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM table_name;</span><br></pre></td></tr></table></figure></p>
+<h2 id="UPDATE-语句"><a href="#UPDATE-语句" class="headerlink" title="UPDATE 语句"></a>UPDATE 语句</h2><p>SQL UPDATE 语句用于修改表中现有的记录。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE table_name</span><br><span class="line">SET column1 = value1, column2 = value2...., columnN = valueN</span><br><span class="line">WHERE [condition];</span><br></pre></td></tr></table></figure></p>
+<h2 id="DELETE-语句"><a href="#DELETE-语句" class="headerlink" title="DELETE 语句"></a>DELETE 语句</h2><p>SQL DELETE 语句用于删除表中现有的记录。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM table_name</span><br><span class="line">WHERE [condition];</span><br></pre></td></tr></table></figure></p>
+<h2 id="LIKE-子句"><a href="#LIKE-子句" class="headerlink" title="LIKE 子句"></a>LIKE 子句</h2><p>SQL LIKE 子句通过通配符来将一个值同其他相似的值作比较。可以同 LIKE 运算符一起使用的通配符有两个：</p>
+<ol>
+<li>百分号（%）:代表零个、一个或者多个字符</li>
+<li>下划线（_）:代表单个数字或者字符</li>
+</ol>
+<p>示例：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">语句</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">WHERE SALARY LIKE ‘200%’</td>
+<td style="text-align:left">找出所有 200 开头的值</td>
+</tr>
+<tr>
+<td style="text-align:left">WHERE SALARY LIKE ‘%200%’</td>
+<td style="text-align:left">找出所有含有 200 的值</td>
+</tr>
+<tr>
+<td style="text-align:left">WHERE SALARY LIKE ‘_00%’</td>
+<td style="text-align:left">找出所有第二位和第三位为 0 的值</td>
+</tr>
+<tr>
+<td style="text-align:left">WHERE SALARY LIKE ‘2<em>%</em>%’</td>
+<td style="text-align:left">找出所有以 2 开始，并且长度至少为 3 的值</td>
+</tr>
+<tr>
+<td style="text-align:left">WHERE SALARY LIKE ‘%2’</td>
+<td style="text-align:left">找出所有以 2 结尾的值</td>
+</tr>
+<tr>
+<td style="text-align:left">WHERE SALARY LIKE ‘_2%3’</td>
+<td style="text-align:left">找出所有第二位为 2，并且以3结束的值</td>
+</tr>
+<tr>
+<td style="text-align:left">WHERE SALARY LIKE ‘2___3’</td>
+<td style="text-align:left">找出所有以 2 开头以 3 结束的五位数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="TOP、LIMIT-和-ROWNUM-子句"><a href="#TOP、LIMIT-和-ROWNUM-子句" class="headerlink" title="TOP、LIMIT 和 ROWNUM 子句"></a>TOP、LIMIT 和 ROWNUM 子句</h2><p>这三个子句都是用于从一张数据表取回前N个或者X% 的记录。针对不同的数据库系统，使用不同的子句。Sql Server支持TOP子句，MySQL支持LIMIT子句，Oracle支持ROWNUM子句。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// TOP子句</span><br><span class="line">SELECT TOP number|percent column_name(s)</span><br><span class="line">	FROM table_name</span><br><span class="line">	WHERE [condition]</span><br><span class="line">// LIMIT子句</span><br><span class="line">SELECT * FROM CUSTOMERS</span><br><span class="line">	LIMIT 3;</span><br><span class="line">// ROWNUM子句</span><br><span class="line">SELECT * FROM CUSTOMERS</span><br><span class="line">	WHERE ROWNUM &lt;= 3;</span><br></pre></td></tr></table></figure></p>
+<h2 id="ORDER-BY-子句"><a href="#ORDER-BY-子句" class="headerlink" title="ORDER BY 子句"></a>ORDER BY 子句</h2><p>SQL ORDER BY 子句根据一列或者多列的值，按照升序或者降序排列数据。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT column-list</span><br><span class="line">	FROM table_name</span><br><span class="line">	[WHERE condition]</span><br><span class="line">	[ORDER BY column1, column2, .. columnN] [ASC | DESC];</span><br></pre></td></tr></table></figure></p>
+<h2 id="GROUP-BY-子句"><a href="#GROUP-BY-子句" class="headerlink" title="GROUP BY 子句"></a>GROUP BY 子句</h2><p>SQL GROUP BY 子句与 SELECT 语句结合在一起使用，可以将相同数据分成一组。<br>在 SELECT 语句中，GROUP BY 子句紧随 WHERE 子句，在 ORDER BY 子句之前(如果有)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2</span><br><span class="line">	FROM table_name</span><br><span class="line">	WHERE [ conditions ]</span><br><span class="line">	GROUP BY column1, column2</span><br><span class="line">	ORDER BY column1, column2</span><br></pre></td></tr></table></figure></p>
+<p>实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">id  name  dept  salary  edlevel  hiredate   </span><br><span class="line">1 张三 开发部 2000 3 2009-10-11  </span><br><span class="line">2 李四 开发部 2500 3 2009-10-01  </span><br><span class="line">3 王五 设计部 2600 5 2010-10-02  </span><br><span class="line">4 王六 设计部 2300 4 2010-10-03  </span><br><span class="line">5 马七 设计部 2100 4 2010-10-06  </span><br><span class="line">6 赵八 销售部 3000 5 2010-10-05  </span><br><span class="line">7 钱九 销售部 3100 7 2010-10-07  </span><br><span class="line">8 孙十 销售部 3500 7 2010-10-06</span><br></pre></td></tr></table></figure></p>
+<p>sql语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT dept, MAX(salary) AS MAXIMUM FROM STAFF GROUP BY dept</span><br></pre></td></tr></table></figure></p>
+<p>查询结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dept  MAXIMUM   </span><br><span class="line">开发部 2500  </span><br><span class="line">设计部 2600  </span><br><span class="line">销售部 3500</span><br></pre></td></tr></table></figure></p>
+<p>分析：使用<code>GROUP BY</code>对部门进行分组，然后对每个部门返回一个结果(一行记录)，即每个部门的最高薪水。</p>
+<h2 id="DISTINCT-关键字"><a href="#DISTINCT-关键字" class="headerlink" title="DISTINCT 关键字"></a>DISTINCT 关键字</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT DISTINCT column1, column2,.....columnN</span><br><span class="line">	FROM table_name</span><br><span class="line">	WHERE [condition]</span><br></pre></td></tr></table></figure>
+<h1 id="SQL连接类型"><a href="#SQL连接类型" class="headerlink" title="SQL连接类型"></a>SQL连接类型</h1><p>SQL 中有多种不同的连接：</p>
+<ul>
+<li>内连接（INNER JOIN）：当两个表中都存在匹配时，才返回行。</li>
+<li>左连接（LEFT JOIN）：返回左表中的所有行，即使右表中没有匹配的行。</li>
+<li>右连接（RIGHT JOIN）：返回右表中的所有行，即使左表中没有匹配的行。</li>
+<li>全连接（FULL JOIN）：只要某一个表存在匹配，就返回行。</li>
+<li>笛卡尔连接（CARTESIAN JOIN）：返回两个或者更多的表中记录集的笛卡尔积。</li>
+</ul>
+<h2 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT table1.column1, table2.column2...</span><br><span class="line">FROM table1</span><br><span class="line">INNER JOIN table2</span><br><span class="line">ON table1.common_field = table2.common_field;</span><br></pre></td></tr></table></figure>
+<h2 id="左连接"><a href="#左连接" class="headerlink" title="左连接"></a>左连接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT table1.column1, table2.column2...</span><br><span class="line">FROM table1</span><br><span class="line">LEFT JOIN table2</span><br><span class="line">ON table1.common_field = table2.common_field;</span><br></pre></td></tr></table></figure>
+<h2 id="右连接"><a href="#右连接" class="headerlink" title="右连接"></a>右连接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT table1.column1, table2.column2...</span><br><span class="line">FROM table1</span><br><span class="line">RIGHT JOIN table2</span><br><span class="line">ON table1.common_field = table2.common_field;</span><br></pre></td></tr></table></figure>
+<h2 id="全连接"><a href="#全连接" class="headerlink" title="全连接"></a>全连接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT table1.column1, table2.column2...</span><br><span class="line">FROM table1</span><br><span class="line">FULL JOIN table2</span><br><span class="line">ON table1.common_field = table2.common_field;</span><br></pre></td></tr></table></figure>
+<h2 id="笛卡尔连接"><a href="#笛卡尔连接" class="headerlink" title="笛卡尔连接"></a>笛卡尔连接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT table1.column1, table2.column2...</span><br><span class="line">FROM table1, table2 [, table3 ]</span><br></pre></td></tr></table></figure>
+<h1 id="UNION-子句"><a href="#UNION-子句" class="headerlink" title="UNION 子句"></a>UNION 子句</h1><p>SQL UNION 子句/运算符用于将两个或者更多的 SELECT 语句的运算结果组合起来。<br>在使用 UNION 的时候，每个 SELECT 语句必须有相同数量的选中列、相同数量的列表达式、相同的数据类型，并且它们出现的次序要一致，不过长度不一定要相同。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1 [, column2 ]</span><br><span class="line">FROM table1 [, table2 ]</span><br><span class="line">[WHERE condition1]</span><br><span class="line"></span><br><span class="line">UNION</span><br><span class="line"></span><br><span class="line">SELECT column1 [, column2 ]</span><br><span class="line">FROM table1 [, table2 ]</span><br><span class="line">[WHERE condition1]</span><br></pre></td></tr></table></figure></p>
+<h1 id="NULL-值"><a href="#NULL-值" class="headerlink" title="NULL 值"></a>NULL 值</h1><p>SQL 中，NULL 用于表示缺失的值。数据表中的 NULL 值表示该值所处的字段为空。NULL 值与 0 或者包含空白（spaces）的字段是不同的，更多的表示的是未知。</p>
+<h1 id="别名-Alias"><a href="#别名-Alias" class="headerlink" title="别名(Alias)"></a>别名(Alias)</h1><p>使用别名（Alias）可以对数据表或者列进行临时命名。<br>表别名的基本语法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....</span><br><span class="line">	FROM table_name AS alias_name</span><br><span class="line">	WHERE [condition];</span><br></pre></td></tr></table></figure></p>
+<p>列别名的基本语法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT column_name AS alias_name</span><br><span class="line">	FROM table_name</span><br><span class="line">	WHERE [condition];</span><br></pre></td></tr></table></figure></p>
+<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><p>索引是一种特殊的查询表，可以被数据库搜索引擎用来加速数据的检索。简单说来，索引就是指向表中数据的指针。数据库的索引同书籍后面的索引非常相像。<br>索引能够提高 SELECT 查询和 WHERE 子句的速度，但是却降低了包含 UPDATE 语句或 INSERT 语句的数据输入过程的速度。索引的创建与删除不会对表中的数据产生影响。<br>基本语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 创建索引</span><br><span class="line">CREATE INDEX index_name ON table_name;</span><br><span class="line"></span><br><span class="line">// 删除索引</span><br><span class="line">DROP INDEX index_name;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：删除索引时应当特别小心，数据库的性能可能会因此而降低或者提高。</p>
+</blockquote>
+<h2 id="单列索引"><a href="#单列索引" class="headerlink" title="单列索引"></a>单列索引</h2><p>单列索引基于单一的字段创建，其基本语法如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX index_name</span><br><span class="line">	ON table_name (column_name);</span><br></pre></td></tr></table></figure></p>
+<h2 id="唯一索引"><a href="#唯一索引" class="headerlink" title="唯一索引"></a>唯一索引</h2><p>唯一索引不止用于提升查询性能，还用于保证数据完整性。唯一索引不允许向表中插入任何重复值。其基本语法如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE UNIQUE INDEX index_name</span><br><span class="line">	ON table_name (column_name);</span><br></pre></td></tr></table></figure></p>
+<h2 id="聚簇索引"><a href="#聚簇索引" class="headerlink" title="聚簇索引"></a>聚簇索引</h2><p>聚簇索引在表中两个或更多的列的基础上建立。其基本语法如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX index_name</span><br><span class="line">	ON table_name (column1, column2);</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>说明：创建单列索引还是聚簇索引，要看每次查询中，哪些列在作为过滤条件的 WHERE 子句中最常出现。如果只需要一列，那么就应当创建单列索引。如果作为过滤条件的 WHERE 子句用到了两个或者更多的列，那么聚簇索引就是最好的选择。</p>
+</blockquote>
+<h2 id="隐式索引"><a href="#隐式索引" class="headerlink" title="隐式索引"></a>隐式索引</h2><p>隐式索引由数据库服务器在创建某些对象的时候自动生成。例如，对于主键约束和唯一约束，数据库服务器就会自动创建索引。</p>
+<h2 id="什么时候应当避免使用索引"><a href="#什么时候应当避免使用索引" class="headerlink" title="什么时候应当避免使用索引"></a>什么时候应当避免使用索引</h2><p>尽管创建索引的目的是提升数据库的性能，但是还是有一些情况应当避免使用索引。</p>
+<ul>
+<li>小的数据表不应当使用索引</li>
+<li>需要频繁进行大批量的更新或者插入操作的表</li>
+<li>如果列中包含大数或者 NULL 值，不宜创建索引</li>
+<li>频繁操作的列不宜创建索引</li>
+</ul>
+<h1 id="ALTER-TABLE-命令"><a href="#ALTER-TABLE-命令" class="headerlink" title="ALTER TABLE 命令"></a>ALTER TABLE 命令</h1><p>SQL ALTER TABLE 命令用于添加、删除或者更改现有数据表中的列。还可以用 ALTER TABLE 命令来添加或者删除现有数据表上的约束。</p>
+<ul>
+<li><p>添加列：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE table_name ADD column_name datatype;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除列：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE table_name DROP COLUMN column_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更改现有列的数据类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE table_name MODIFY COLUMN column_name datatype;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加NOT NULL约束：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE table_name MODIFY column_name datatype NOT NULL;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加唯一约束：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE table_name</span><br><span class="line">	ADD CONSTRAINT MyUniqueConstraint UNIQUE(column1, column2...);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加CHECK约束：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE table_name</span><br><span class="line">	ADD CONSTRAINT MyUniqueConstraint CHECK (CONDITION);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加主键约束：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE table_name</span><br><span class="line">	ADD CONSTRAINT MyPrimaryKey PRIMARY KEY (column1, column2...);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除约束：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE table_name</span><br><span class="line">	DROP CONSTRAINT MyUniqueConstraint;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除主键约束：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE table_name</span><br><span class="line">	DROP CONSTRAINT MyPrimaryKey;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="TRUNCATE-TABLE-命令"><a href="#TRUNCATE-TABLE-命令" class="headerlink" title="TRUNCATE TABLE 命令"></a>TRUNCATE TABLE 命令</h1><p>SQL TRUNCATE TABLE 命令用于删除现有数据表中的所有数据。<br>与DROP TABLE 命令不同的是，DROP TABLE 命令不但会删除表中所有数据，还会将整个表结构从数据库中移除。如果想要重新向表中存储数据的话，必须重建该数据表。<br>基本语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TRUNCATE TABLE table_name;</span><br></pre></td></tr></table></figure></p>
+<h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><p>视图无非就是存储在数据库中并具有名字的 SQL 语句，或者说是以预定义的 SQL 查询的形式存在的数据表的成分。<br>视图可以包含表中的所有列，或者仅包含选定的列。视图可以创建自一个或者多个表，这取决于创建该视图的 SQL 语句的写法。<br>视图，一种虚拟的表，允许用户执行以下操作：</p>
+<ul>
+<li>以用户或者某些类型的用户感觉自然或者直观的方式来组织数据；</li>
+<li>限制对数据的访问，从而使得用户仅能够看到或者修改（某些情况下）他们需要的数据；</li>
+<li>从多个表中汇总数据，以产生报表。</li>
+</ul>
+<h2 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h2><p>CREATE VIEW 语句的基本语法如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE VIEW view_name AS</span><br><span class="line">	SELECT column1, column2.....</span><br><span class="line">	FROM table_name</span><br><span class="line">	WHERE [condition];</span><br></pre></td></tr></table></figure></p>
+<h2 id="更新视图"><a href="#更新视图" class="headerlink" title="更新视图"></a>更新视图</h2><p>视图可以在特定的情况下更新：</p>
+<ul>
+<li>SELECT 子句不能包含 DISTINCT 关键字</li>
+<li>SELECT 子句不能包含任何汇总函数（summary functions）</li>
+<li>SELECT 子句不能包含任何集合函数（set functions）</li>
+<li>SELECT 子句不能包含任何集合运算符（set operators）</li>
+<li>SELECT 子句不能包含 ORDER BY 子句</li>
+<li>FROM 子句中不能有多个数据表</li>
+<li>WHERE 子句不能包含子查询（subquery）</li>
+<li>查询语句中不能有 GROUP BY 或者 HAVING</li>
+<li>计算得出的列不能更新</li>
+<li>视图必须包含原始数据表中所有的 NOT NULL 列，否则 INSERT 操作生效</li>
+</ul>
+<p>如果视图满足以上所有的条件，该视图就可以被更新。最终更新的还是原始数据表，只是其结果反应在了视图上。</p>
+<h2 id="向视图中插入新行"><a href="#向视图中插入新行" class="headerlink" title="向视图中插入新行"></a>向视图中插入新行</h2><p>可以向视图中插入新行，其规则同（使用 UPDATE 命令）更新视图所遵循的规则相同。</p>
+<h2 id="删除视图中的行"><a href="#删除视图中的行" class="headerlink" title="删除视图中的行"></a>删除视图中的行</h2><p>视图中的数据行可以被删除。删除数据行与更新视图和向视图中插入新行遵循相同的规则。</p>
+<h2 id="删除视图"><a href="#删除视图" class="headerlink" title="删除视图"></a>删除视图</h2><p>基本语法:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP VIEW view_name;</span><br></pre></td></tr></table></figure></p>
+<h1 id="HAVING-子句"><a href="#HAVING-子句" class="headerlink" title="HAVING 子句"></a>HAVING 子句</h1><p>HAVING 子句使你能够指定过滤条件，从而控制查询结果中哪些组可以出现在最终结果里面。</p>
+<blockquote>
+<p>与WHERE 子句的区别：WHERE 子句对被选择的列施加条件，而 HAVING 子句则对 GROUP BY 子句所产生的组施加条件。</p>
+</blockquote>
+<p>HAVING 子句在 SELECT 查询中的位置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2</span><br><span class="line">FROM table1, table2</span><br><span class="line">WHERE [ conditions ]</span><br><span class="line">GROUP BY column1, column2</span><br><span class="line">HAVING [ conditions ]</span><br><span class="line">ORDER BY column1, column2</span><br></pre></td></tr></table></figure></p>
+<h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><p>事务是在数据库上按照一定的逻辑顺序执行的任务序列。事务实际上就是对数据库的一个或者多个更改。当你在某张表上创建更新或者删除记录的时，你就已经在使用事务了。控制事务以保证数据完整性，并对数据库错误做出处理，对数据库来说非常重要。</p>
+<h2 id="事务的属性"><a href="#事务的属性" class="headerlink" title="事务的属性"></a>事务的属性</h2><p>事务具有以下四个标准属性，通常用缩略词 ACID 来表示：</p>
+<ul>
+<li>原子性：保证任务中的所有操作都执行完毕；否则，事务会在出现错误时终止，并回滚之前所有操作到原始状态。</li>
+<li>一致性：如果事务成功执行，则数据库的状态得到了进行了正确的转变。</li>
+<li>隔离性：保证不同的事务相互独立、透明地执行。</li>
+<li>持久性：即使出现系统故障，之前成功执行的事务的结果也会持久存在。</li>
+</ul>
+<h2 id="事务控制"><a href="#事务控制" class="headerlink" title="事务控制"></a>事务控制</h2><p>有四个命令用于控制事务：</p>
+<ul>
+<li>COMMIT：提交更改；</li>
+<li>ROLLBACK：回滚更改；</li>
+<li>SAVEPOINT：在事务内部创建一系列可以 ROLLBACK 的还原点；</li>
+<li>SET TRANSACTION：命名事务；</li>
+</ul>
+<h3 id="COMMIT-命令"><a href="#COMMIT-命令" class="headerlink" title="COMMIT 命令"></a>COMMIT 命令</h3><p>COMMIT 命令用于保存事务对数据库所做的更改。COMMIT 命令会将自上次 COMMIT 命令或者 ROLLBACK 命令执行以来所有的事务都保存到数据库中。<br>基本语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COMMIT;</span><br></pre></td></tr></table></figure></p>
+<h3 id="ROLLBACK-命令"><a href="#ROLLBACK-命令" class="headerlink" title="ROLLBACK 命令"></a>ROLLBACK 命令</h3><p>ROLLBACK 命令用于撤销尚未保存到数据库中的事务。ROLLBACK 命令只能撤销自上次 COMMIT 命令或者 ROLLBACK 命令执行以来的事务。<br>基本语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ROLLBACK;</span><br></pre></td></tr></table></figure></p>
+<h3 id="SAVEPOINT-命令"><a href="#SAVEPOINT-命令" class="headerlink" title="SAVEPOINT 命令"></a>SAVEPOINT 命令</h3><p>SAVEPOINT 是事务中的一个状态点，使得我们可以将事务回滚至特定的点，而不是将整个事务都撤销。<br>基本语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SAVEPOINT SAVEPOINT_NAME;</span><br></pre></td></tr></table></figure></p>
+<p>回滚至某一保存点的语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ROLLBACK TO SAVEPOINT_NAME;</span><br></pre></td></tr></table></figure></p>
+<p>删除先前创建的保存点：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RELEASE SAVEPOINT SAVEPOINT_NAME;</span><br></pre></td></tr></table></figure></p>
+<p>保存点一旦被释放，你就不能够再用 ROLLBACK 命令来撤销该保存点之后的事务了。</p>
+<h3 id="SET-TRANSACTION-命令"><a href="#SET-TRANSACTION-命令" class="headerlink" title="SET TRANSACTION 命令"></a>SET TRANSACTION 命令</h3><p>SET TRANSACTION 命令可以用来初始化数据库事务，指定随后的事务的各种特征。<br>例如，你可以将某个事务指定为只读或者读写。SET TRANSACTION 命令的语法如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET TRANSACTION [ READ WRITE | READ ONLY ];</span><br></pre></td></tr></table></figure></p>
+<h1 id="临时表"><a href="#临时表" class="headerlink" title="临时表"></a>临时表</h1><p>某些关系型数据库管理系统支持临时表。临时表是一项很棒的特性，能够让你像操作普通的 SQL 数据表一样，使用 SELECT、UPDATE 和 JOIN 等功能来存储或者操作中间结果。<br>临时表有时候对于保存临时数据非常有用。有关临时表你需要知道的最重要的一点是，它们会在当前的终端会话结束后被删除。<br>基本语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 创建临时表</span><br><span class="line">CREATE TEMPORARY TABLE SALESSUMMARY</span><br><span class="line"></span><br><span class="line">// 删除临时表</span><br><span class="line">DROP TABLE SALESSUMMARY;</span><br></pre></td></tr></table></figure></p>
+<h1 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h1><p>子查询（Sub Query）或者说内查询（Inner Query），也可以称作嵌套查询（Nested Query），是一种嵌套在其他 SQL 查询的 WHERE 子句中的查询。<br>使用子查询必须遵循以下几个规则：</p>
+<ul>
+<li>子查询必须括在圆括号中。</li>
+<li>子查询的 SELECT 子句中只能有一个列，除非主查询中有多个列，用于与子查询选中的列相比较。</li>
+<li>子查询不能使用 ORDER BY，不过主查询可以。在子查询中，GROUP BY 可以起到同 ORDER BY 相同的作用。</li>
+<li>返回多行数据的子查询只能同多值操作符一起使用，比如 IN 操作符。</li>
+<li>SELECT 列表中不能包含任何对 BLOB、ARRAY、CLOB 或者 NCLOB 类型值的引用。</li>
+<li>子查询不能直接用在集合函数中。</li>
+<li>BETWEEN 操作符不能同子查询一起使用，但是 BETWEEN 操作符可以用在子查询中。</li>
+</ul>
+<h2 id="SELECT-语句中的子查询"><a href="#SELECT-语句中的子查询" class="headerlink" title="SELECT 语句中的子查询"></a>SELECT 语句中的子查询</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM CUSTOMERS</span><br><span class="line">	WHERE ID IN (SELECT ID</span><br><span class="line">	FROM CUSTOMERS</span><br><span class="line">	WHERE SALARY &gt; 4500) ;</span><br></pre></td></tr></table></figure>
+<h2 id="INSERT-语句中的子查询"><a href="#INSERT-语句中的子查询" class="headerlink" title="INSERT 语句中的子查询"></a>INSERT 语句中的子查询</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// CUSTOMERS 表和CUSTOMERS_BKP 表拥有相似的结构</span><br><span class="line">INSERT INTO CUSTOMERS_BKP</span><br><span class="line">	SELECT * FROM CUSTOMERS</span><br><span class="line">	WHERE ID IN (SELECT ID</span><br><span class="line">	FROM CUSTOMERS) ;</span><br></pre></td></tr></table></figure>
+<h2 id="UPDATE-语句中的子查询"><a href="#UPDATE-语句中的子查询" class="headerlink" title="UPDATE 语句中的子查询"></a>UPDATE 语句中的子查询</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UPDATE CUSTOMERS</span><br><span class="line">	SET SALARY = SALARY * 0.25</span><br><span class="line">	WHERE AGE IN (SELECT AGE FROM CUSTOMERS_BKP</span><br><span class="line">	WHERE AGE &gt;= 27 );</span><br></pre></td></tr></table></figure>
+<h2 id="DELETE-语句中的子查询"><a href="#DELETE-语句中的子查询" class="headerlink" title="DELETE 语句中的子查询"></a>DELETE 语句中的子查询</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM CUSTOMERS</span><br><span class="line">	WHERE AGE IN (SELECT AGE FROM CUSTOMERS_BKP</span><br><span class="line">	WHERE AGE &gt; 27 );</span><br></pre></td></tr></table></figure>
+<h1 id="使用序列"><a href="#使用序列" class="headerlink" title="使用序列"></a>使用序列</h1><p>序列是根据需要产生的一组有序整数：1, 2, 3 … 序列在数据库中经常用到，因为许多应用要求数据表中的的每一行都有一个唯一的值，序列为此提供了一种简单的方法。</p>
+<h2 id="使用-AUTO-INCREMENT-列"><a href="#使用-AUTO-INCREMENT-列" class="headerlink" title="使用 AUTO_INCREMENT 列"></a>使用 AUTO_INCREMENT 列</h2><p>在 MySQL 中使用序列最简单的方式是，把某列定义为 AUTO_INCREMENT，然后将剩下的事情交由 MySQL 处理：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">id INT UNSIGNED NOT NULL AUTO_INCREMENT</span><br><span class="line">...</span><br><span class="line">// 默认情况下，MySQL 中序列的起始值为 1,也可以设置为其他值</span><br><span class="line">...</span><br><span class="line">id INT UNSIGNED NOT NULL AUTO_INCREMENT = 100</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<h1 id="SQL-常用函数"><a href="#SQL-常用函数" class="headerlink" title="SQL 常用函数"></a>SQL 常用函数</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">COUNT 函数</td>
+<td style="text-align:left">用于统计返回的记录数</td>
+</tr>
+<tr>
+<td style="text-align:center">MAX 函数</td>
+<td style="text-align:left">用于找出记录集中具有最大值的记录</td>
+</tr>
+<tr>
+<td style="text-align:center">MIN 函数</td>
+<td style="text-align:left">用于找出记录集中具有最大值的记录</td>
+</tr>
+<tr>
+<td style="text-align:center">AVG 函数</td>
+<td style="text-align:left">用于找出表中记录在某字段处的平均值</td>
+</tr>
+<tr>
+<td style="text-align:center">SUM 函数</td>
+<td style="text-align:left">用于找出表中记录在某字段处的总和</td>
+</tr>
+<tr>
+<td style="text-align:center">SQRT 函数</td>
+<td style="text-align:left">用于计算得出任何数值的平方根</td>
+</tr>
+<tr>
+<td style="text-align:center">RAND 函数</td>
+<td style="text-align:left">用于产生 0 至 1 之间的随机数</td>
+</tr>
+<tr>
+<td style="text-align:center">CONCAT 函数</td>
+<td style="text-align:left">用于将两个字符串连接为一个字符串</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SQL/" rel="tag">#SQL</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/29/OpenCV/第五篇 学习OpenCV之视频处理/" rel="next" title="第五篇 学习OpenCV之视频处理">
+                <i class="fa fa-chevron-left"></i> 第五篇 学习OpenCV之视频处理
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/01/数据库/SQL命令/" rel="prev" title="SQL命令">
+                SQL命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/08/01/数据库/SQL学习笔记/"
+           data-title="SQL学习笔记" data-url="http://gongchuangsu.com/2015/08/01/数据库/SQL学习笔记/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Gongchuang Su" />
+          <p class="site-author-name" itemprop="name">Gongchuang Su</p>
+          <p class="site-description motion-element" itemprop="description">Stay Hungry, Stay Foolish.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">65</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">104</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/GongchuangSu" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/gongchuangsu" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> CSDN
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" target="_blank">MacTalk</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://mindhacks.cn/" target="_blank">Mind Hacks</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.qiuchengjia.cn/" target="_blank">戎码人生</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://gaohueric.github.io/" target="_blank">GaoHu's BLOG</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#约束"><span class="nav-number">1.</span> <span class="nav-text">约束</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NOT-NULL约束"><span class="nav-number">1.1.</span> <span class="nav-text">NOT NULL约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DEFAULT约束"><span class="nav-number">1.2.</span> <span class="nav-text">DEFAULT约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UNIQUE约束"><span class="nav-number">1.3.</span> <span class="nav-text">UNIQUE约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主键-Primary-Key-约束"><span class="nav-number">1.4.</span> <span class="nav-text">主键(Primary Key)约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外键-FOREIGN-KEY-约束"><span class="nav-number">1.5.</span> <span class="nav-text">外键(FOREIGN KEY)约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CHECK约束"><span class="nav-number">1.6.</span> <span class="nav-text">CHECK约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引约束"><span class="nav-number">1.7.</span> <span class="nav-text">索引约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整性约束"><span class="nav-number">1.8.</span> <span class="nav-text">完整性约束</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据完整性"><span class="nav-number">2.</span> <span class="nav-text">数据完整性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建数据库"><span class="nav-number">2.1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除数据库"><span class="nav-number">2.2.</span> <span class="nav-text">删除数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择数据库"><span class="nav-number">2.3.</span> <span class="nav-text">选择数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示现有数据库列表"><span class="nav-number">2.4.</span> <span class="nav-text">显示现有数据库列表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#语法"><span class="nav-number">3.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建表"><span class="nav-number">3.1.</span> <span class="nav-text">创建表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除表"><span class="nav-number">3.2.</span> <span class="nav-text">删除表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#INSERT-语句"><span class="nav-number">3.3.</span> <span class="nav-text">INSERT 语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELECT-语句"><span class="nav-number">3.4.</span> <span class="nav-text">SELECT 语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UPDATE-语句"><span class="nav-number">3.5.</span> <span class="nav-text">UPDATE 语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DELETE-语句"><span class="nav-number">3.6.</span> <span class="nav-text">DELETE 语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LIKE-子句"><span class="nav-number">3.7.</span> <span class="nav-text">LIKE 子句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TOP、LIMIT-和-ROWNUM-子句"><span class="nav-number">3.8.</span> <span class="nav-text">TOP、LIMIT 和 ROWNUM 子句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ORDER-BY-子句"><span class="nav-number">3.9.</span> <span class="nav-text">ORDER BY 子句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GROUP-BY-子句"><span class="nav-number">3.10.</span> <span class="nav-text">GROUP BY 子句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DISTINCT-关键字"><span class="nav-number">3.11.</span> <span class="nav-text">DISTINCT 关键字</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL连接类型"><span class="nav-number">4.</span> <span class="nav-text">SQL连接类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内连接"><span class="nav-number">4.1.</span> <span class="nav-text">内连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#左连接"><span class="nav-number">4.2.</span> <span class="nav-text">左连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#右连接"><span class="nav-number">4.3.</span> <span class="nav-text">右连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全连接"><span class="nav-number">4.4.</span> <span class="nav-text">全连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#笛卡尔连接"><span class="nav-number">4.5.</span> <span class="nav-text">笛卡尔连接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UNION-子句"><span class="nav-number">5.</span> <span class="nav-text">UNION 子句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NULL-值"><span class="nav-number">6.</span> <span class="nav-text">NULL 值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#别名-Alias"><span class="nav-number">7.</span> <span class="nav-text">别名(Alias)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#索引"><span class="nav-number">8.</span> <span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单列索引"><span class="nav-number">8.1.</span> <span class="nav-text">单列索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#唯一索引"><span class="nav-number">8.2.</span> <span class="nav-text">唯一索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚簇索引"><span class="nav-number">8.3.</span> <span class="nav-text">聚簇索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式索引"><span class="nav-number">8.4.</span> <span class="nav-text">隐式索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么时候应当避免使用索引"><span class="nav-number">8.5.</span> <span class="nav-text">什么时候应当避免使用索引</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ALTER-TABLE-命令"><span class="nav-number">9.</span> <span class="nav-text">ALTER TABLE 命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TRUNCATE-TABLE-命令"><span class="nav-number">10.</span> <span class="nav-text">TRUNCATE TABLE 命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视图"><span class="nav-number">11.</span> <span class="nav-text">视图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建视图"><span class="nav-number">11.1.</span> <span class="nav-text">创建视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新视图"><span class="nav-number">11.2.</span> <span class="nav-text">更新视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#向视图中插入新行"><span class="nav-number">11.3.</span> <span class="nav-text">向视图中插入新行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除视图中的行"><span class="nav-number">11.4.</span> <span class="nav-text">删除视图中的行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除视图"><span class="nav-number">11.5.</span> <span class="nav-text">删除视图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HAVING-子句"><span class="nav-number">12.</span> <span class="nav-text">HAVING 子句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务"><span class="nav-number">13.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#事务的属性"><span class="nav-number">13.1.</span> <span class="nav-text">事务的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务控制"><span class="nav-number">13.2.</span> <span class="nav-text">事务控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#COMMIT-命令"><span class="nav-number">13.2.1.</span> <span class="nav-text">COMMIT 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROLLBACK-命令"><span class="nav-number">13.2.2.</span> <span class="nav-text">ROLLBACK 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SAVEPOINT-命令"><span class="nav-number">13.2.3.</span> <span class="nav-text">SAVEPOINT 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SET-TRANSACTION-命令"><span class="nav-number">13.2.4.</span> <span class="nav-text">SET TRANSACTION 命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#临时表"><span class="nav-number">14.</span> <span class="nav-text">临时表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#子查询"><span class="nav-number">15.</span> <span class="nav-text">子查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SELECT-语句中的子查询"><span class="nav-number">15.1.</span> <span class="nav-text">SELECT 语句中的子查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#INSERT-语句中的子查询"><span class="nav-number">15.2.</span> <span class="nav-text">INSERT 语句中的子查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UPDATE-语句中的子查询"><span class="nav-number">15.3.</span> <span class="nav-text">UPDATE 语句中的子查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DELETE-语句中的子查询"><span class="nav-number">15.4.</span> <span class="nav-text">DELETE 语句中的子查询</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用序列"><span class="nav-number">16.</span> <span class="nav-text">使用序列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-AUTO-INCREMENT-列"><span class="nav-number">16.1.</span> <span class="nav-text">使用 AUTO_INCREMENT 列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL-常用函数"><span class="nav-number">17.</span> <span class="nav-text">SQL 常用函数</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gongchuang Su</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+		
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gongchuangsu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("YNAqO4Guiyi9lFpJmPo6DIJF-gzGzoHsz", "AVRJEYpDPTwtz3peAJVymqeP");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = $(document.getElementById(url)).text() + ': 0';
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
+
+
+
+  
+</body>
+</html>
