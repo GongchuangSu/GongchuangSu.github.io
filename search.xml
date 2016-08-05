@@ -3181,6 +3181,54 @@
     </entry>
     
     <entry>
+      <title><![CDATA[数据库索引]]></title>
+      <url>http://gongchuangsu.com/2015/08/02/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95/</url>
+      <content type="html"><![CDATA[<p>数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。</p>
+<h1 id="为什么要创建索引"><a href="#为什么要创建索引" class="headerlink" title="为什么要创建索引"></a>为什么要创建索引</h1><p>索引可以大大提高数据库的检索速度。</p>
+<ol>
+<li>通过创建唯一索引，可以保证数据库表中每一行数据的唯一性</li>
+<li>可以大大加快数据的检索速度，这也是创建索引的最主要的原因</li>
+<li>可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义</li>
+<li>在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间</li>
+<li>通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能</li>
+</ol>
+<h1 id="创建索引的弊端"><a href="#创建索引的弊端" class="headerlink" title="创建索引的弊端"></a>创建索引的弊端</h1><p>索引虽然有很多优点，但并不是处处都可以创建索引。它也有许多不利的方面：</p>
+<ol>
+<li>创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加</li>
+<li>索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间。如果要建立聚簇索引，那么需要的空间就会更大</li>
+<li>当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护速度</li>
+</ol>
+<h1 id="什么样的字段适合创建索引"><a href="#什么样的字段适合创建索引" class="headerlink" title="什么样的字段适合创建索引"></a>什么样的字段适合创建索引</h1><p>索引是建立在数据库表中的某些列的上面。因此，在创建索引的时候，应该仔细考虑在哪些列上可以创建索引，在哪些列上不能创建索引。<br>一般来说，应该在这些列上创建索引，例如：</p>
+<ol>
+<li>在经常需要搜索的列上，可以加快搜索的速度</li>
+<li>在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构</li>
+<li>在经常用在连接的列上，这些列主要是一些外键，可以加快连接的速度</li>
+<li>在经常需要根据范围进行搜索的列上创建索引，因为索引已经排序，其指定的范围是连续的</li>
+<li>在经常需要排序的列上创建索引，因为索引已经排序，这样查询可以利用索引的排序，加快排序查询时间</li>
+<li>在经常使用在WHERE子句中的列上面创建索引，加快条件的判断速度</li>
+</ol>
+<h1 id="什么样的字段不适合创建索引"><a href="#什么样的字段不适合创建索引" class="headerlink" title="什么样的字段不适合创建索引"></a>什么样的字段不适合创建索引</h1><p>一般来说，不应该创建索引的的这些列具有下列特点：</p>
+<ol>
+<li>对于那些在查询中很少使用或者参考的列不应该创建索引。这是因为，既然这些列很少使用到，因此有索引或者无索引，并不能提高查询速度。相反，由于增加了索引，反而降低了系统的维护速度和增大了空间需求</li>
+<li>对于那些只有很少数据值的列也不应该增加索引。这是因为，由于这些列的取值很少，例如人事表的性别列，在查询的结果中，结果集的数据行占了表中数据行的很大比 例，即需要在表中搜索的数据行的比例很大。增加索引，并不能明显加快检索速度</li>
+<li>对于那些定义为text, image和bit数据类型的列不应该增加索引。这是因为，这些列的数据量要么相当大，要么取值很少</li>
+<li>当修改性能远远大于检索性能时，不应该创建索引。这是因为，修改性能和检索性能是互相矛盾的。<br>当增加索引时，会提高检索性能，但是会降低修改性能。当减少索引时，会提高修改性能，降低检索性能</li>
+</ol>
+<h1 id="如何创建索引"><a href="#如何创建索引" class="headerlink" title="如何创建索引"></a>如何创建索引</h1><p>基本语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 创建索引</span><br><span class="line">CREATE INDEX index_name ON table_name;</span><br><span class="line"></span><br><span class="line">// 删除索引</span><br><span class="line">DROP INDEX index_name;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：删除索引时应当特别小心，数据库的性能可能会因此而降低或者提高。</p>
+</blockquote>
+<h2 id="单列索引"><a href="#单列索引" class="headerlink" title="单列索引"></a>单列索引</h2><p>单列索引基于单一的字段创建，其基本语法如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX index_name</span><br><span class="line">	ON table_name (column_name);</span><br></pre></td></tr></table></figure></p>
+<h2 id="唯一索引"><a href="#唯一索引" class="headerlink" title="唯一索引"></a>唯一索引</h2><p>唯一索引不止用于提升查询性能，还用于保证数据完整性。唯一索引不允许向表中插入任何重复值。其基本语法如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE UNIQUE INDEX index_name</span><br><span class="line">	ON table_name (column_name);</span><br></pre></td></tr></table></figure></p>
+<h2 id="聚簇索引"><a href="#聚簇索引" class="headerlink" title="聚簇索引"></a>聚簇索引</h2><p>聚簇索引在表中两个或更多的列的基础上建立。其基本语法如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX index_name</span><br><span class="line">	ON table_name (column1, column2);</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>说明：创建单列索引还是聚簇索引，要看每次查询中，哪些列在作为过滤条件的 WHERE 子句中最常出现。如果只需要一列，那么就应当创建单列索引。如果作为过滤条件的 WHERE 子句用到了两个或者更多的列，那么聚簇索引就是最好的选择。</p>
+</blockquote>
+<h2 id="隐式索引"><a href="#隐式索引" class="headerlink" title="隐式索引"></a>隐式索引</h2><p>隐式索引由数据库服务器在创建某些对象的时候自动生成。例如，对于主键约束和唯一约束，数据库服务器就会自动创建索引。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[SQL命令]]></title>
       <url>http://gongchuangsu.com/2015/08/01/%E6%95%B0%E6%8D%AE%E5%BA%93/SQL%E5%91%BD%E4%BB%A4/</url>
       <content type="html"><![CDATA[<p>用于与关系型数据库交互的标准 SQL 命令有 CREATE、SELECT、INSERT、UPDATE、DELETE 和 DROP，这些命令按用途分成如下几组：</p>
@@ -3257,6 +3305,7 @@
       <title><![CDATA[SQL学习笔记]]></title>
       <url>http://gongchuangsu.com/2015/08/01/%E6%95%B0%E6%8D%AE%E5%BA%93/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
       <content type="html"><![CDATA[<p>创建名为<code>CUSTOMERS</code>数据表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE CUSTOMERS(</span><br><span class="line">	ID INT NOT NULL,</span><br><span class="line">	NAME VARCHAR (20) NOT NULL,</span><br><span class="line">	AGE INT NOT NULL,</span><br><span class="line">	ADDRESS CHAR (25) ,</span><br><span class="line">	SALARY DECIMAL (18, 2),</span><br><span class="line">	PRIMARY KEY (ID)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <h1 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h1><ul>
 <li>NOT NULL 约束：保证列中数据不能有 NULL 值</li>
 <li>DEFAULT 约束：提供该列数据未指定时所采用的默认值</li>
@@ -3756,6 +3805,17 @@
     </entry>
     
     <entry>
+      <title><![CDATA[about]]></title>
+      <url>http://gongchuangsu.com/about/index.html</url>
+      <content type="html"><![CDATA[<blockquote class="blockquote-center">书写是为了更好的思考。<br></blockquote>
+
+<h1 id="About-me"><a href="#About-me" class="headerlink" title="About me"></a>About me</h1><p>一枚爱折腾、爱思考的小码农，愿结识各路好友，分享各自的知识与快乐。<br>目前专注于<strong>Java后台开发</strong>。</p>
+<h1 id="Contact"><a href="#Contact" class="headerlink" title="Contact"></a>Contact</h1><p><strong>Email</strong>: sgc0515@gmail.com<br><strong>CSDN</strong>: <a href="http://blog.csdn.net/gongchuangsu" target="_blank" rel="external">贱贱的梦想</a><br><strong>GitHub</strong>: <a href="https://github.com/GongchuangSu" target="_blank" rel="external">GongchuangSu</a></p>
+<h1 id="我的阅读书单"><a href="#我的阅读书单" class="headerlink" title="我的阅读书单"></a>我的阅读书单</h1><table width="95%" border="1" cellspacing="0" cellpadding="0" style="margin:0;padding:0;word-break:break-all; word-wrap:break-all; "><br><tr align="center"> <th rowspan="2" width="150">书名</th> <th colspan="2">阅读时间</th> <th rowspan="2" width="30">阅读进度</th> <th rowspan="2">评价</th> </tr> <tr> <th width="80">起始时间</th> <th width="80">终止时间</th> </tr> <tr align="center"> <td><img src="http://i.imgur.com/OIH4pqu.jpg" width="200" height="280" alt="Java编程思想"></td> <td>2016.04.01</td> <td>至今</td> <td>50%</td> <td>经典之作！内容讲的很深刻！但是个人感觉内容太杂，没有条理性，阅读起来可能会迷迷糊糊！</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/wSy2vCw.jpg" width="200" height="280" alt="Effective Java中文版（第2版）"></td> <td>2016.04.01</td> <td>至今</td> <td>5%</td> <td>值得仔细研读！对Java编程思想有深刻的认识！</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/KZw0u5n.jpg" width="200" height="280" alt="java核心技术卷I"></td> <td>2016.04.01</td> <td>至今</td> <td>10 </td> <td>这本要比Java编程思想有条理，内容也比较浅显，适合入门。</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/MYJNv9F.jpg" width="200" height="280" alt="java核心技术卷Ⅱ"></td> <td>待定</td> <td>待定</td> <td>未读</td> <td>待定</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/2Hn8P6J.jpg" width="200" height="280" alt="Java Web从入门到精通"></td> <td>2016.6.15</td> <td>至今</td> <td>70%</td> <td>这本书对Java Web技术进行了系统的介绍，涉及到很多技术，但讲的都是最基本的，要想有更深入的学习，还得进一步的对应地学习。</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/50fSILT.jpg" width="200" height="280" alt="Spring技术内幕：深入解析Spring架构与设计原理（第2版）"></td> <td>2016.6.15</td> <td>至今</td> <td>5%</td> <td>系统的对Spring框架的使用进行了介绍和分析，从原理到应用，逐步实现</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/gWynkNJ.jpg" width="200" height="280" alt="Servlet JSP深入详解 基于Tomcat的Web开发"></td> <td>2016.6.15</td> <td>至今</td> <td>5%</td> <td>学习Servlet和JSP技术很好的一本教材</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/6ianpBn.jpg" width="200" height="280" alt="大话数据结构"></td> <td>2016.3.15</td> <td>至今</td> <td>70%</td> <td>通俗易懂的对数据结构进行了全面的介绍，很好的一本教材！</td> </tr></table>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[categories]]></title>
       <url>http://gongchuangsu.com/categories/index.html</url>
       <content type="html"></content>
@@ -3765,17 +3825,6 @@
       <title><![CDATA[tags]]></title>
       <url>http://gongchuangsu.com/tags/index.html</url>
       <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[about]]></title>
-      <url>http://gongchuangsu.com/about/index.html</url>
-      <content type="html"><![CDATA[<blockquote class="blockquote-center">书写是为了更好的思考。<br></blockquote>
-
-<h1 id="About-me"><a href="#About-me" class="headerlink" title="About me"></a>About me</h1><p>一枚爱折腾、爱思考的小码农，愿结识各路好友，分享各自的知识与快乐。<br>目前专注于<strong>Java后台开发</strong>。</p>
-<h1 id="Contact"><a href="#Contact" class="headerlink" title="Contact"></a>Contact</h1><p><strong>Email</strong>: sgc0515@gmail.com<br><strong>CSDN</strong>: <a href="http://blog.csdn.net/gongchuangsu" target="_blank" rel="external">贱贱的梦想</a><br><strong>GitHub</strong>: <a href="https://github.com/GongchuangSu" target="_blank" rel="external">GongchuangSu</a></p>
-<h1 id="我的阅读书单"><a href="#我的阅读书单" class="headerlink" title="我的阅读书单"></a>我的阅读书单</h1><table width="95%" border="1" cellspacing="0" cellpadding="0" style="margin:0;padding:0;word-break:break-all; word-wrap:break-all; "><br><tr align="center"> <th rowspan="2" width="150">书名</th> <th colspan="2">阅读时间</th> <th rowspan="2" width="30">阅读进度</th> <th rowspan="2">评价</th> </tr> <tr> <th width="80">起始时间</th> <th width="80">终止时间</th> </tr> <tr align="center"> <td><img src="http://i.imgur.com/OIH4pqu.jpg" width="200" height="280" alt="Java编程思想"></td> <td>2016.04.01</td> <td>至今</td> <td>50%</td> <td>经典之作！内容讲的很深刻！但是个人感觉内容太杂，没有条理性，阅读起来可能会迷迷糊糊！</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/wSy2vCw.jpg" width="200" height="280" alt="Effective Java中文版（第2版）"></td> <td>2016.04.01</td> <td>至今</td> <td>5%</td> <td>值得仔细研读！对Java编程思想有深刻的认识！</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/KZw0u5n.jpg" width="200" height="280" alt="java核心技术卷I"></td> <td>2016.04.01</td> <td>至今</td> <td>10 </td> <td>这本要比Java编程思想有条理，内容也比较浅显，适合入门。</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/MYJNv9F.jpg" width="200" height="280" alt="java核心技术卷Ⅱ"></td> <td>待定</td> <td>待定</td> <td>未读</td> <td>待定</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/2Hn8P6J.jpg" width="200" height="280" alt="Java Web从入门到精通"></td> <td>2016.6.15</td> <td>至今</td> <td>70%</td> <td>这本书对Java Web技术进行了系统的介绍，涉及到很多技术，但讲的都是最基本的，要想有更深入的学习，还得进一步的对应地学习。</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/50fSILT.jpg" width="200" height="280" alt="Spring技术内幕：深入解析Spring架构与设计原理（第2版）"></td> <td>2016.6.15</td> <td>至今</td> <td>5%</td> <td>系统的对Spring框架的使用进行了介绍和分析，从原理到应用，逐步实现</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/gWynkNJ.jpg" width="200" height="280" alt="Servlet JSP深入详解 基于Tomcat的Web开发"></td> <td>2016.6.15</td> <td>至今</td> <td>5%</td> <td>学习Servlet和JSP技术很好的一本教材</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/6ianpBn.jpg" width="200" height="280" alt="大话数据结构"></td> <td>2016.3.15</td> <td>至今</td> <td>70%</td> <td>通俗易懂的对数据结构进行了全面的介绍，很好的一本教材！</td> </tr></table>
-]]></content>
     </entry>
     
   
