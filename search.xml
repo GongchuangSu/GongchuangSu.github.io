@@ -2954,8 +2954,54 @@
 <td style="text-align:left">\uxxxx</td>
 <td style="text-align:left">十六进制UNICODE字符（xxxx）</td>
 </tr>
+<tr>
+<td style="text-align:left">\\u0024</td>
+<td style="text-align:left">.(点)</td>
+</tr>
+<tr>
+<td style="text-align:left">\\u0024</td>
+<td style="text-align:left">$(美元符号)</td>
+</tr>
+<tr>
+<td style="text-align:left">\\u005E</td>
+<td style="text-align:left">^(乘方符号)</td>
+</tr>
+<tr>
+<td style="text-align:left">\\u007B</td>
+<td style="text-align:left">{(左大括号)</td>
+</tr>
+<tr>
+<td style="text-align:left">\\u005B</td>
+<td style="text-align:left">[(左方括号)</td>
+</tr>
+<tr>
+<td style="text-align:left">\\u0028</td>
+<td style="text-align:left">((左圆括弧)</td>
+</tr>
+<tr>
+<td style="text-align:left">\\u007C</td>
+<td style="text-align:left"></td>
+<td>(竖线)</td>
+</tr>
+<tr>
+<td style="text-align:left">\\u0029</td>
+<td style="text-align:left">)(右圆括弧)</td>
+</tr>
+<tr>
+<td style="text-align:left">\\u002A</td>
+<td style="text-align:left">*(星号)</td>
+</tr>
+<tr>
+<td style="text-align:left">\\u002B</td>
+<td style="text-align:left">+(加号)</td>
+</tr>
+<tr>
+<td style="text-align:left">\\u003F</td>
+<td style="text-align:left">?(问号)</td>
+</tr>
 </tbody>
 </table>
+<h1 id="进制之间相互转换"><a href="#进制之间相互转换" class="headerlink" title="进制之间相互转换"></a>进制之间相互转换</h1><p>二进制，八进制，十六进制，十进制间进行相互转换<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 十进制转成十六进制：   </span><br><span class="line">  </span><br><span class="line">Integer.toHexString(int i)   </span><br><span class="line">  </span><br><span class="line">// 十进制转成八进制   </span><br><span class="line">  </span><br><span class="line">Integer.toOctalString(int i)   </span><br><span class="line">  </span><br><span class="line">// 十进制转成二进制   </span><br><span class="line">  </span><br><span class="line">Integer.toBinaryString(int i)   </span><br><span class="line">  </span><br><span class="line">// 十六进制转成十进制   </span><br><span class="line">  </span><br><span class="line">Integer.valueOf(&quot;FFFF&quot;,16).toString()   </span><br><span class="line">  </span><br><span class="line">// 八进制转成十进制   </span><br><span class="line">  </span><br><span class="line">Integer.valueOf(&quot;876&quot;,8).toString()   </span><br><span class="line">  </span><br><span class="line">// 二进制转十进制   </span><br><span class="line">  </span><br><span class="line">Integer.valueOf(&quot;0101&quot;,2).toString()</span><br></pre></td></tr></table></figure></p>
 ]]></content>
     </entry>
     
