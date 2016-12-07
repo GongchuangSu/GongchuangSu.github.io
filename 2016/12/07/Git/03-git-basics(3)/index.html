@@ -39,7 +39,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="排序算法,简单选择排序," />
+  <meta name="keywords" content="Git," />
 
 
 
@@ -55,18 +55,16 @@
 
 
 
-<meta name="description" content="选择排序简介选择排序（Selection Sort）是一种简单直观的排序算法。首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。">
+<meta name="description" content="撤销操作commit –amend有时候我们提交完了才发现漏掉了几个文件没有添加，或者提交信息写错了。这是我们可以运行带有--amend选项的commit命令尝试重新提交：12345// 修改最近一次提交的提交信息$ git commit --amend -m &amp;quot;XXX&amp;quot;// 向最近一次提交添加漏掉的几个文件$ git add forgotten_file$ git commi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="排序算法之简单选择排序(Java)">
-<meta property="og:url" content="http://gongchuangsu.com/2016/03/29/数据结构与算法/排序算法之简单选择排序(Java)/index.html">
+<meta property="og:title" content="Git基础（2）：撤消操作和远程仓库的使用">
+<meta property="og:url" content="http://gongchuangsu.com/2016/12/07/Git/03-git-basics(3)/index.html">
 <meta property="og:site_name" content="贱贱的梦想">
-<meta property="og:description" content="选择排序简介选择排序（Selection Sort）是一种简单直观的排序算法。首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。">
-<meta property="og:image" content="http://7xsc5j.com1.z0.glb.clouddn.com/%E7%AE%80%E5%8D%95%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
-<meta property="og:updated_time" content="2016-04-03T03:53:50.195Z">
+<meta property="og:description" content="撤销操作commit –amend有时候我们提交完了才发现漏掉了几个文件没有添加，或者提交信息写错了。这是我们可以运行带有--amend选项的commit命令尝试重新提交：12345// 修改最近一次提交的提交信息$ git commit --amend -m &amp;quot;XXX&amp;quot;// 向最近一次提交添加漏掉的几个文件$ git add forgotten_file$ git commi">
+<meta property="og:updated_time" content="2016-12-07T08:13:09.220Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="排序算法之简单选择排序(Java)">
-<meta name="twitter:description" content="选择排序简介选择排序（Selection Sort）是一种简单直观的排序算法。首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。">
-<meta name="twitter:image" content="http://7xsc5j.com1.z0.glb.clouddn.com/%E7%AE%80%E5%8D%95%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
+<meta name="twitter:title" content="Git基础（2）：撤消操作和远程仓库的使用">
+<meta name="twitter:description" content="撤销操作commit –amend有时候我们提交完了才发现漏掉了几个文件没有添加，或者提交信息写错了。这是我们可以运行带有--amend选项的commit命令尝试重新提交：12345// 修改最近一次提交的提交信息$ git commit --amend -m &amp;quot;XXX&amp;quot;// 向最近一次提交添加漏掉的几个文件$ git add forgotten_file$ git commi">
 
 
 
@@ -84,7 +82,7 @@
   };
 </script>
 
-  <title> 排序算法之简单选择排序(Java) | 贱贱的梦想 </title>
+  <title> Git基础（2）：撤消操作和远程仓库的使用 | 贱贱的梦想 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -257,7 +255,7 @@
             
             
               
-                排序算法之简单选择排序(Java)
+                Git基础（2）：撤消操作和远程仓库的使用
               
             
           </h1>
@@ -269,8 +267,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-29T11:32:43+08:00" content="2016-03-29">
-              2016-03-29
+            <time itemprop="dateCreated" datetime="2016-12-07T16:20:43+08:00" content="2016-12-07">
+              2016-12-07
             </time>
           </span>
 
@@ -283,8 +281,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/数据结构与算法/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构与算法</span>
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
                   </a>
                 </span>
 
@@ -299,8 +297,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/29/数据结构与算法/排序算法之简单选择排序(Java)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/29/数据结构与算法/排序算法之简单选择排序(Java)/" itemprop="commentsCount"></span>
+                <a href="/2016/12/07/Git/03-git-basics(3)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/07/Git/03-git-basics(3)/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -310,7 +308,7 @@
 
           
           
-             <span id="/2016/03/29/数据结构与算法/排序算法之简单选择排序(Java)/" class="leancloud_visitors" data-flag-title="排序算法之简单选择排序(Java)">
+             <span id="/2016/12/07/Git/03-git-basics(3)/" class="leancloud_visitors" data-flag-title="Git基础（2）：撤消操作和远程仓库的使用">
                &nbsp; | &nbsp;
                <span class="post-meta-item-text">阅读次数 </span>             
               </span>
@@ -327,14 +325,34 @@
       
 
       
-        <h1 id="选择排序简介"><a href="#选择排序简介" class="headerlink" title="选择排序简介"></a>选择排序简介</h1><p>选择排序（Selection Sort）是一种简单直观的排序算法。首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
+        <h1 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a>撤销操作</h1><h2 id="commit-–amend"><a href="#commit-–amend" class="headerlink" title="commit –amend"></a>commit –amend</h2><p>有时候我们提交完了才发现漏掉了几个文件没有添加，或者提交信息写错了。这是我们可以运行带有<code>--amend</code>选项的<code>commit</code>命令尝试重新提交：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 修改最近一次提交的提交信息</span><br><span class="line">$ git commit --amend -m &quot;XXX&quot;</span><br><span class="line">// 向最近一次提交添加漏掉的几个文件</span><br><span class="line">$ git add forgotten_file</span><br><span class="line">$ git commit --amend</span><br></pre></td></tr></table></figure></p>
+<h2 id="取消暂存的文件"><a href="#取消暂存的文件" class="headerlink" title="取消暂存的文件"></a>取消暂存的文件</h2><p>如果想取消暂存区域的某个文件，可使用以下命令来取消暂存：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD CONTRIBUTING.md</span><br><span class="line">Unstaged changes after reset:</span><br><span class="line">M	CONTRIBUTING.md</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>在调用<code>reset</code>命令时，如果加上<code>--hard</code>选项，如<code>$ git reset --hard HEAD~~</code>，会导致分支向前移动，导致文件丢失。</p>
+</blockquote>
 <a id="more"></a>
-<h1 id="简单选择排序过程"><a href="#简单选择排序过程" class="headerlink" title="简单选择排序过程"></a>简单选择排序过程</h1><p>简单排序过程很简单，其具体流程如下图所示：</p>
-<p><img src="http://7xsc5j.com1.z0.glb.clouddn.com/%E7%AE%80%E5%8D%95%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt=""></p>
-<h1 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * <span class="doctag">@description</span> 对顺序表L作简单选择排序</span><br><span class="line"> * <span class="doctag">@author</span> GongchuangSu</span><br><span class="line"> * <span class="doctag">@since</span> 2016.03.29</span><br><span class="line"> * <span class="doctag">@version</span> v1.0</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectSort</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// sqList[0]用作哨兵或临时变量</span></span><br><span class="line">        <span class="keyword">int</span>[] sqList = &#123;</span><br><span class="line">            <span class="number">1000</span>, <span class="number">50</span>, <span class="number">10</span>, <span class="number">90</span>, <span class="number">30</span>, <span class="number">70</span>, <span class="number">40</span>, <span class="number">80</span>, <span class="number">60</span>, <span class="number">20</span></span><br><span class="line">        &#125;;</span><br><span class="line">        selectSort(sqList);</span><br><span class="line">        <span class="comment">// 输出打印</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; sqList.length; i++)</span><br><span class="line">            System.out.println(String.valueOf(sqList[i]));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 功能：简单选择排序</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selectSort</span><span class="params">(<span class="keyword">int</span>[] sqList)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i, j, min;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; sqList.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="comment">// 将当前下标定义为最小值下标</span></span><br><span class="line">            min = i;</span><br><span class="line">            <span class="keyword">for</span> (j = i + <span class="number">1</span>; j &lt;= sqList.length - <span class="number">1</span>; j++) &#123;</span><br><span class="line">                <span class="comment">// 如果有小于当前最小值的关键字，则将此关键字的下标赋值给min</span></span><br><span class="line">                <span class="keyword">if</span> (sqList[min] &gt; sqList[j])</span><br><span class="line">                    min = j;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 如果min不等于i，说明找到比sqList[i]更小的值，则进行交换</span></span><br><span class="line">            <span class="keyword">if</span> (i != min)</span><br><span class="line">                sqList[i] = returnFirst(sqList[min], sqList[min] = sqList[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 功能：用于两个数据的交换，相当于C/C++中的swap()函数</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">returnFirst</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h1><h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><p>简单选择排序的主要优点与数据移动有关。如果某个元素位于正确的最终位置上，则它不会被移动。<br>就<strong>交换次数</strong>而言，在最好情况下，交换次数为<code>0</code>；在最坏的情况下，交换次数为<code>n-1</code>。<br>无论最好最坏情况，其<strong>比较次数</strong>都是一样多的，基于最终的排序时间是比较和交换的次数总和，其时间复杂度为$\Theta(n^2)$。<br>在所有的完全依靠交换去移动元素的排序方法中，选择排序属于非常好的一种。</p>
-<h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><p>很明显，其空间复杂度为$\Theta(1)$。</p>
-<h2 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h2><p>选择排序是稳定的。</p>
+<h2 id="使用rebase-i修改提交"><a href="#使用rebase-i修改提交" class="headerlink" title="使用rebase -i修改提交"></a>使用rebase -i修改提交</h2><p>如果要修改第一次提交，需使用以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rebase -i --root</span><br></pre></td></tr></table></figure></p>
+<p>如果要修改最近n次提交，需使用以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rebase -i HEAD~n</span><br></pre></td></tr></table></figure></p>
+<h2 id="撤销对文件的修改"><a href="#撤销对文件的修改" class="headerlink" title="撤销对文件的修改"></a>撤销对文件的修改</h2><p>如果你对某个文件做了修改，但还没保存至暂存区域，这时，你想撤销修改，将它还原成提交时的样子，该怎么做呢？可使用以下命令进行执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- CONTRIBUTING.md</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注：你需要知道 <code>git checkout -- [file]</code> 是一个危险的命令，这很重要。 你对那个文件做的任何修改都会消失 - 你只是拷贝了另一个文件来覆盖它。 除非你确实清楚不想要那个文件了，否则不要使用这个命令。</p>
+</blockquote>
+<h1 id="远程仓库的使用"><a href="#远程仓库的使用" class="headerlink" title="远程仓库的使用"></a>远程仓库的使用</h1><p>远程仓库是指托管在因特网或其他网络中的你的项目的版本库。 管理远程仓库包括了解如何添加远程仓库、移除无效的远程仓库、管理不同的远程分支并定义它们是否被跟踪等等。</p>
+<h2 id="查看远程仓库"><a href="#查看远程仓库" class="headerlink" title="查看远程仓库"></a>查看远程仓库</h2><p>通过运行<code>git remote</code>命令，查看已经配置的远程仓库服务器，它会列出指定的每一个远程服务器的简写。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git remote</span><br><span class="line">origin</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注：远程仓库服务器的默认名称为 <code>origin</code>。</p>
+</blockquote>
+<p>可以通过指定选项 <code>-v</code>，显示需要读写远程仓库使用的Git保存的简写与其对应的URL。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin  https://github.com/GongchuangSu/GitInAction.git (fetch)</span><br><span class="line">origin  https://github.com/GongchuangSu/GitInAction.git (push)</span><br></pre></td></tr></table></figure></p>
+<h2 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h2><p>通过运行 <code>git remote add &lt;shortname&gt; &lt;url&gt;</code> 指令，添加一个新的远程Git仓库，同时可以指定一个能够轻松引用的简写。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add gs https://github.com/GrantSu/GitInAction</span><br><span class="line">$ git remote -v</span><br><span class="line">gs      https://github.com/GrantSu/GitInAction (fetch)</span><br><span class="line">gs      https://github.com/GrantSu/GitInAction (push)</span><br><span class="line">origin  https://github.com/GongchuangSu/GitInAction.git (fetch)</span><br><span class="line">origin  https://github.com/GongchuangSu/GitInAction.git (push)</span><br></pre></td></tr></table></figure></p>
+<h2 id="远程仓库的移除与重命名"><a href="#远程仓库的移除与重命名" class="headerlink" title="远程仓库的移除与重命名"></a>远程仓库的移除与重命名</h2><p>通过运行 <code>git remote rename</code> 命令，可以修改一个远程仓库的简写名。如将<code>gs</code>重命名为<code>grant</code>，可以进行如下操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git remote rename gs grant</span><br><span class="line">$ git remote</span><br><span class="line">grant</span><br><span class="line">origin</span><br></pre></td></tr></table></figure></p>
+<p>通过运行 <code>git remote rm</code> 命令，可以移除某个远程仓库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote rm grant</span><br><span class="line">$ git remote</span><br><span class="line">origin</span><br></pre></td></tr></table></figure></p>
+<h2 id="从远程仓库中抓取与拉取"><a href="#从远程仓库中抓取与拉取" class="headerlink" title="从远程仓库中抓取与拉取"></a>从远程仓库中抓取与拉取</h2><p>通过运行 <code>git fetch [remote-name]</code> 访问远程仓库，从中拉取所有你还没有的数据。执行完成后，你将会拥有那个远程仓库中所有分支的引用，可以随时合并或查看。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch gs</span><br><span class="line">From https://github.com/GrantSu/GitInAction</span><br><span class="line"> * [new branch]      master     -&gt; gs/master</span><br></pre></td></tr></table></figure></p>
+<h2 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h2><p>通过运行 <code>git push [remote-name] [branch-name]</code> 命令，将要分享的项目推送到上游。如想要将 <code>master</code> 分支推送到 <code>origin</code> 服务器时，可使用以下指令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注：只有当你有所克隆服务器的写入权限，并且之前没有人推送过时，这条命令才能生效。</p>
+</blockquote>
+<h2 id="查看远程仓库-1"><a href="#查看远程仓库-1" class="headerlink" title="查看远程仓库"></a>查看远程仓库</h2><p>通过运行 <code>git remote show [remote-name]</code> 命令，查看某一个远程仓库的更多信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ git remote show origin</span><br><span class="line">* remote origin</span><br><span class="line">  Fetch URL: https://github.com/GongchuangSu/GitInAction.git</span><br><span class="line">  Push  URL: https://github.com/GongchuangSu/GitInAction.git</span><br><span class="line">  HEAD branch: master</span><br><span class="line">  Remote branch:</span><br><span class="line">    master tracked</span><br><span class="line">  Local branch configured for &apos;git pull&apos;:</span><br><span class="line">    master merges with remote master</span><br><span class="line">  Local ref configured for &apos;git push&apos;:</span><br><span class="line">    master pushes to master (up to date)</span><br></pre></td></tr></table></figure></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://git-scm.com/book/zh" target="_blank" rel="external">https://git-scm.com/book/zh</a></p>
 
       
     </div>
@@ -349,9 +367,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/排序算法/" rel="tag">#排序算法</a>
-          
-            <a href="/tags/简单选择排序/" rel="tag">#简单选择排序</a>
+            <a href="/tags/Git/" rel="tag">#Git</a>
           
         </div>
       
@@ -360,17 +376,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/29/数据结构与算法/排序算法之冒泡排序(Java)/" rel="next" title="排序算法之冒泡排序(Java)">
-                <i class="fa fa-chevron-left"></i> 排序算法之冒泡排序(Java)
+              <a href="/2016/12/06/Git/02-git-basics(2)/" rel="next" title="Git基础（2）：查看提交历史">
+                <i class="fa fa-chevron-left"></i> Git基础（2）：查看提交历史
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/01/数据结构与算法/排序算法之希尔排序(Java)/" rel="prev" title="排序算法之希尔排序(Java)">
-                排序算法之希尔排序(Java) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -405,8 +417,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/29/数据结构与算法/排序算法之简单选择排序(Java)/"
-           data-title="排序算法之简单选择排序(Java)" data-url="http://gongchuangsu.com/2016/03/29/数据结构与算法/排序算法之简单选择排序(Java)/">
+      <div class="ds-thread" data-thread-key="2016/12/07/Git/03-git-basics(3)/"
+           data-title="Git基础（2）：撤消操作和远程仓库的使用" data-url="http://gongchuangsu.com/2016/12/07/Git/03-git-basics(3)/">
       </div>
     
   </div>
@@ -541,7 +553,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#选择排序简介"><span class="nav-number">1.</span> <span class="nav-text">选择排序简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单选择排序过程"><span class="nav-number">2.</span> <span class="nav-text">简单选择排序过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法实现"><span class="nav-number">3.</span> <span class="nav-text">算法实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法分析"><span class="nav-number">4.</span> <span class="nav-text">算法分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#时间复杂度"><span class="nav-number">4.1.</span> <span class="nav-text">时间复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空间复杂度"><span class="nav-number">4.2.</span> <span class="nav-text">空间复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#稳定性"><span class="nav-number">4.3.</span> <span class="nav-text">稳定性</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#撤销操作"><span class="nav-number">1.</span> <span class="nav-text">撤销操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#commit-–amend"><span class="nav-number">1.1.</span> <span class="nav-text">commit –amend</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#取消暂存的文件"><span class="nav-number">1.2.</span> <span class="nav-text">取消暂存的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用rebase-i修改提交"><span class="nav-number">1.3.</span> <span class="nav-text">使用rebase -i修改提交</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#撤销对文件的修改"><span class="nav-number">1.4.</span> <span class="nav-text">撤销对文件的修改</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#远程仓库的使用"><span class="nav-number">2.</span> <span class="nav-text">远程仓库的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看远程仓库"><span class="nav-number">2.1.</span> <span class="nav-text">查看远程仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加远程仓库"><span class="nav-number">2.2.</span> <span class="nav-text">添加远程仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程仓库的移除与重命名"><span class="nav-number">2.3.</span> <span class="nav-text">远程仓库的移除与重命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从远程仓库中抓取与拉取"><span class="nav-number">2.4.</span> <span class="nav-text">从远程仓库中抓取与拉取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推送到远程仓库"><span class="nav-number">2.5.</span> <span class="nav-text">推送到远程仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看远程仓库-1"><span class="nav-number">2.6.</span> <span class="nav-text">查看远程仓库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
