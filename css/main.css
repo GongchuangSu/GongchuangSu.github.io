@@ -181,7 +181,7 @@ th {
 }
 ::selection {
   background: #262a30;
-  color: #fff;
+  color: #f5f5d5;
 }
 body {
   position: relative;
@@ -872,7 +872,7 @@ pre .javascript .function {
   position: relative;
 }
 .headband {
-  height: 3px;
+  height: 0px;
   background: #222;
 }
 .site-meta {
@@ -1527,7 +1527,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffffc2;
+  background: #f8f;
 }
 .links-of-blogroll {
   font-size: 13px;
