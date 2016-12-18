@@ -4144,12 +4144,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://gongchuangsu.com/categories/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[about]]></title>
       <url>http://gongchuangsu.com/about/index.html</url>
       <content type="html"><![CDATA[<p><img src="http://i.imgur.com/hChnLrh.gif" alt=""></p>
@@ -4164,6 +4158,12 @@
     <entry>
       <title><![CDATA[tags]]></title>
       <url>http://gongchuangsu.com/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[categories]]></title>
+      <url>http://gongchuangsu.com/categories/index.html</url>
       <content type="html"></content>
     </entry>
     
