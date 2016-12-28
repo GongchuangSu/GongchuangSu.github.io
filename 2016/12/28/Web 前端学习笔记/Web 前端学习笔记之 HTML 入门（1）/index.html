@@ -1,0 +1,1311 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web 前端开发,HTML," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="HTML 简介什么是 HTMLHTML 是一种使用标签来描述页面的内容和结构的语言。
+
+HTML 指的是超文本标记语言（Hyper Text Markup Language）
+HTML 不是一种编程语言，而是一种标记语言 (markup language)
+标记语言是一套标记标签 (markup tag)
+HTML 使用标记标签来描述网页">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web 前端学习笔记之 HTML 入门（1）">
+<meta property="og:url" content="http://gongchuangsu.com/2016/12/28/Web 前端学习笔记/Web 前端学习笔记之 HTML 入门（1）/index.html">
+<meta property="og:site_name" content="贱贱的梦想">
+<meta property="og:description" content="HTML 简介什么是 HTMLHTML 是一种使用标签来描述页面的内容和结构的语言。
+
+HTML 指的是超文本标记语言（Hyper Text Markup Language）
+HTML 不是一种编程语言，而是一种标记语言 (markup language)
+标记语言是一套标记标签 (markup tag)
+HTML 使用标记标签来描述网页">
+<meta property="og:updated_time" content="2016-12-28T14:18:57.671Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Web 前端学习笔记之 HTML 入门（1）">
+<meta name="twitter:description" content="HTML 简介什么是 HTMLHTML 是一种使用标签来描述页面的内容和结构的语言。
+
+HTML 指的是超文本标记语言（Hyper Text Markup Language）
+HTML 不是一种编程语言，而是一种标记语言 (markup language)
+标记语言是一套标记标签 (markup tag)
+HTML 使用标记标签来描述网页">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Web 前端学习笔记之 HTML 入门（1） | 贱贱的梦想 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ed06c68bea374fddbd50d8820ec27cbd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">贱贱的梦想</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Web 前端学习笔记之 HTML 入门（1）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-28T19:20:56+08:00" content="2016-12-28">
+              2016-12-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Web-前端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">Web 前端开发</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/28/Web 前端学习笔记/Web 前端学习笔记之 HTML 入门（1）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/28/Web 前端学习笔记/Web 前端学习笔记之 HTML 入门（1）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/28/Web 前端学习笔记/Web 前端学习笔记之 HTML 入门（1）/" class="leancloud_visitors" data-flag-title="Web 前端学习笔记之 HTML 入门（1）">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-text">阅读次数 </span>             
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="HTML-简介"><a href="#HTML-简介" class="headerlink" title="HTML 简介"></a>HTML 简介</h1><h2 id="什么是-HTML"><a href="#什么是-HTML" class="headerlink" title="什么是 HTML"></a>什么是 HTML</h2><p><strong>HTML</strong> 是一种使用<strong>标签</strong>来描述页面的<strong>内容</strong>和<strong>结构</strong>的语言。</p>
+<ul>
+<li>HTML 指的是超文本标记语言（Hyper Text Markup Language）</li>
+<li>HTML 不是一种编程语言，而是一种标记语言 (markup language)</li>
+<li>标记语言是一套标记标签 (markup tag)</li>
+<li>HTML 使用标记标签来描述网页</li>
+</ul>
+<a id="more"></a>
+<h2 id="HTML-的发展史"><a href="#HTML-的发展史" class="headerlink" title="HTML 的发展史"></a>HTML 的发展史</h2><p><strong>HTML 的产生</strong><br>1991年，<strong>Tim Berners-Lee</strong>编写了一份叫做“HTML标签”的文档，里面包含了大约20个用来标记网页的HTML标签。他直接借用<strong>SGML</strong>的标记格式，也就是后来我们看到的HTML标记的格式。</p>
+<hr>
+<p><strong>从IETF到W3C：HTML 4之路</strong><br><strong>HTML 1</strong>并不曾存在，HTML的第一个官方版本就是由<strong>IETF（互联网工程任务组）</strong>推出的<strong>HTML 2.0</strong>。<br>后来，<strong>W3C</strong>取代IETF的角色，成为HTML的标准组织，1990年代的后半页，HTML的版本被频繁修改，1997年发布了<strong>HTML 3.2</strong>，1999年发布了<strong>HTML 4.01</strong>， 至此，HTML到达了它的第一个拐点。</p>
+<blockquote>
+<p><strong>HTML 3.2 特点</strong>：</p>
+<ul>
+<li>Netscape 引入私有标签</li>
+<li>HTML 3.0 失败</li>
+<li>W3C 接管 HTML 标准化</li>
+</ul>
+<p><strong>HTML 4.01 特点</strong></p>
+<ul>
+<li>样式与内容分离，CSS 支持</li>
+<li>Doctype<ul>
+<li>指定HTML页面使用的标准和版本</li>
+<li>浏览器根据doctype决定使用哪种渲染模式</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<hr>
+<p><strong>XHTML 1.0：XML风格的HTML</strong><br>HTML在<strong>HTML 4.01</strong>之后的第一个修订版本就是<strong>XHTML 1.0</strong>。<strong>XHTML 1.0</strong>是基于<strong>HTML 4.01</strong>的，用 XML 语法重新定义 HTML，并没有引入任何新标签或属性，唯一的区别是语法，HTML对语法比较随便，而 XHTML则要求XML般的严格语法。</p>
+<hr>
+<p><strong>出力不讨好的XHTML 2</strong><br>对W3C而言，到了HTML 4已经是功德圆满，他们的下一步工作是<strong>XHTML 2</strong>，希望将Web带向XML的光明未来。虽然XHTML 2听上去和XHTML 1类似，它们却有很多差别。</p>
+<blockquote>
+<p><strong>XHTML 2 特点</strong>：</p>
+<ul>
+<li>XHTML 2不向前兼容，甚至不兼容之前的HTML</li>
+<li>去除样式类标签</li>
+<li>去除 img、a</li>
+<li>彻底修改 Form</li>
+<li>开发者不欢迎，浏览器不支持</li>
+</ul>
+</blockquote>
+<hr>
+<p><strong>WHATWG：与W3C决裂</strong><br>W3C闭门造车的作风引起了一些人的不满，来自Opera,Apple,以及Mozilla的代表开始表达反对声音。2004年，Opera的 Ian Hickson提议在HTML基础上进行扩展以适应新的Web应用，该提议遭到W3C的拒绝。于是，他们自发组织成立了超文本应用技术工作组，就是<strong>WHATWG</strong>。</p>
+<hr>
+<p><strong>从WebApps1.0到HTML 5</strong><br>一开始，WHATWG的主要工作包括两部分，<strong>Web Forms 2.0</strong>和<strong>Web Apps 1.0</strong>，它们都是HTML的扩展，后来，他们合并到一起成为现在的<strong>HTML 5</strong>规范。在WHATWG致力于<strong>HTML 5</strong>的同时，W3C继续他们的<strong>XHTML 2.0</strong>。<br>2006年10月，Web之父Tim Berners-Lee发表了一篇博客文章，表示，从HTML走向XML的路是行不通的，几个月后，W3C组建了一个新的HTML工作组，他们非常明智地选择了WHATWG的成果作为基础。直到2009年，W3C宣布终止<strong>XHTML 2</strong>的工作。</p>
+<hr>
+<p><strong>HTML 5</strong><br>2008年，W3C HTML5 草案发布。<br>2012年12月19号，万维网联盟（W3C）正式宣布凝结了大量网络工作者心血历时三年的HTML5规范已经正式定稿。</p>
+<blockquote>
+<p><strong>HTML5 设计思想</strong>：</p>
+<ul>
+<li>兼容已有内容</li>
+<li>避免不必要的复杂性</li>
+<li>解决现实的问题</li>
+<li>优雅降级</li>
+<li>尊重事实标准</li>
+<li>用户 》开发者 》浏览器厂商 》标准制定者 》理论完美</li>
+</ul>
+<p><strong>HTML5 中的变化</strong>：</p>
+<ul>
+<li>doctype、meta</li>
+<li>新增语义化标签和属性</li>
+<li>去掉纯展示性标签</li>
+<li>canvas、video、audio、离线、本地存储、拖拽等</li>
+</ul>
+<p><strong>HTML5 语法特点</strong>：</p>
+<ul>
+<li>标签不区分大小写，推荐小写</li>
+<li>空标签可以不闭合，比如 input、meta</li>
+<li>属性不必引号，推荐双引号</li>
+<li>某些属性值可以省略，比如 required、readonly</li>
+</ul>
+</blockquote>
+<h1 id="HTML-中的文本标签"><a href="#HTML-中的文本标签" class="headerlink" title="HTML 中的文本标签"></a>HTML 中的文本标签</h1><h2 id="lt-p-gt-标签"><a href="#lt-p-gt-标签" class="headerlink" title="&lt;p&gt; 标签"></a><code>&lt;p&gt;</code> 标签</h2><p><strong>定义和用法</strong><br>&lt;p&gt; 标签定义段落。p 元素会自动在其前后创建一些空白。<br><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;This is some text in a very short paragraph&lt;/p&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="lt-h1-gt-到-lt-h6-gt-标签"><a href="#lt-h1-gt-到-lt-h6-gt-标签" class="headerlink" title="&lt;h1&gt; 到 &lt;h6&gt; 标签"></a><code>&lt;h1&gt;</code> 到 <code>&lt;h6&gt;</code> 标签</h2><p><strong>定义和用法</strong><br>&lt;h1&gt; 到 &lt;h6&gt; 标签可定义标题。&lt;h1&gt; 定义最大的标题。&lt;h6&gt; 定义最小的标题。<br><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;这是标题 1&lt;/h1&gt;</span><br><span class="line">&lt;h2&gt;这是标题 2&lt;/h2&gt;</span><br><span class="line">&lt;h3&gt;这是标题 3&lt;/h3&gt;</span><br><span class="line">&lt;h4&gt;这是标题 4&lt;/h4&gt;</span><br><span class="line">&lt;h5&gt;这是标题 5&lt;/h5&gt;</span><br><span class="line">&lt;h6&gt;这是标题 6&lt;/h6&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="lt-hr-gt-标签"><a href="#lt-hr-gt-标签" class="headerlink" title="&lt;hr&gt; 标签"></a><code>&lt;hr&gt;</code> 标签</h2><p><strong>定义和用法</strong><br>&lt;hr&gt; 标签在 HTML 页面中创建一条水平线。一般用于段落级别的话题切换。<br><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;This is header 1&lt;/h1&gt;</span><br><span class="line">&lt;hr /&gt;</span><br><span class="line">&lt;p&gt;This is some text&lt;/p&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="列表标签"><a href="#列表标签" class="headerlink" title="列表标签"></a>列表标签</h2><h3 id="有序列表：-lt-ol-gt-标签"><a href="#有序列表：-lt-ol-gt-标签" class="headerlink" title="有序列表：&lt;ol&gt; 标签"></a>有序列表：<code>&lt;ol&gt;</code> 标签</h3><p><strong>定义和用法</strong><br>&lt;ol&gt; 标签定义有序列表。<br><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;世界电影票房排行榜&lt;/h1&gt;</span><br><span class="line">&lt;ol start=&quot;1&quot;&gt;</span><br><span class="line">  &lt;li&gt;阿凡达&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;泰坦尼克号&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;复仇者联盟&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>说明：</p>
+<ol>
+<li>属性<code>start</code>规定有序列表的起始值。</li>
+<li>&lt;li&gt; 标签定义列表项目，可用在有序列表（&lt;ol&gt;）和无序列表（&lt;ul&gt;）中</li>
+</ol>
+</blockquote>
+<h3 id="无序列表：-lt-ul-gt-标签"><a href="#无序列表：-lt-ul-gt-标签" class="headerlink" title="无序列表：&lt;ul&gt; 标签"></a>无序列表：<code>&lt;ul&gt;</code> 标签</h3><p><strong>定义和用法</strong><br>&lt;ul&gt; 标签定义无序列表。<br><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li&gt;1个西瓜&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;2瓶矿泉水&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;1盒酸奶&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;</span><br><span class="line">    垃圾袋</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;li&gt;大号垃圾袋&lt;/li&gt;</span><br><span class="line">      &lt;li&gt;小号垃圾袋&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>说明：<code>ul</code>标签可以嵌套使用表示多层列表</p>
+</blockquote>
+<h3 id="定义列表：-lt-dl-gt-标签"><a href="#定义列表：-lt-dl-gt-标签" class="headerlink" title="定义列表：&lt;dl&gt; 标签"></a>定义列表：<code>&lt;dl&gt;</code> 标签</h3><p><strong>定义和用法</strong><br>&lt;dl&gt; 标签定义了定义列表。<br>&lt;dl&gt; 标签用于结合 &lt;dt&gt; （定义列表中的项目）和 &lt;dd&gt; （描述列表中的项目）。<br><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;h3&gt;霸王别姬&lt;/h3&gt;</span><br><span class="line">&lt;dl&gt;</span><br><span class="line">  &lt;dt&gt;导演：&lt;/dt&gt;</span><br><span class="line">  &lt;dd&gt;陈凯歌&lt;/dd&gt;</span><br><span class="line">  &lt;dt&gt;主演：&lt;/dt&gt;</span><br><span class="line">  &lt;dd&gt;张国荣&lt;/dd&gt;</span><br><span class="line">  &lt;dd&gt;张丰毅&lt;/dd&gt;</span><br><span class="line">  &lt;dd&gt;巩俐&lt;/dd&gt;</span><br><span class="line">  &lt;dt&gt;上映日期：&lt;/dt&gt;</span><br><span class="line">  &lt;dd&gt;1993-01-01&lt;/dd&gt;</span><br><span class="line">&lt;/dl&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="引用标签"><a href="#引用标签" class="headerlink" title="引用标签"></a>引用标签</h2><h3 id="lt-blockquote-gt-标签"><a href="#lt-blockquote-gt-标签" class="headerlink" title="&lt;blockquote&gt; 标签"></a><code>&lt;blockquote&gt;</code> 标签</h3><p><strong>定义和用法</strong><br>&lt;blockquote&gt; 标签定义块引用。<br>&lt;blockquote&gt; 与 &lt;/blockquote&gt; 之间的所有文本都会从常规文本中分离出来，经常会在左、右两边进行缩进（增加外边距），而且有时会使用斜体。也就是说，块引用拥有它们自己的空间。<br><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;blockquote cite=&quot;http://t.cn/RfjKO0F&quot;&gt;</span><br><span class="line">  天才并不是自生自长在深林荒野里的怪物， 是由可以使天才生长</span><br><span class="line">  的民众产生、长育出来的，所以没有 这种民众，就没有天才。</span><br><span class="line">&lt;/blockquote&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>说明：属性<code>cite</code>为可选的属性，规定引用的来源。</p>
+</blockquote>
+<h3 id="lt-q-gt-标签"><a href="#lt-q-gt-标签" class="headerlink" title="&lt;q&gt; 标签"></a><code>&lt;q&gt;</code> 标签</h3><p><strong>定义和用法</strong><br>&lt;q&gt; 标签定义短的引用。浏览器经常在引用的内容周围添加<strong>引号</strong>。<br><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;q&gt;Here is a short quotation here is a short quotation&lt;/q&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>说明：&lt;q&gt; 与 &lt;blockquote&gt; 的区别<br>两者本质是一样的。区别在于它们的显示和应用。</p>
+<ol>
+<li>&lt;q&gt;标签一般用于简短的行内引用，而比较长的部分一般使用&lt;blockquote&gt; 标签</li>
+<li>&lt;q&gt;标签一般会在引用内容的周围添加<strong>引号</strong>，而&lt;blockquote&gt; 标签不会添加引号，它会在左、右两边进行缩进。</li>
+</ol>
+</blockquote>
+<h3 id="lt-cite-gt-标签"><a href="#lt-cite-gt-标签" class="headerlink" title="&lt;cite&gt; 标签"></a><code>&lt;cite&gt;</code> 标签</h3><p><strong>定义和用法</strong><br>&lt;cite&gt; 标签通常表示它所包含的文本对某个参考文献的引用，比如书籍或者杂志的标题。<br><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;我最喜欢的一本书是&lt;cite&gt;小王子&lt;/cite&gt;。&lt;/p&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="预格式化文本：-lt-pre-gt-标签"><a href="#预格式化文本：-lt-pre-gt-标签" class="headerlink" title="预格式化文本：&lt;pre&gt; 标签"></a>预格式化文本：<code>&lt;pre&gt;</code> 标签</h2><p><strong>定义和用法</strong><br>pre 元素可定义预格式化的文本。被包围在 pre 元素中的文本通常会保留<strong>空格</strong>和<strong>换行符</strong>。而文本也会呈现为等宽字体。<br>&lt;pre&gt; 标签的一个常见应用就是结合&lt;code&gt; 标签用来表示计算机的源代码。<br><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;pre&gt;&lt;code&gt;</span><br><span class="line">const add = (a, b) =&gt; a + b;</span><br><span class="line">const multiply = (a, b) =&gt; a * b;</span><br><span class="line">&lt;/code&gt;&lt;/pre&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="内容划分"><a href="#内容划分" class="headerlink" title="内容划分"></a>内容划分</h2><p><strong>&lt;article&gt; 标签</strong><br>&lt;article&gt; 标签规定独立的自包含内容。</p>
+<hr>
+<p><strong>&lt;header&gt; 标签</strong><br>&lt;header&gt; 标签定义文档的页眉（介绍信息）。</p>
+<hr>
+<p><strong>&lt;section&gt; 标签</strong><br>&lt;section&gt; 标签定义文档中的节（section、区段）。比如章节、页眉、页脚或文档中的其他部分。</p>
+<hr>
+<p><strong>&lt;footer&gt; 标签</strong><br>&lt;footer&gt; 标签定义文档或节的页脚。页脚通常包含文档的作者、版权信息、使用条款链接、联系信息等等。</p>
+<hr>
+<p><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;article&gt;</span><br><span class="line">  &lt;header&gt;</span><br><span class="line">    &lt;h1&gt;字体排印学&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;作者：XXX&lt;/p&gt;</span><br><span class="line">  &lt;/header&gt;</span><br><span class="line">  &lt;section&gt;</span><br><span class="line">    &lt;h2&gt;语源及其范围&lt;/h2&gt;</span><br><span class="line">    &lt;p&gt;在当代，字体排印学的相关研究和实践范围相当广...&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;以字体排印为核心的图像中，通常使用四项基本手...&lt;/p&gt;</span><br><span class="line">  &lt;/section&gt;</span><br><span class="line">  &lt;section&gt;</span><br><span class="line">    &lt;h2&gt;可读性和易读性&lt;/h2&gt;</span><br><span class="line">    &lt;p&gt;可读性和易读性经常被混淆。可读性通常用...&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;与之相对，易读性描述的是排印文本阅读时的...&lt;/p&gt;</span><br><span class="line">  &lt;/section&gt;</span><br><span class="line">  &lt;footer&gt;</span><br><span class="line">    &lt;h2&gt;参考链接&lt;/h2&gt;</span><br><span class="line">    &lt;nav&gt;</span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;&quot;&gt;衬线字体&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;&quot;&gt;字体设计&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    &lt;/nav&gt;</span><br><span class="line">  &lt;/footer&gt;</span><br><span class="line">&lt;/article&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="强调标签"><a href="#强调标签" class="headerlink" title="强调标签"></a>强调标签</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">标签</th>
+<th style="text-align:left">用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">strong</td>
+<td style="text-align:left">把文本定义为语气更强的强调的内容</td>
+</tr>
+<tr>
+<td style="text-align:center">em</td>
+<td style="text-align:left">从一句话中突出某个词语</td>
+</tr>
+<tr>
+<td style="text-align:center">b</td>
+<td style="text-align:left">将词语从视觉上和其它部分区分，比如一篇论文摘要中的关键词</td>
+</tr>
+<tr>
+<td style="text-align:center">i</td>
+<td style="text-align:left">显示斜体文本效果</td>
+</tr>
+<tr>
+<td style="text-align:center">dfn</td>
+<td style="text-align:left">可标记那些对特殊术语或短语的定义</td>
+</tr>
+<tr>
+<td style="text-align:center">abbr</td>
+<td style="text-align:left">指示简称或缩写</td>
+</tr>
+<tr>
+<td style="text-align:center">code</td>
+<td style="text-align:left">用于表示计算机源代码或者其他机器可以阅读的文本内容</td>
+</tr>
+<tr>
+<td style="text-align:center">kbd</td>
+<td style="text-align:left">定义键盘文本</td>
+</tr>
+<tr>
+<td style="text-align:center">var</td>
+<td style="text-align:left">表示变量的名称，或者由用户提供的值</td>
+</tr>
+<tr>
+<td style="text-align:center">samp</td>
+<td style="text-align:left">表示一段用户应该对其没有什么其他解释的文本字符</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：可以在 abbr 标签中使用全局的 title 属性，这样就能够在鼠标指针移动到 <abbr> 元素上时显示出简称/缩写的完整版本。</abbr></p>
+</blockquote>
+<h2 id="上标和下标"><a href="#上标和下标" class="headerlink" title="上标和下标"></a>上标和下标</h2><p><strong>&lt;sup&gt; 标签</strong>：定义上标文本。<br><strong>&lt;sub&gt; 标签</strong>：定义下标文本。<br><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;E = MC&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;</span><br><span class="line">&lt;p&gt;CO&lt;sub&gt;2&lt;/sub&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="插入和删除"><a href="#插入和删除" class="headerlink" title="插入和删除"></a>插入和删除</h2><p><strong>&lt;del&gt; 标签</strong>：定义文档中已被删除的文本。<br><strong>&lt;ins&gt; 标签</strong>：定义已经被插入文档中的文本。<br><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&lt;del&gt;原价：299元&lt;/del&gt; &lt;ins&gt;双11特价：188元&lt;/ins&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="换行控制"><a href="#换行控制" class="headerlink" title="换行控制"></a>换行控制</h2><p><strong>&lt;br&gt; 标签</strong><br>&lt;br&gt; 标签可插入一个简单的换行符。该标签是空标签（意味着它没有结束标签，这样写&lt;br&gt;&lt;/br&gt;是错误的）。</p>
+<hr>
+<p><strong>&lt;wbr&gt; 标签</strong><br>Word Break Opportunity (&lt;wbr&gt;) 规定在文本中的何处适合添加换行符。</p>
+<h2 id="实体字符"><a href="#实体字符" class="headerlink" title="实体字符"></a>实体字符</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">实体字符</th>
+<th style="text-align:center">代表字符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&amp;amp;</code></td>
+<td style="text-align:center">&amp;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&amp;gt;</code></td>
+<td style="text-align:center">&gt;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&amp;lt;</code></td>
+<td style="text-align:center">&lt;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&amp;copy;</code></td>
+<td style="text-align:center">&copy;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&amp;yen;</code></td>
+<td style="text-align:center">&yen;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&amp;#9775;</code></td>
+<td style="text-align:center">&#9775;</td>
+</tr>
+</tbody>
+</table>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><a href="http://www.w3school.com.cn/h.asp" target="_blank" rel="external">w3school</a></li>
+<li><a href="http://developer.51cto.com/art/201005/202052.htm" target="_blank" rel="external">回顾时光 细看HTML发展史</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web-前端开发/" rel="tag">#Web 前端开发</a>
+          
+            <a href="/tags/HTML/" rel="tag">#HTML</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/27/Java学习笔记/25.Java学习笔记之信息隐藏(Information Hiding)/" rel="next" title="Java学习笔记之信息隐藏(Information Hiding)">
+                <i class="fa fa-chevron-left"></i> Java学习笔记之信息隐藏(Information Hiding)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/28/Web 前端学习笔记/Web 前端学习笔记之 HTML 入门（1）/"
+           data-title="Web 前端学习笔记之 HTML 入门（1）" data-url="http://gongchuangsu.com/2016/12/28/Web 前端学习笔记/Web 前端学习笔记之 HTML 入门（1）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Gongchuang Su" />
+          <p class="site-author-name" itemprop="name">Gongchuang Su</p>
+          <p class="site-description motion-element" itemprop="description">Stay Hungry, Stay Foolish.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">72</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">110</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/GongchuangSu" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/gongchuangsu" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> CSDN
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" target="_blank">MacTalk</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://mindhacks.cn/" target="_blank">Mind Hacks</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.qiuchengjia.cn/" target="_blank">戎码人生</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://gaohueric.github.io/" target="_blank">GaoHu's BLOG</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML-简介"><span class="nav-number">1.</span> <span class="nav-text">HTML 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-HTML"><span class="nav-number">1.1.</span> <span class="nav-text">什么是 HTML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML-的发展史"><span class="nav-number">1.2.</span> <span class="nav-text">HTML 的发展史</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML-中的文本标签"><span class="nav-number">2.</span> <span class="nav-text">HTML 中的文本标签</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#lt-p-gt-标签"><span class="nav-number">2.1.</span> <span class="nav-text"><p> 标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lt-h1-gt-到-lt-h6-gt-标签"><span class="nav-number">2.2.</span> <span class="nav-text"><h1> 到 <h6> 标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lt-hr-gt-标签"><span class="nav-number">2.3.</span> <span class="nav-text"><hr> 标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表标签"><span class="nav-number">2.4.</span> <span class="nav-text">列表标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#有序列表：-lt-ol-gt-标签"><span class="nav-number">2.4.1.</span> <span class="nav-text">有序列表：<ol> 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无序列表：-lt-ul-gt-标签"><span class="nav-number">2.4.2.</span> <span class="nav-text">无序列表：<ul> 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义列表：-lt-dl-gt-标签"><span class="nav-number">2.4.3.</span> <span class="nav-text">定义列表：<dl> 标签</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用标签"><span class="nav-number">2.5.</span> <span class="nav-text">引用标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-blockquote-gt-标签"><span class="nav-number">2.5.1.</span> <span class="nav-text"><blockquote> 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-q-gt-标签"><span class="nav-number">2.5.2.</span> <span class="nav-text"><q> 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-cite-gt-标签"><span class="nav-number">2.5.3.</span> <span class="nav-text"><cite> 标签</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预格式化文本：-lt-pre-gt-标签"><span class="nav-number">2.6.</span> <span class="nav-text">预格式化文本：<pre> 标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容划分"><span class="nav-number">2.7.</span> <span class="nav-text">内容划分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强调标签"><span class="nav-number">2.8.</span> <span class="nav-text">强调标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上标和下标"><span class="nav-number">2.9.</span> <span class="nav-text">上标和下标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入和删除"><span class="nav-number">2.10.</span> <span class="nav-text">插入和删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#换行控制"><span class="nav-number">2.11.</span> <span class="nav-text">换行控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实体字符"><span class="nav-number">2.12.</span> <span class="nav-text">实体字符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gongchuang Su</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+		
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gongchuangsu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("YNAqO4Guiyi9lFpJmPo6DIJF-gzGzoHsz", "AVRJEYpDPTwtz3peAJVymqeP");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = $(document.getElementById(url)).text() + ': 0';
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
+
+
+
+  
+</body>
+</html>

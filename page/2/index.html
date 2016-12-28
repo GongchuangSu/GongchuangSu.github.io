@@ -245,6 +245,269 @@
   
   
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/03/Java学习笔记/JDBC数据类型与Java数据类型对应关系/" itemprop="url">
+                  JDBC数据类型与Java数据类型对应关系
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-03T15:30:38+08:00" content="2016-07-03">
+              2016-07-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/03/Java学习笔记/JDBC数据类型与Java数据类型对应关系/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/03/Java学习笔记/JDBC数据类型与Java数据类型对应关系/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/03/Java学习笔记/JDBC数据类型与Java数据类型对应关系/" class="leancloud_visitors" data-flag-title="JDBC数据类型与Java数据类型对应关系">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-text">阅读次数 </span>             
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <table>
+<thead>
+<tr>
+<th style="text-align:left">SQL</th>
+<th style="text-align:left">JDBC/JAVA</th>
+<th style="text-align:left">setter</th>
+<th style="text-align:left">getter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">VARCHAR</td>
+<td style="text-align:left">java.lang.String</td>
+<td style="text-align:left">setString</td>
+<td style="text-align:left">getString</td>
+</tr>
+<tr>
+<td style="text-align:left">CHAR</td>
+<td style="text-align:left">java.lang.String</td>
+<td style="text-align:left">setString</td>
+<td style="text-align:left">getString</td>
+</tr>
+<tr>
+<td style="text-align:left">LONGVARCHAR</td>
+<td style="text-align:left">java.lang.String</td>
+<td style="text-align:left">setString</td>
+<td style="text-align:left">getString</td>
+</tr>
+<tr>
+<td style="text-align:left">BIT</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">setBoolean</td>
+<td style="text-align:left">getBoolean</td>
+</tr>
+<tr>
+<td style="text-align:left">NUMERIC</td>
+<td style="text-align:left">BigDecimal</td>
+<td style="text-align:left">setBigDecimal</td>
+<td style="text-align:left">getBigDecimal</td>
+</tr>
+<tr>
+<td style="text-align:left">TINYINT</td>
+<td style="text-align:left">byte</td>
+<td style="text-align:left">setByte</td>
+<td style="text-align:left">getByte</td>
+</tr>
+<tr>
+<td style="text-align:left">SMALLINT</td>
+<td style="text-align:left">short</td>
+<td style="text-align:left">setShort</td>
+<td style="text-align:left">getShort</td>
+</tr>
+<tr>
+<td style="text-align:left">INTEGER</td>
+<td style="text-align:left">int</td>
+<td style="text-align:left">setInt</td>
+<td style="text-align:left">getInt</td>
+</tr>
+<tr>
+<td style="text-align:left">BIGINT</td>
+<td style="text-align:left">long</td>
+<td style="text-align:left">setLong</td>
+<td style="text-align:left">getLong</td>
+</tr>
+<tr>
+<td style="text-align:left">REAL</td>
+<td style="text-align:left">float</td>
+<td style="text-align:left">setFloat</td>
+<td style="text-align:left">getFloat</td>
+</tr>
+<tr>
+<td style="text-align:left">FLOAT</td>
+<td style="text-align:left">float</td>
+<td style="text-align:left">setFloat</td>
+<td style="text-align:left">getFloat</td>
+</tr>
+<tr>
+<td style="text-align:left">DOUBLE</td>
+<td style="text-align:left">double</td>
+<td style="text-align:left">setDouble</td>
+<td style="text-align:left">getDouble</td>
+</tr>
+<tr>
+<td style="text-align:left">VARBINARY</td>
+<td style="text-align:left">byte[]</td>
+<td style="text-align:left">setBytes</td>
+<td style="text-align:left">getBytes</td>
+</tr>
+<tr>
+<td style="text-align:left">BINARY</td>
+<td style="text-align:left">byte[]</td>
+<td style="text-align:left">setBytes</td>
+<td style="text-align:left">getBytes</td>
+</tr>
+<tr>
+<td style="text-align:left">DATE</td>
+<td style="text-align:left">java.sql.Date</td>
+<td style="text-align:left">setDate</td>
+<td style="text-align:left">getDate</td>
+</tr>
+<tr>
+<td style="text-align:left">TIME</td>
+<td style="text-align:left">java.sql.Time</td>
+<td style="text-align:left">setTime</td>
+<td style="text-align:left">getTime</td>
+</tr>
+<tr>
+<td style="text-align:left">TIMESTAMP</td>
+<td style="text-align:left">java.sql.Timestamp</td>
+<td style="text-align:left">setTimestamp</td>
+<td style="text-align:left">getTimestamp</td>
+</tr>
+<tr>
+<td style="text-align:left">CLOB</td>
+<td style="text-align:left">java.sql.Clob</td>
+<td style="text-align:left">setClob</td>
+<td style="text-align:left">getClob</td>
+</tr>
+<tr>
+<td style="text-align:left">BLOB</td>
+<td style="text-align:left">java.sql.Blob</td>
+<td style="text-align:left">setBlob</td>
+<td style="text-align:left">getBlob</td>
+</tr>
+<tr>
+<td style="text-align:left">ARRAY</td>
+<td style="text-align:left">java.sql.Array</td>
+<td style="text-align:left">setARRAY</td>
+<td style="text-align:left">getARRAY</td>
+</tr>
+<tr>
+<td style="text-align:left">REF</td>
+<td style="text-align:left">java.sql.Ref</td>
+<td style="text-align:left">SetRef</td>
+<td style="text-align:left">getRef</td>
+</tr>
+<tr>
+<td style="text-align:left">STRUCT</td>
+<td style="text-align:left">java.sql.Struct</td>
+<td style="text-align:left">SetStruct</td>
+<td style="text-align:left">getStruct</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
   <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
 
     
@@ -1407,128 +1670,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/14/Java学习笔记/17.Java学习笔记之进程和线程/" itemprop="url">
-                  Java学习笔记之进程和线程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-14T15:51:15+08:00" content="2016-06-14">
-              2016-06-14
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/14/Java学习笔记/17.Java学习笔记之进程和线程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/14/Java学习笔记/17.Java学习笔记之进程和线程/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/14/Java学习笔记/17.Java学习笔记之进程和线程/" class="leancloud_visitors" data-flag-title="Java学习笔记之进程和线程">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-text">阅读次数 </span>             
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="http://i.imgur.com/E5QmOkV.jpg" alt=""></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/14/Java学习笔记/17.Java学习笔记之进程和线程/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1574,7 +1715,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-count">72</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1582,7 +1723,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1591,7 +1732,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">108</span>
+                <span class="site-state-item-count">110</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
