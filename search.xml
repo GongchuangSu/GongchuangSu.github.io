@@ -4,6 +4,646 @@
   
     
     <entry>
+      <title><![CDATA[Web 前端学习笔记之 HTML 入门（3）]]></title>
+      <url>http://gongchuangsu.com/2016/12/29/Web%20%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%20%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%20HTML%20%E5%85%A5%E9%97%A8%EF%BC%883%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h1 id="HTML-表单"><a href="#HTML-表单" class="headerlink" title="HTML 表单"></a>HTML 表单</h1><p>HTML 表单用于搜集不同类型的用户输入。<code>&lt;form&gt;</code>标签定义了HTML表单。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;/echo&quot; method=&quot;POST&quot; name=&quot;myForm&quot;&gt;</span><br><span class="line">  &lt;p&gt;用户名：&lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;密码：&lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;button type=&quot;submit&quot;&gt;登录&lt;/button&gt;&lt;/p&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>form</code>元素中的属性列表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">accept-charset</td>
+<td style="text-align:left">UTF-8/ISO-8859-1/gb2312</td>
+<td style="text-align:left">规定服务器可处理的表单数据字符集</td>
+</tr>
+<tr>
+<td style="text-align:left">action</td>
+<td style="text-align:left"><em>URL</em></td>
+<td style="text-align:left">规定当提交表单时向何处发送表单数据</td>
+</tr>
+<tr>
+<td style="text-align:left">method</td>
+<td style="text-align:left">GET/POST</td>
+<td style="text-align:left">规定用于发送表单数据的 HTTP 方法</td>
+</tr>
+<tr>
+<td style="text-align:left">target</td>
+<td style="text-align:left">_blank/_self（默认）/_parent/_top/<em>framename</em></td>
+<td style="text-align:left">规定在何处打开 action URL</td>
+</tr>
+<tr>
+<td style="text-align:left">autocomplete</td>
+<td style="text-align:left">on/off</td>
+<td style="text-align:left">规定是否启用表单的自动完成功能（默认开启）</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left"><em>form_name</em></td>
+<td style="text-align:left">规定表单的名称</td>
+</tr>
+<tr>
+<td style="text-align:left">novalidate</td>
+<td style="text-align:left">novalidate</td>
+<td style="text-align:left">如果使用该属性，则提交表单时不进行验证</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：</p>
+<ol>
+<li><code>form</code>元素是块级元素，其前后会产生折行</li>
+<li><code>method</code>属性：<ul>
+<li>如果表单提交是被动的，并且没有敏感信息，一般使用GET（默认方法）；其表单数据在页面地址栏中是可见的</li>
+<li>如果表单正在更新数据或者包含敏感信息，一般使用POST；其安全性更加，在页面地址栏中被提交的数据是不可见的</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<hr>
+<blockquote>
+<p>表单设计要领:</p>
+<ul>
+<li>帮助用户不出错</li>
+<li>尽早提示错误</li>
+<li>扩大选择/点击区域</li>
+<li>控件较多时要分组</li>
+<li>主要动作和次要动作</li>
+</ul>
+</blockquote>
+<p>下面一一介绍 HTML 的表单元素。</p>
+<hr>
+<h1 id="input-元素"><a href="#input-元素" class="headerlink" title="input 元素"></a>input 元素</h1><p><code>&lt;input&gt;</code>标签用于搜索用户信息。<br><code>&lt;input&gt;</code>元素是最重要的表单元素，它根据不同的<code>type</code>属性值有很多形态。<br>下表列出了<code>type</code>属性值</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><code>type</code>属性值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">button</td>
+<td style="text-align:left">定义可点击按钮</td>
+</tr>
+<tr>
+<td style="text-align:left">checkbox</td>
+<td style="text-align:left">定义复选框</td>
+</tr>
+<tr>
+<td style="text-align:left">file</td>
+<td style="text-align:left">定义输入字段和 “浏览”按钮，供文件上传</td>
+</tr>
+<tr>
+<td style="text-align:left">hidden</td>
+<td style="text-align:left">定义隐藏的输入字段</td>
+</tr>
+<tr>
+<td style="text-align:left">image</td>
+<td style="text-align:left">定义图像形式的提交按钮</td>
+</tr>
+<tr>
+<td style="text-align:left">password</td>
+<td style="text-align:left">定义密码字段，该字段中的字符被掩码</td>
+</tr>
+<tr>
+<td style="text-align:left">radio</td>
+<td style="text-align:left">定义单选按钮</td>
+</tr>
+<tr>
+<td style="text-align:left">reset</td>
+<td style="text-align:left">定义重置按钮，重置按钮会清除表单中的所有数据</td>
+</tr>
+<tr>
+<td style="text-align:left">submit</td>
+<td style="text-align:left">定义提交按钮，提交按钮会把表单数据发送到服务器</td>
+</tr>
+<tr>
+<td style="text-align:left">text</td>
+<td style="text-align:left">定义单行的输入字段，用户可在其中输入文本。默认宽度为 20 个字符</td>
+</tr>
+<tr>
+<td style="text-align:left">date</td>
+<td style="text-align:left">选取日、月、年</td>
+</tr>
+<tr>
+<td style="text-align:left">datetime-local</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">month</td>
+<td style="text-align:left">选取月、年</td>
+</tr>
+<tr>
+<td style="text-align:left">week</td>
+<td style="text-align:left">选取周和年</td>
+</tr>
+<tr>
+<td style="text-align:left">time</td>
+<td style="text-align:left">选取时间（小时和分钟）</td>
+</tr>
+<tr>
+<td style="text-align:left">datetime</td>
+<td style="text-align:left">选取时间、日、月、年（UTC 时间）</td>
+</tr>
+<tr>
+<td style="text-align:left">datetime-local</td>
+<td style="text-align:left">选取时间、日、月、年（本地时间）</td>
+</tr>
+</tbody>
+</table>
+<p>更多HTML5 Input类型请参照<a href="http://www.w3school.com.cn/html5/html_5_form_input_types.asp" target="_blank" rel="external">该网站</a>。</p>
+<p>其他重要属性如下表所示</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>alt</code></td>
+<td style="text-align:left">text</td>
+<td style="text-align:left">定义图像输入的替代文本</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>autocomplete</code></td>
+<td style="text-align:left">on/off</td>
+<td style="text-align:left">规定是否使用输入字段的自动完成功能</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>autofocus</code></td>
+<td style="text-align:left">autofocus</td>
+<td style="text-align:left">规定输入字段在页面加载时是否获得焦点</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>checked</code></td>
+<td style="text-align:left">checked</td>
+<td style="text-align:left">规定此 input 元素首次加载时应当被选中</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>disabled</code></td>
+<td style="text-align:left">disabled</td>
+<td style="text-align:left">当 input 元素加载时禁用此元素（变灰）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>maxlength</code></td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">规定输入字段中的字符的最大长度</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>max</code>、<code>min</code></td>
+<td style="text-align:left">number/date</td>
+<td style="text-align:left">规定输入字段的最大值、最小值</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>multiple</code></td>
+<td style="text-align:left">multiple</td>
+<td style="text-align:left">如果使用该属性，则允许一个以上的值</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>pattern</code></td>
+<td style="text-align:left">regexp_pattern</td>
+<td style="text-align:left">规定输入字段的值的模式或格式</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>placeholder</code></td>
+<td style="text-align:left">text</td>
+<td style="text-align:left">规定帮助用户填写输入字段的提示</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>readonly</code></td>
+<td style="text-align:left">readonly</td>
+<td style="text-align:left">规定输入字段为只读</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>required</code></td>
+<td style="text-align:left">required</td>
+<td style="text-align:left">指示输入字段的值是必需的</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>size</code></td>
+<td style="text-align:left">number_of_char</td>
+<td style="text-align:left">定义输入字段的宽度</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>src</code></td>
+<td style="text-align:left"><em>URL</em></td>
+<td style="text-align:left">定义以提交按钮形式显示的图像的 URL</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>value</code></td>
+<td style="text-align:left">value</td>
+<td style="text-align:left">规定 input 元素的值</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：</p>
+<ol>
+<li>对于 <code>&lt;input type=&quot;text&quot;&gt;</code> 和 <code>&lt;input type=&quot;password&quot;&gt;</code>，size 属性定义的是可见的字符数。而对于其他类型，size 属性定义的是以像素为单位的输入字段宽度，它是一个可视化的设计属性</li>
+<li>对于<code>type</code>值为<code>checkbox</code>或<code>radio</code>的input，可以在其外面添加<code>label</code>标签，方便勾选操作</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;label&gt;</span><br><span class="line">    &lt;input type=&quot;checkbox&quot; name=&quot;fruit&quot; value=&quot;apple&quot;&gt;苹果</span><br><span class="line">&lt;/label&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>更多关于<code>&lt;input&gt;</code>标签的信息可参照<a href="http://www.w3school.com.cn/tags/tag_input.asp" target="_blank" rel="external">该网站</a>。</p>
+<hr>
+<h1 id="select-元素"><a href="#select-元素" class="headerlink" title="select 元素"></a>select 元素</h1><p><strong>定义和用法</strong><br>select 元素可创建单选或多选菜单。<br><code>&lt;select&gt;</code> 元素中的 <code>&lt;option&gt;</code> 标签用于定义列表中的可用选项。<br><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;select&gt;</span><br><span class="line">  &lt;option value =&quot;volvo&quot;&gt;Volvo&lt;/option&gt;</span><br><span class="line">  &lt;option value =&quot;saab&quot;&gt;Saab&lt;/option&gt;</span><br><span class="line">  &lt;option value=&quot;opel&quot;&gt;Opel&lt;/option&gt;</span><br><span class="line">  &lt;option value=&quot;audi&quot;&gt;Audi&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>select</code>元素中的属性列表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>autofocus</code></td>
+<td style="text-align:left">autofocus</td>
+<td style="text-align:left">规定在页面加载后文本区域自动获得焦点</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>disabled</code></td>
+<td style="text-align:left">disabled</td>
+<td style="text-align:left">规定禁用该下拉列表</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>form</code></td>
+<td style="text-align:left">form_id</td>
+<td style="text-align:left">规定文本区域所属的一个或多个表单</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>multiple</code></td>
+<td style="text-align:left">multiple</td>
+<td style="text-align:left">规定可选择多个选项</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>name</code></td>
+<td style="text-align:left"><em>name</em></td>
+<td style="text-align:left">规定下拉列表的名称</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>size</code></td>
+<td style="text-align:left"><em>number</em></td>
+<td style="text-align:left">规定下拉列表中可见选项的数目</td>
+</tr>
+</tbody>
+</table>
+<p><code>&lt;select&gt;</code>标签还可以与<code>&lt;optgroup&gt;</code>标签一起使用来把相关的选项组合在一起。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;label&gt;目的城市：&lt;/label&gt;</span><br><span class="line">&lt;select name=&quot;country&quot;&gt;</span><br><span class="line">  &lt;optgroup label=&quot;美洲&quot;&gt;</span><br><span class="line">    &lt;option&gt;多伦多&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;温哥华&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;旧金山&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;洛杉矶&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;纽约&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;华盛顿&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;里约热内卢&lt;/option&gt;</span><br><span class="line">  &lt;/optgroup&gt;</span><br><span class="line">  &lt;optgroup label=&quot;亚洲&quot;&gt;</span><br><span class="line">    &lt;option&gt;北京&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;上海&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;首尔&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;东京&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;香港&lt;/option&gt;</span><br><span class="line">  &lt;/optgroup&gt;</span><br><span class="line">  &lt;optgroup label=&quot;欧洲&quot;&gt;</span><br><span class="line">    &lt;option&gt;伦敦&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;巴黎&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;马德里&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;柏林&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;雅典&lt;/option&gt;</span><br><span class="line">  &lt;/optgroup&gt;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>说明：</p>
+<ol>
+<li>optgroup 元素用于组合选项。当您使用一个长的选项列表时，对相关的选项进行组合会使处理更加容易</li>
+<li>option 元素定义下拉列表中的一个选项（一个条目）</li>
+</ol>
+</blockquote>
+<hr>
+<h1 id="textarea-元素"><a href="#textarea-元素" class="headerlink" title="textarea 元素"></a>textarea 元素</h1><p><strong>定义和用法</strong><br><code>&lt;textarea&gt;</code> 标签定义多行的文本输入控件。<br><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;textarea rows=&quot;3&quot; cols=&quot;20&quot;&gt;</span><br><span class="line">可以通过 cols 和 rows 属性来规定 textarea 的尺寸，不过更好的办法是使用 CSS 的 height 和 width 属性。</span><br><span class="line">&lt;/textarea&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>textarea</code>元素中的属性列表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>autofocus</code></td>
+<td style="text-align:left">autofocus</td>
+<td style="text-align:left">规定在页面加载后文本区域自动获得焦点</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>disabled</code></td>
+<td style="text-align:left">disabled</td>
+<td style="text-align:left">规定禁用该文本区</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>form</code></td>
+<td style="text-align:left">form_id</td>
+<td style="text-align:left">规定文本区域所属的一个或多个表单</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>name</code></td>
+<td style="text-align:left"><em>name</em></td>
+<td style="text-align:left">规定文本区域的名称</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>cols</code></td>
+<td style="text-align:left"><em>number</em></td>
+<td style="text-align:left">规定文本区内的可见宽度</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>rows</code></td>
+<td style="text-align:left"><em>number</em></td>
+<td style="text-align:left">规定文本区内的可见行数</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>maxlength</code></td>
+<td style="text-align:left"><em>number</em></td>
+<td style="text-align:left">规定文本区域的最大字符数</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>placeholder</code></td>
+<td style="text-align:left">text</td>
+<td style="text-align:left">规定描述文本区域预期值的简短提示</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>readonly</code></td>
+<td style="text-align:left">readonly</td>
+<td style="text-align:left">规定文本区为只读</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>required</code></td>
+<td style="text-align:left">required</td>
+<td style="text-align:left">规定文本区域是必填的</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>wrap</code></td>
+<td style="text-align:left">hard/soft</td>
+<td style="text-align:left">规定当在表单中提交时，文本区域中的文本如何换行</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="button-元素"><a href="#button-元素" class="headerlink" title="button 元素"></a>button 元素</h1><p><strong>定义和用法</strong><br><code>&lt;button&gt;</code> 标签定义一个按钮。<br>在 button 元素内部，您可以放置内容，比如文本或图像。这是该元素与使用 input 元素创建的按钮之间的不同之处。</p>
+<blockquote>
+<p>说明：请始终为按钮规定 type 属性。Internet Explorer 的默认类型是 “button”，而其他浏览器中（包括 W3C 规范）的默认值是 “submit”。</p>
+</blockquote>
+<p><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;/example/html/form_action.asp&quot; method=&quot;get&quot;&gt;</span><br><span class="line">  First name: &lt;input type=&quot;text&quot; name=&quot;fname&quot; /&gt;&lt;br /&gt;</span><br><span class="line">  Last name: &lt;input type=&quot;text&quot; name=&quot;lname&quot; /&gt;&lt;br /&gt;</span><br><span class="line">  &lt;button type=&quot;submit&quot; value=&quot;Submit&quot;&gt;Submit&lt;/button&gt;</span><br><span class="line">  &lt;button type=&quot;reset&quot; value=&quot;Reset&quot;&gt;Reset&lt;/button&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure></p>
+<p>更多关于<code>&lt;button&gt;</code>标签的信息可参照<a href="http://www.w3school.com.cn/tags/tag_button.asp" target="_blank" rel="external">该网站</a>。</p>
+<hr>
+<h1 id="其它表单元素"><a href="#其它表单元素" class="headerlink" title="其它表单元素"></a>其它表单元素</h1><p>HTML5 增加了如下表单元素：</p>
+<ul>
+<li><code>&lt;datalist&gt;</code></li>
+<li><code>&lt;keygen&gt;</code></li>
+<li><code>&lt;output&gt;</code></li>
+</ul>
+<h2 id="datalist-元素"><a href="#datalist-元素" class="headerlink" title="datalist 元素"></a>datalist 元素</h2><p><strong>定义和用法</strong><br><code>&lt;datalist&gt;</code> 元素为 <code>&lt;input&gt;</code> 元素规定预定义选项列表。<br>用户会在他们输入数据时看到预定义选项的下拉列表。</p>
+<blockquote>
+<p>注：</p>
+<ol>
+<li><code>&lt;input&gt;</code> 元素的 list 属性必须引用 <code>&lt;datalist&gt;</code> 元素的 id 属性</li>
+<li>所有主流浏览器都支持 <code>&lt;datalist&gt;</code> 标签，除了 Internet Explorer 和 Safari</li>
+</ol>
+</blockquote>
+<p><strong>实例</strong>：通过 <code>&lt;datalist&gt;</code> 设置预定义值的 <code>&lt;input&gt;</code> 元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;action_page.php&quot;&gt;</span><br><span class="line">&lt;input list=&quot;browsers&quot;&gt;</span><br><span class="line">&lt;datalist id=&quot;browsers&quot;&gt;</span><br><span class="line">   &lt;option value=&quot;Internet Explorer&quot;&gt;</span><br><span class="line">   &lt;option value=&quot;Firefox&quot;&gt;</span><br><span class="line">   &lt;option value=&quot;Chrome&quot;&gt;</span><br><span class="line">   &lt;option value=&quot;Opera&quot;&gt;</span><br><span class="line">   &lt;option value=&quot;Safari&quot;&gt;</span><br><span class="line">&lt;/datalist&gt; </span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="keygen-元素"><a href="#keygen-元素" class="headerlink" title="keygen 元素"></a>keygen 元素</h2><p><strong>定义和用法</strong><br><code>&lt;keygen&gt;</code> 标签规定用于表单的密钥对生成器字段。当提交表单时，私钥存储在本地，公钥发送到服务器。</p>
+<blockquote>
+<p>注：所有主流浏览器都支持 <code>&lt;keygen&gt;</code> 标签，除了 Internet Explorer 和 Safari。</p>
+</blockquote>
+<p><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;demo_keygen.asp&quot; method=&quot;get&quot;&gt;</span><br><span class="line">Username: &lt;input type=&quot;text&quot; name=&quot;usr_name&quot; /&gt;</span><br><span class="line">Encryption: &lt;keygen name=&quot;security&quot; /&gt;</span><br><span class="line">&lt;input type=&quot;submit&quot; /&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>keygen</code>元素中的属性列表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>form</code></td>
+<td style="text-align:left"><em>formname</em></td>
+<td style="text-align:left">定义该 keygen 字段所属的一个或多个表单</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>keytype</code></td>
+<td style="text-align:left">disabled</td>
+<td style="text-align:left">定义 keytype，rsa 生成 RSA 密钥</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>name</code></td>
+<td style="text-align:left"><em>fieldname</em></td>
+<td style="text-align:left">定义 keygen 元素的唯一名称</td>
+</tr>
+</tbody>
+</table>
+<h2 id="output-元素"><a href="#output-元素" class="headerlink" title="output 元素"></a>output 元素</h2><p><strong>定义和用法</strong><br><code>&lt;output&gt;</code> 标签定义不同类型的输出，比如脚本的输出。</p>
+<blockquote>
+<p>注：Internet Explorer 8 以及更早的版本不支持 <code>&lt;output&gt;</code> 标签。</p>
+</blockquote>
+<p><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form oninput=&quot;x.value=parseInt(a.value)+parseInt(b.value)&quot;&gt;0</span><br><span class="line">   &lt;input type=&quot;range&quot; id=&quot;a&quot; value=&quot;50&quot;&gt;100</span><br><span class="line">   +&lt;input type=&quot;number&quot; id=&quot;b&quot; value=&quot;50&quot;&gt;</span><br><span class="line">   =&lt;output name=&quot;x&quot; for=&quot;a b&quot;&gt;&lt;/output&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>output</code>元素中的属性列表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>for</code></td>
+<td style="text-align:left"><em>element_id</em></td>
+<td style="text-align:left">定义输出域相关的一个或多个元素</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>form</code></td>
+<td style="text-align:left"><em>form_id</em></td>
+<td style="text-align:left">定义输入字段所属的一个或多个表单</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>name</code></td>
+<td style="text-align:left"><em>name</em></td>
+<td style="text-align:left">定义对象的唯一名称</td>
+</tr>
+</tbody>
+</table>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><a href="http://www.w3school.com.cn/h.asp" target="_blank" rel="external">w3school</a></li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Web 前端学习笔记之 HTML 入门（2）]]></title>
+      <url>http://gongchuangsu.com/2016/12/29/Web%20%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%20%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%20HTML%20%E5%85%A5%E9%97%A8%EF%BC%882%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h1 id="HTML-链接（超链接）"><a href="#HTML-链接（超链接）" class="headerlink" title="HTML 链接（超链接）"></a>HTML 链接（超链接）</h1><p>超链接可以是一个字，一个词，或者一组词，也可以是一幅图像，可以点击这些内容来跳转到新的文档或者当前文档中的某个部分。<br>可以通过使用<code>&lt;a&gt;</code>标签在 HTML 中创建链接，有两种使用<code>&lt;a&gt;</code>标签的方式：</p>
+<blockquote>
+<ol>
+<li>通过使用 href 属性 - 创建指向另一个文档的链接</li>
+<li>通过使用 name 属性 - 创建文档内的书签</li>
+</ol>
+</blockquote>
+<h2 id="URL-格式"><a href="#URL-格式" class="headerlink" title="URL 格式"></a>URL 格式</h2><p><img src="http://i.imgur.com/xMapive.jpg" alt="URL格式"></p>
+<blockquote>
+<p>格式说明：</p>
+<ul>
+<li>协议（protocol）：指定使用的传输协议，如https、http、file等</li>
+<li>主机名（host）：指存放资源的服务器的域名系统（DNS）主机名或IP地址</li>
+<li>端口号（port）：整数，可选，省略时使用方案的默认端口，各种传输协议都有默认的端口号，如http的默认端口为80</li>
+<li>路径（path）：由零或多个“/”符号隔开的字符串，一般用来表示主机上的一个目录或文件地址</li>
+<li>查询（query）：可选，用于给动态网页（如使用CGI、ISAPI、PHP/JSP/ASP/ASP。NET等技术制作的网页）传递参数，可有多个参数，用“&amp;”符号隔开，每个参数的名和值用“=”符号隔开</li>
+<li>信息片段（fragment）：字符串，用于指定网络资源中的片断。例如一个网页中有多个名词解释，可使用fragment直接定位到某一名词解释</li>
+</ul>
+</blockquote>
+<h2 id="HTML-链接语法"><a href="#HTML-链接语法" class="headerlink" title="HTML 链接语法"></a>HTML 链接语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://www.w3.org&quot;&gt;W3C&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>说明 ：</p>
+<ol>
+<li><code>href</code> 属性规定链接的目标</li>
+<li>“链接文本” 不必一定是文本。图片或其他 HTML 元素都可以成为链接。</li>
+</ol>
+</blockquote>
+<h2 id="页面内链接（锚点）"><a href="#页面内链接（锚点）" class="headerlink" title="页面内链接（锚点）"></a>页面内链接（锚点）</h2><p><code>name</code>属性规定锚点的名称。当使用命名锚（named anchors）时，我们可以创建直接跳至该命名锚（比如页面中某个小节）的链接。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;锚点&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;&lt;a href=&quot;#test&quot;&gt;到test&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p id=&quot;test&quot;&gt;test&lt;/p&gt;</span><br><span class="line">&lt;p&gt;&lt;a href=&quot;#&quot;&gt;回顶部&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>说明：可以使用<code>id</code>属性来代替<code>name</code>属性，命名锚同样有效</p>
+</blockquote>
+<h2 id="链接目标"><a href="#链接目标" class="headerlink" title="链接目标"></a>链接目标</h2><p>通过<code>target</code>属性，可以定义被链接的文档在何处显示。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">_blank</td>
+<td style="text-align:left">在新窗口中打开被链接文档</td>
+</tr>
+<tr>
+<td style="text-align:left">_self</td>
+<td style="text-align:left">默认。在相同的框架中打开被链接文档</td>
+</tr>
+<tr>
+<td style="text-align:left">_parent</td>
+<td style="text-align:left">在父框架集中打开被链接文档</td>
+</tr>
+<tr>
+<td style="text-align:left">_top</td>
+<td style="text-align:left">在整个窗口中打开被链接文档</td>
+</tr>
+<tr>
+<td style="text-align:left">framename</td>
+<td style="text-align:left">在指定的框架中打开被链接文档</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://www.w3.org&quot; target=&quot;_self&quot;&gt;W3C（当前窗口）&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://www.w3.org&quot; target=&quot;_blank&quot;&gt;W3C（新窗口）&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://www.w3.org&quot; target=&quot;abc&quot;&gt;W3C（abc）&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://www.example.com&quot; target=&quot;abc&quot;&gt;Example（abc）&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="相对路径和绝对路径"><a href="#相对路径和绝对路径" class="headerlink" title="相对路径和绝对路径"></a>相对路径和绝对路径</h2><p>链接中的特殊符号及其代表的意义</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">符号</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>.</code></td>
+<td style="text-align:left">代表目前所在目录，相对路径</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>..</code></td>
+<td style="text-align:left">代表上一级目录，相对路径</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>../../</code></td>
+<td style="text-align:left">代表上一级目录的上一级目录，相对路径</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>/</code></td>
+<td style="text-align:left">代表根目录，绝对路径</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>在使用相对路径时，使用<code>.</code>来表示当前目录，使用<code>..</code>来表示当前目录的父目录。</p>
+</blockquote>
+<hr>
+<h1 id="HTML-图像"><a href="#HTML-图像" class="headerlink" title="HTML 图像"></a>HTML 图像</h1><p>在 HTML 中，图像由 <code>&lt;img&gt;</code> 标签定义，<code>&lt;img&gt;</code> 标签是空标签，只包含属性，没有闭合标签。<br>定义图像的语法：<code>&lt;img src=&quot;url&quot; /&gt;</code>，<code>src</code>属性的值为图像的URL地址。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/path/to/img.jpg&quot; alt=&quot;替代文字&quot;</span><br><span class="line">     width=&quot;300&quot; height=&quot;200&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>说明：<code>alt</code>属性规定了图像的替代文本。<code>width</code>和<code>height</code>属性设置了图像的大小，其值可以为pixels或%。</p>
+</blockquote>
+<p><code>&lt;img&gt;</code> 标签通常配合<code>&lt;figure&gt;</code> 标签一起使用来表示图像。<br><code>&lt;figure&gt;</code> 标签规定了独立的流内容，如图像、图表、照片、代码等等。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;figure&gt;</span><br><span class="line">    &lt;img src=&quot;/path/to/img.png&quot; alt=&quot;替代文字&quot;&gt;</span><br><span class="line">    &lt;figcaption&gt;图片说明&lt;/figcaption&gt;</span><br><span class="line">&lt;/figure&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>说明：<code>&lt;figcaption&gt;</code>元素为<code>figure</code>添加标题（caption）</p>
+</blockquote>
+<hr>
+<h1 id="HTML-表格"><a href="#HTML-表格" class="headerlink" title="HTML 表格"></a>HTML 表格</h1><p>表格由 <code>&lt;table&gt;</code> 标签来定义。每个表格均有若干行（由 <code>&lt;tr&gt;</code> 标签定义），每行被分割为若干单元格（由 <code>&lt;td&gt;</code> 标签定义）。字母 <code>td</code> 指表格数据（table data），即数据单元格的内容。数据单元格可以包含文本、图片、列表、段落、表单、水平线、表格等等。<br><strong>表格标签</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">表格</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>&lt;table&gt;</code></td>
+<td style="text-align:left">定义表格</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;caption&gt;</code></td>
+<td style="text-align:left">定义表格标题</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;th&gt;</code></td>
+<td style="text-align:left">定义表格的表头</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;tr&gt;</code></td>
+<td style="text-align:left">定义表格的行</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;td&gt;</code></td>
+<td style="text-align:left">定义表格单元</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;thead&gt;</code></td>
+<td style="text-align:left">定义表格的页眉</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;tbody&gt;</code></td>
+<td style="text-align:left">定义表格的主体</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;tfoot&gt;</code></td>
+<td style="text-align:left">定义表格的页脚</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;col&gt;</code></td>
+<td style="text-align:left">定义用于表格列的属性</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;colgroup&gt;</code></td>
+<td style="text-align:left">定义表格列的组</td>
+</tr>
+</tbody>
+</table>
+<p><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">  &lt;thead&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">      &lt;th&gt;浏览器&lt;/th&gt;</span><br><span class="line">      &lt;th&gt;渲染引擎&lt;/th&gt;</span><br><span class="line">      &lt;th&gt;JavaScript 引擎&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">  &lt;/thead&gt;</span><br><span class="line">  &lt;tbody&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">      &lt;th&gt;Chrome&lt;/th&gt;</span><br><span class="line">      &lt;td&gt;Blink&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;V8&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">      &lt;th&gt;Opera&lt;/th&gt;</span><br><span class="line">      &lt;td&gt;Blink&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;V8&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">      &lt;th&gt;Firefox&lt;/th&gt;</span><br><span class="line">      &lt;td&gt;Gecko&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;SpiderMonkey&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">      &lt;th&gt;Edge&lt;/th&gt;</span><br><span class="line">      &lt;td&gt;EdgeHTML&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;Chakra&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">  &lt;/tbody&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>效果</strong></p>
+<p><html><table border="1"><thead><tr><th>浏览器</th><th>渲染引擎</th><th>JavaScript 引擎</th></tr></thead><tbody><tr><th>Chrome</th><td>Blink</td><td>V8</td></tr><tr><th>Opera</th><td>Blink</td><td>V8</td></tr><tr><th>Firefox</th><td>Gecko</td><td>SpiderMonkey</td></tr></tbody></table></html></p>
+<blockquote>
+<p>说明：</p>
+<ol>
+<li>合并行：在<code>&lt;td&gt;</code>标签中设置<code>rowspan</code>属性可以规定单元格可横跨的行数</li>
+<li>合并列：在<code>&lt;td&gt;</code>标签中设置<code>colspan</code>属性可以规定单元格可横跨的列数</li>
+<li>若要设置<code>&lt;caption&gt;</code>，其必须是<code>&lt;table&gt;</code>的第一个元素</li>
+<li>若需要对全部列应用样式，<code>&lt;colgroup&gt;</code>标签将会很有用</li>
+</ol>
+</blockquote>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><a href="http://www.w3school.com.cn/h.asp" target="_blank" rel="external">w3school</a></li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Web 前端学习笔记之 HTML 入门（1）]]></title>
       <url>http://gongchuangsu.com/2016/12/28/Web%20%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%20%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%20HTML%20%E5%85%A5%E9%97%A8%EF%BC%881%EF%BC%89/</url>
       <content type="html"><![CDATA[<h1 id="HTML-简介"><a href="#HTML-简介" class="headerlink" title="HTML 简介"></a>HTML 简介</h1><h2 id="什么是-HTML"><a href="#什么是-HTML" class="headerlink" title="什么是 HTML"></a>什么是 HTML</h2><p><strong>HTML</strong> 是一种使用<strong>标签</strong>来描述页面的<strong>内容</strong>和<strong>结构</strong>的语言。</p>
@@ -4420,12 +5060,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://gongchuangsu.com/categories/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[about]]></title>
       <url>http://gongchuangsu.com/about/index.html</url>
       <content type="html"><![CDATA[<p><img src="http://i.imgur.com/hChnLrh.gif" alt=""></p>
@@ -4435,6 +5069,12 @@
 <h1 id="Contact"><a href="#Contact" class="headerlink" title="Contact"></a>Contact</h1><p><strong>Email</strong>: sgc0515@gmail.com<br><strong>CSDN</strong>: <a href="http://blog.csdn.net/gongchuangsu" target="_blank" rel="external">贱贱的梦想</a><br><strong>GitHub</strong>: <a href="https://github.com/GongchuangSu" target="_blank" rel="external">GongchuangSu</a></p>
 <h1 id="我的阅读书单"><a href="#我的阅读书单" class="headerlink" title="我的阅读书单"></a>我的阅读书单</h1><table width="95%" border="1" cellspacing="0" cellpadding="0" style="margin:0;padding:0;word-break:break-all; word-wrap:break-all; "><br><tr align="center"> <th rowspan="2" width="150">书名</th> <th colspan="2">阅读时间</th> <th rowspan="2" width="30">阅读进度</th> <th rowspan="2">评价</th> </tr> <tr> <th width="80">起始时间</th> <th width="80">终止时间</th> </tr> <tr align="center"> <td><img src="http://i.imgur.com/OIH4pqu.jpg" width="200" height="280" alt="Java编程思想"></td> <td>2016.04.01</td> <td>至今</td> <td>50%</td> <td>经典之作！内容讲的很深刻！但是个人感觉内容太杂，没有条理性，阅读起来可能会迷迷糊糊！</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/wSy2vCw.jpg" width="200" height="280" alt="Effective Java中文版（第2版）"></td> <td>2016.04.01</td> <td>至今</td> <td>5%</td> <td>值得仔细研读！对Java编程思想有深刻的认识！</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/KZw0u5n.jpg" width="200" height="280" alt="java核心技术卷I"></td> <td>2016.04.01</td> <td>至今</td> <td>10 </td> <td>这本要比Java编程思想有条理，内容也比较浅显，适合入门。</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/MYJNv9F.jpg" width="200" height="280" alt="java核心技术卷Ⅱ"></td> <td>待定</td> <td>待定</td> <td>未读</td> <td>待定</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/2Hn8P6J.jpg" width="200" height="280" alt="Java Web从入门到精通"></td> <td>2016.6.15</td> <td>至今</td> <td>80%</td> <td>这本书对Java Web技术进行了系统的介绍，涉及到很多技术，但讲的都是最基本的，要想有更深入的学习，还得进一步的对应地学习。</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/7mtAHB8.jpg" width="200" height="280" alt="Spring实战（第四版）"></td> <td>2016.10.20</td> <td>至今</td> <td>10%</td> <td>还在研读中。。。</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/MCwvAGE.jpg" width="200" height="280" alt="Redis实战"></td> <td>2016.10.20</td> <td>至今</td> <td>10%</td> <td>还在研读中。。。</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/50fSILT.jpg" width="200" height="280" alt="Spring技术内幕：深入解析Spring架构与设计原理（第2版）"></td> <td>2016.6.15</td> <td>至今</td> <td>5%</td> <td>系统的对Spring框架的使用进行了介绍和分析，从原理到应用，逐步实现</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/gWynkNJ.jpg" width="200" height="280" alt="Servlet JSP深入详解 基于Tomcat的Web开发"></td> <td>2016.6.15</td> <td>至今</td> <td>5%</td> <td>学习Servlet和JSP技术很好的一本教材</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/6ianpBn.jpg" width="200" height="280" alt="大话数据结构"></td> <td>2016.3.15</td> <td>至今</td> <td>90%</td> <td>通俗易懂的对数据结构进行了全面的介绍，很好的一本教材！</td> </tr></table>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[categories]]></title>
+      <url>http://gongchuangsu.com/categories/index.html</url>
+      <content type="html"></content>
     </entry>
     
     <entry>
