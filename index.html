@@ -453,8 +453,7 @@
 
       
         
-          
-            <h1 id="HTML-链接（超链接）"><a href="#HTML-链接（超链接）" class="headerlink" title="HTML 链接（超链接）"></a>HTML 链接（超链接）</h1><p>超链接可以是一个字，一个词，或者一组词，也可以是一幅图像，可以点击这些内容来跳转到新的文档或者当前文档中的某个部分。<br>可以通过使用<code>&lt;a&gt;</code>标签在 HTML 中创建链接，有两种使用<code>&lt;a&gt;</code>标签的方式：</p>
+          <h1 id="HTML-链接（超链接）"><a href="#HTML-链接（超链接）" class="headerlink" title="HTML 链接（超链接）"></a>HTML 链接（超链接）</h1><p>超链接可以是一个字，一个词，或者一组词，也可以是一幅图像，可以点击这些内容来跳转到新的文档或者当前文档中的某个部分。<br>可以通过使用<code>&lt;a&gt;</code>标签在 HTML 中创建链接，有两种使用<code>&lt;a&gt;</code>标签的方式：</p>
 <blockquote>
 <ol>
 <li>通过使用 href 属性 - 创建指向另一个文档的链接</li>
@@ -473,158 +472,11 @@
 <li>信息片段（fragment）：字符串，用于指定网络资源中的片断。例如一个网页中有多个名词解释，可使用fragment直接定位到某一名词解释</li>
 </ul>
 </blockquote>
-<h2 id="HTML-链接语法"><a href="#HTML-链接语法" class="headerlink" title="HTML 链接语法"></a>HTML 链接语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://www.w3.org&quot;&gt;W3C&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>说明 ：</p>
-<ol>
-<li><code>href</code> 属性规定链接的目标</li>
-<li>“链接文本” 不必一定是文本。图片或其他 HTML 元素都可以成为链接。</li>
-</ol>
-</blockquote>
-<h2 id="页面内链接（锚点）"><a href="#页面内链接（锚点）" class="headerlink" title="页面内链接（锚点）"></a>页面内链接（锚点）</h2><p><code>name</code>属性规定锚点的名称。当使用命名锚（named anchors）时，我们可以创建直接跳至该命名锚（比如页面中某个小节）的链接。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;锚点&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;&lt;a href=&quot;#test&quot;&gt;到test&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p id=&quot;test&quot;&gt;test&lt;/p&gt;</span><br><span class="line">&lt;p&gt;&lt;a href=&quot;#&quot;&gt;回顶部&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br><span class="line">&lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt; &lt;p&gt;0&lt;/p&gt;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>说明：可以使用<code>id</code>属性来代替<code>name</code>属性，命名锚同样有效</p>
-</blockquote>
-<h2 id="链接目标"><a href="#链接目标" class="headerlink" title="链接目标"></a>链接目标</h2><p>通过<code>target</code>属性，可以定义被链接的文档在何处显示。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">值</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">_blank</td>
-<td style="text-align:left">在新窗口中打开被链接文档</td>
-</tr>
-<tr>
-<td style="text-align:left">_self</td>
-<td style="text-align:left">默认。在相同的框架中打开被链接文档</td>
-</tr>
-<tr>
-<td style="text-align:left">_parent</td>
-<td style="text-align:left">在父框架集中打开被链接文档</td>
-</tr>
-<tr>
-<td style="text-align:left">_top</td>
-<td style="text-align:left">在整个窗口中打开被链接文档</td>
-</tr>
-<tr>
-<td style="text-align:left">framename</td>
-<td style="text-align:left">在指定的框架中打开被链接文档</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://www.w3.org&quot; target=&quot;_self&quot;&gt;W3C（当前窗口）&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://www.w3.org&quot; target=&quot;_blank&quot;&gt;W3C（新窗口）&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://www.w3.org&quot; target=&quot;abc&quot;&gt;W3C（abc）&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://www.example.com&quot; target=&quot;abc&quot;&gt;Example（abc）&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="相对路径和绝对路径"><a href="#相对路径和绝对路径" class="headerlink" title="相对路径和绝对路径"></a>相对路径和绝对路径</h2><p>链接中的特殊符号及其代表的意义</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">符号</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>.</code></td>
-<td style="text-align:left">代表目前所在目录，相对路径</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>..</code></td>
-<td style="text-align:left">代表上一级目录，相对路径</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>../../</code></td>
-<td style="text-align:left">代表上一级目录的上一级目录，相对路径</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>/</code></td>
-<td style="text-align:left">代表根目录，绝对路径</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>在使用相对路径时，使用<code>.</code>来表示当前目录，使用<code>..</code>来表示当前目录的父目录。</p>
-</blockquote>
-<hr>
-<h1 id="HTML-图像"><a href="#HTML-图像" class="headerlink" title="HTML 图像"></a>HTML 图像</h1><p>在 HTML 中，图像由 <code>&lt;img&gt;</code> 标签定义，<code>&lt;img&gt;</code> 标签是空标签，只包含属性，没有闭合标签。<br>定义图像的语法：<code>&lt;img src=&quot;url&quot; /&gt;</code>，<code>src</code>属性的值为图像的URL地址。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/path/to/img.jpg&quot; alt=&quot;替代文字&quot;</span><br><span class="line">     width=&quot;300&quot; height=&quot;200&quot;&gt;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>说明：<code>alt</code>属性规定了图像的替代文本。<code>width</code>和<code>height</code>属性设置了图像的大小，其值可以为pixels或%。</p>
-</blockquote>
-<p><code>&lt;img&gt;</code> 标签通常配合<code>&lt;figure&gt;</code> 标签一起使用来表示图像。<br><code>&lt;figure&gt;</code> 标签规定了独立的流内容，如图像、图表、照片、代码等等。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;figure&gt;</span><br><span class="line">    &lt;img src=&quot;/path/to/img.png&quot; alt=&quot;替代文字&quot;&gt;</span><br><span class="line">    &lt;figcaption&gt;图片说明&lt;/figcaption&gt;</span><br><span class="line">&lt;/figure&gt;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>说明：<code>&lt;figcaption&gt;</code>元素为<code>figure</code>添加标题（caption）</p>
-</blockquote>
-<hr>
-<h1 id="HTML-表格"><a href="#HTML-表格" class="headerlink" title="HTML 表格"></a>HTML 表格</h1><p>表格由 <code>&lt;table&gt;</code> 标签来定义。每个表格均有若干行（由 <code>&lt;tr&gt;</code> 标签定义），每行被分割为若干单元格（由 <code>&lt;td&gt;</code> 标签定义）。字母 <code>td</code> 指表格数据（table data），即数据单元格的内容。数据单元格可以包含文本、图片、列表、段落、表单、水平线、表格等等。<br><strong>表格标签</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">表格</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>&lt;table&gt;</code></td>
-<td style="text-align:left">定义表格</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;caption&gt;</code></td>
-<td style="text-align:left">定义表格标题</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;th&gt;</code></td>
-<td style="text-align:left">定义表格的表头</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;tr&gt;</code></td>
-<td style="text-align:left">定义表格的行</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;td&gt;</code></td>
-<td style="text-align:left">定义表格单元</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;thead&gt;</code></td>
-<td style="text-align:left">定义表格的页眉</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;tbody&gt;</code></td>
-<td style="text-align:left">定义表格的主体</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;tfoot&gt;</code></td>
-<td style="text-align:left">定义表格的页脚</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;col&gt;</code></td>
-<td style="text-align:left">定义用于表格列的属性</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;colgroup&gt;</code></td>
-<td style="text-align:left">定义表格列的组</td>
-</tr>
-</tbody>
-</table>
-<p><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">  &lt;thead&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">      &lt;th&gt;浏览器&lt;/th&gt;</span><br><span class="line">      &lt;th&gt;渲染引擎&lt;/th&gt;</span><br><span class="line">      &lt;th&gt;JavaScript 引擎&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">  &lt;/thead&gt;</span><br><span class="line">  &lt;tbody&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">      &lt;th&gt;Chrome&lt;/th&gt;</span><br><span class="line">      &lt;td&gt;Blink&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;V8&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">      &lt;th&gt;Opera&lt;/th&gt;</span><br><span class="line">      &lt;td&gt;Blink&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;V8&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">      &lt;th&gt;Firefox&lt;/th&gt;</span><br><span class="line">      &lt;td&gt;Gecko&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;SpiderMonkey&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">      &lt;th&gt;Edge&lt;/th&gt;</span><br><span class="line">      &lt;td&gt;EdgeHTML&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;Chakra&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">  &lt;/tbody&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure></p>
-<p><strong>效果</strong></p>
-<p><html><table border="1"><thead><tr><th>浏览器</th><th>渲染引擎</th><th>JavaScript 引擎</th></tr></thead><tbody><tr><th>Chrome</th><td>Blink</td><td>V8</td></tr><tr><th>Opera</th><td>Blink</td><td>V8</td></tr><tr><th>Firefox</th><td>Gecko</td><td>SpiderMonkey</td></tr></tbody></table></html></p>
-<blockquote>
-<p>说明：</p>
-<ol>
-<li>合并行：在<code>&lt;td&gt;</code>标签中设置<code>rowspan</code>属性可以规定单元格可横跨的行数</li>
-<li>合并列：在<code>&lt;td&gt;</code>标签中设置<code>colspan</code>属性可以规定单元格可横跨的列数</li>
-<li>若要设置<code>&lt;caption&gt;</code>，其必须是<code>&lt;table&gt;</code>的第一个元素</li>
-<li>若需要对全部列应用样式，<code>&lt;colgroup&gt;</code>标签将会很有用</li>
-</ol>
-</blockquote>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
-<li><a href="http://www.w3school.com.cn/h.asp" target="_blank" rel="external">w3school</a></li>
-</ol>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/29/Web 前端学习笔记/Web 前端学习笔记之 HTML 入门（2）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
