@@ -8,6 +8,7 @@
       <url>http://gongchuangsu.com/2016/12/29/Web%20%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%20%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%20HTML%20%E5%85%A5%E9%97%A8%EF%BC%883%EF%BC%89/</url>
       <content type="html"><![CDATA[<h1 id="HTML-表单"><a href="#HTML-表单" class="headerlink" title="HTML 表单"></a>HTML 表单</h1><p>HTML 表单用于搜集不同类型的用户输入。<code>&lt;form&gt;</code>标签定义了HTML表单。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;/echo&quot; method=&quot;POST&quot; name=&quot;myForm&quot;&gt;</span><br><span class="line">  &lt;p&gt;用户名：&lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;密码：&lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;button type=&quot;submit&quot;&gt;登录&lt;/button&gt;&lt;/p&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure></p>
 <p><code>form</code>元素中的属性列表</p>
+<a id="more"></a>
 <table>
 <thead>
 <tr>
@@ -5072,14 +5073,14 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://gongchuangsu.com/categories/index.html</url>
+      <title><![CDATA[tags]]></title>
+      <url>http://gongchuangsu.com/tags/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[tags]]></title>
-      <url>http://gongchuangsu.com/tags/index.html</url>
+      <title><![CDATA[categories]]></title>
+      <url>http://gongchuangsu.com/categories/index.html</url>
       <content type="html"></content>
     </entry>
     
