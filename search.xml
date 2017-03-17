@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title><![CDATA[“无法连接到.SQLEXPRESS，用户'sa'登录失败（错误18456）”问题解决方案]]></title>
+      <url>http://gongchuangsu.com/2017/03/17/%E5%85%B6%E5%AE%83/%E2%80%9C%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E5%88%B0.SQLEXPRESS%EF%BC%8C%E7%94%A8%E6%88%B7'sa'%E7%99%BB%E5%BD%95%E5%A4%B1%E8%B4%A5%EF%BC%88%E9%94%99%E8%AF%AF18456%EF%BC%89%E2%80%9D%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+      <content type="html"><![CDATA[<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><blockquote>
+<p>无法连接到.SQLEXPRESS，用户’sa’登录失败（错误18456）</p>
+</blockquote>
+<p><img src="http://i1.piimg.com/4851/bb6b8171f1c73a42.png" alt=""></p>
+<a id="more"></a>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>1、先用“Windows身份验证”进行登陆连接<br><img src="http://i1.piimg.com/4851/5360c1c3be48633d.png" alt=""></p>
+<p>2、选择 <strong>安全性</strong> –&gt; <strong>登录名</strong> 下的<strong>sa</strong>并双击，弹出登陆属性界面，选择 <strong>常规</strong>，设置<strong>sa</strong>登陆密码<br><img src="http://i1.piimg.com/4851/48b8a250990df4da.png" alt=""></p>
+<p>选择 <strong>状态</strong>，启用登陆<br><img src="http://i1.piimg.com/4851/77350ff3a7d98d29.png" alt=""></p>
+<p>3、选择服务器，并右键属性，选择<strong>安全性</strong>，选择“SQL Server 和 Windows 身份验证模式”<br><img src="http://i1.piimg.com/4851/adedf08937c63674.png" alt=""></p>
+<p>4、选择服务器，右键选择<strong>重新启动</strong></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[“provider 命名管道提供程序, error 40 - 无法打开到 SQL Server 的连接”问题解决方案]]></title>
+      <url>http://gongchuangsu.com/2017/03/17/%E5%85%B6%E5%AE%83/%E2%80%9Cprovider%20%E5%91%BD%E5%90%8D%E7%AE%A1%E9%81%93%E6%8F%90%E4%BE%9B%E7%A8%8B%E5%BA%8F,%20error%2040%20-%20%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E5%88%B0%20SQL%20Server%20%E7%9A%84%E8%BF%9E%E6%8E%A5%E2%80%9D%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+      <content type="html"><![CDATA[<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><blockquote>
+<p>异常详细信息：在与 SQL Server 建立连接时出现与网络相关的或特定于实例的错误。未找到或无法访问服务器。请验证实例名称是否正确并且 SQL Server 已配置为允许远程连接。 (provider: 命名管道提供程序, error: 40 - 无法打开到 SQL Server 的连接)</p>
+</blockquote>
+<h3 id="原因分析及解决方案"><a href="#原因分析及解决方案" class="headerlink" title="原因分析及解决方案"></a>原因分析及解决方案</h3><p>不同的数据库版本，其数据库连接字符串会有微小的差异。<br>我之前使用的数据库版本是<code>SQL Server 2008 R2</code>，它对应的数据库连接字符串为<br><code>connectionString=&quot;Data Source=localhost;Initial Catalog=DatabaseName;Integrated Security=True;&quot;</code><br>而如果使用的数据版本为<code>SQL Server 2014</code>，则需要使用下面的数据库连接字符串<br><code>connectionString=&quot;Data Source=localhost\InstanceName;Initial Catalog=DatabaseName;Integrated Security=True;&quot;</code></p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p>1、<a href="http://stackoverflow.com/questions/9945409/how-do-i-fix-the-error-named-pipes-provider-error-40-could-not-open-a-connec" target="_blank" rel="external">How do I fix the error ‘Named Pipes Provider, error 40 - Could not open a connection to’ SQL Server’?</a><br>2、<a href="https://www.connectionstrings.com/sql-server/" target="_blank" rel="external">SQL Server connection strings</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[“文件或目录损坏且无法读取”问题解决方案]]></title>
       <url>http://gongchuangsu.com/2017/03/12/%E5%85%B6%E5%AE%83/%E2%80%9C%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95%E6%8D%9F%E5%9D%8F%E4%B8%94%E6%97%A0%E6%B3%95%E8%AF%BB%E5%8F%96%E2%80%9D%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
       <content type="html"><![CDATA[<p><img src="http://i.imgur.com/4X44DTL.jpg" alt=""></p>
@@ -5070,8 +5097,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[tags]]></title>
-      <url>http://gongchuangsu.com/tags/index.html</url>
+      <title><![CDATA[categories]]></title>
+      <url>http://gongchuangsu.com/categories/index.html</url>
       <content type="html"></content>
     </entry>
     
@@ -5088,8 +5115,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://gongchuangsu.com/categories/index.html</url>
+      <title><![CDATA[tags]]></title>
+      <url>http://gongchuangsu.com/tags/index.html</url>
       <content type="html"></content>
     </entry>
     
