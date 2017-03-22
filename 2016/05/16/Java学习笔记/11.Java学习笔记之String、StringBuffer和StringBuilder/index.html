@@ -58,7 +58,7 @@
 <meta name="description">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java学习笔记之String、StringBuffer和StringBuilder">
-<meta property="og:url" content="http://gongchuangsu.com/2016/05/16/Java学习笔记/11.Java学习笔记之String、StringBuffer和StringBuilder/index.html">
+<meta property="og:url" content="GongchuangSu.github.io/2016/05/16/Java学习笔记/11.Java学习笔记之String、StringBuffer和StringBuilder/index.html">
 <meta property="og:site_name" content="贱贱的梦想">
 <meta property="og:description">
 <meta property="og:image" content="http://7xsc5j.com1.z0.glb.clouddn.com/UML%E7%B1%BB%E5%85%B3%E7%B3%BB%E5%9B%BE1.png">
@@ -348,7 +348,7 @@
 <p>例4：一种特殊情况，直接赋值的字符串常量(不是通过new)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String obj1 = <span class="string">"hello"</span>;</span><br><span class="line">String obj2 = <span class="string">"hello"</span>;</span><br><span class="line"><span class="keyword">if</span>(obj1 == obj2)</span><br><span class="line">	System.out.println(<span class="keyword">true</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	System.out.println(<span class="keyword">false</span>);</span><br></pre></td></tr></table></figure></p>
 <p>输出为<code>true</code>。这是因为程序在运行的时候会创建一个字符串缓冲池(也就是栈内存)。当使用 <code>String obj1  = &quot;hello&quot;;</code> 这样的表达是创建字符串的时候（非<code>new</code>这种方式），程序首先会在这个 <code>String</code> 缓冲池中寻找相同值的对象，如果这样的对象不存在，则会创建这个字符串对象，然后将刚创建的对象的引用放入字符串缓冲池中，并将引用返回给变量<code>obj1</code>；当执行<code>String obj2 = &quot;hello&quot;;</code>语句时，JVM同样会字符串缓冲池中查找是否有相同值的对象存在，如果有就将该对象引用返回给<code>obj2</code>，故它们指向同一个对象。</p>
 <p>例5：new出来的字符串对象<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String obj1 = <span class="keyword">new</span> String(<span class="string">"hello"</span>);</span><br><span class="line">String obj2 = <span class="string">"hello"</span>;</span><br><span class="line"><span class="keyword">if</span>(obj1 == obj2)</span><br><span class="line">	System.out.println(<span class="keyword">true</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	System.out.println(<span class="keyword">false</span>);</span><br></pre></td></tr></table></figure></p>
-<p>输出为<code>false</code>。当我们使用<code>new</code>来构造字符串对象的时候，不管字符串缓冲池有没有相同内容的对象的引用，新的字符串对象都会创建。故它们是所指向的对象是不同的。<br><strong>注意：</strong>使用<code>new</code>来构造字符串对象时，如果想将这个对象的引用加入到字符串缓冲池，可以使用<code>intern</code>方法。具体看参考<a href="http://gongchuangsu.com/2016/05/09/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/String%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">String常用方法总结</a></p>
+<p>输出为<code>false</code>。当我们使用<code>new</code>来构造字符串对象的时候，不管字符串缓冲池有没有相同内容的对象的引用，新的字符串对象都会创建。故它们是所指向的对象是不同的。<br><strong>注意：</strong>使用<code>new</code>来构造字符串对象时，如果想将这个对象的引用加入到字符串缓冲池，可以使用<code>intern</code>方法。具体看参考<a href="http://gongchuangsu.com/2016/05/09/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/String%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" target="_blank" rel="external">String常用方法总结</a></p>
 <blockquote>
 <p>在Java中，对象都创建在堆内存中。</p>
 </blockquote>
@@ -442,7 +442,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/05/16/Java学习笔记/11.Java学习笔记之String、StringBuffer和StringBuilder/"
-           data-title="Java学习笔记之String、StringBuffer和StringBuilder" data-url="http://gongchuangsu.com/2016/05/16/Java学习笔记/11.Java学习笔记之String、StringBuffer和StringBuilder/">
+           data-title="Java学习笔记之String、StringBuffer和StringBuilder" data-url="GongchuangSu.github.io/2016/05/16/Java学习笔记/11.Java学习笔记之String、StringBuffer和StringBuilder/">
       </div>
     
   </div>
