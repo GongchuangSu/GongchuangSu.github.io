@@ -4,6 +4,208 @@
   
     
     <entry>
+      <title><![CDATA[JSTL 入门教程（1）]]></title>
+      <url>GongchuangSu.github.io/2017/03/23/Java%20Web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/JSTL%20%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/</url>
+      <content type="html"><![CDATA[<p><img src="http://i.imgur.com/T14QopL.jpg" alt=""></p>
+<a id="more"></a>
+<h1 id="JSTL标签库简介"><a href="#JSTL标签库简介" class="headerlink" title="JSTL标签库简介"></a>JSTL标签库简介</h1><p>JSTL(JavaServer Pages Standard Tag Library)是一个JSP标准标签库，用来解决像遍历Map或集合、条件测试、XML处理，数据库访问和数据库操作等常见问题。它由五个功能不同的标签库组成：核心标签库、格式标签库、SQL标签库、XML标签库和函数标签库，其具体信息如下表所示。</p>
+<table> <tr> <th>标签库</th> <th>子函数</th> <th>URI</th> <th>前缀</th> </tr> <tr> <th rowspan="4">核心标签库</th> <td>变量支持</td> <td rowspan="4"><a href="http://java.sun.com/jsp/jstl/core" target="_blank" rel="external">http://java.sun.com/jsp/jstl/core</a></td> <td rowspan="4">c</td> </tr> <tr> <td>流控制</td> </tr> <tr> <td>URL管理</td> </tr> <tr> <td>其它</td> </tr> <tr> <th rowspan="3">格式标签库</th> <td>语言区域</td> <td rowspan="3"><a href="http://java.sun.com/jsp/jstl/fmt" target="_blank" rel="external">http://java.sun.com/jsp/jstl/fmt</a></td> <td rowspan="3">fmt</td> </tr> <tr> <td>消息格式化</td> </tr> <tr> <td>数字和日期格式化</td> </tr> <tr> <th>SQL标签库</th> <td>SQL</td> <td><a href="http://java.sun.com/jsp/jstl/sql" target="_blank" rel="external">http://java.sun.com/jsp/jstl/sql</a></td> <td>sql</td> </tr> <tr> <th rowspan="3">XML标签库</th> <td>核心</td> <td rowspan="3"><a href="http://java.sun.com/jsp/jstl/xml" target="_blank" rel="external">http://java.sun.com/jsp/jstl/xml</a></td> <td rowspan="3">x</td> </tr> <tr> <td>流控制</td> </tr> <tr> <td>转换</td> </tr> <tr> <th rowspan="2">函数标签库</th> <td>集合长度</td> <td rowspan="2"><a href="http://java.sun.com/jsp/jstl/functions" target="_blank" rel="external">http://java.sun.com/jsp/jstl/functions</a></td> <td rowspan="2">fn</td> </tr> <tr> <td>字符串操作</td> </tr> </table>
+
+<p>在JSP页面中使用JSTL库，必须通过以下格式使用<code>taglib</code>指令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib uri=&quot;uri&quot; prefix=&quot;prefix&quot;%&gt;</span><br></pre></td></tr></table></figure></p>
+<p>如要使用核心标签库，必须在JSP页面的开头处做以下声明：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/core&quot; prefix=&quot;c&quot;%&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="核心标签库"><a href="#核心标签库" class="headerlink" title="核心标签库"></a>核心标签库</h1><p>核心标签库主要用于完成JSP页面的常用功能，包括JSTL的表达式标签、URL标签、流程控制标签和遍历标签。</p>
+<table border="1"> <tr> <th rowspan="15">核心标签库</th> </tr><tr> <th rowspan="4">表达式标签</th> <td>out</td> </tr>  <tr><td>set</td></tr> <tr><td>remove</td></tr> <tr><td>catch</td></tr> <tr> <th rowspan="4">URL标签</th> <td>import</td> </tr> <tr><td>redirect</td></tr> <tr><td>url</td></tr> <tr><td>param</td></tr> <tr> <th rowspan="4">流程控制标签</th> <td>if</td> </tr> <tr><td>choose</td></tr> <tr><td>when</td></tr> <tr><td>otherwise</td></tr> <tr> <th rowspan="2">遍历标签</th> <td>forEach</td> </tr> <tr><td>forTokens</td></tr> </table>
+
+<h2 id="表达式标签"><a href="#表达式标签" class="headerlink" title="表达式标签"></a>表达式标签</h2><p>在JSTL的核心标签库中，包含了<code>&lt;c:out&gt;</code>、<code>&lt;c:set&gt;</code>、<code>&lt;c:remove&gt;</code>和<code>&lt;c:catch&gt;</code>等四个表达式标签。</p>
+<h3 id="lt-c-out-gt-输出标签"><a href="#lt-c-out-gt-输出标签" class="headerlink" title="&lt;c:out&gt;输出标签"></a><code>&lt;c:out&gt;</code>输出标签</h3><p><code>&lt;c:out&gt;</code>标签用于在运算表达式时，将结果输出到当前的JspWriter，类似于JSP表达式<code>&lt;%=expression%&gt;</code>或EL表达式<code>${expression}</code>。<code>&lt;c:out&gt;</code>标签有两种语法格式，即有标签体和没有没有标签体的。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;%--第一种语法格式：有标签体--%&gt;</span><br><span class="line">&lt;c:out value="value" [escapeXml="&#123;true|false&#125;"] [default="defaultValue"]&gt;</span><br><span class="line">	default value</span><br><span class="line">&lt;/c:out&gt;</span><br><span class="line">&lt;%--第二种语法格式：没有标签体--%&gt;</span><br><span class="line">&lt;c:out value="value" [escapeXml="&#123;true|false&#125;"] [default="defaultValue"]/&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参数说明：</p>
+<ul>
+<li>value：用于指定要输出的变量或表达式，可使用EL表达式，如<code>value=&quot;${expression}&quot;</code>。</li>
+<li>escapeXml：可选属性，用于指定是否转换特殊字符，如将<code>&lt;</code>转换为<code>&amp;lt;</code>，默认值为true，表示转换。</li>
+<li>default：可选属性，用于指定当value属性值为null时，将要显示的默认值。当value属性值为null同时defalut属性值为null时，该标签将输出一个空的字符串。</li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">特殊字符</th>
+<th style="text-align:left">字符实体码</th>
+<th style="text-align:center">特殊字符</th>
+<th style="text-align:left">字符实体码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&lt;</code></td>
+<td style="text-align:left"><code>&amp;lt;</code></td>
+<td style="text-align:center"><code>&gt;</code></td>
+<td style="text-align:left"><code>&amp;gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&#39;</code></td>
+<td style="text-align:left"><code>&amp;#039;</code></td>
+<td style="text-align:center"><code>&quot;</code></td>
+<td style="text-align:left"><code>&amp;#034;</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&amp;</code></td>
+<td style="text-align:left"><code>&amp;amp;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="lt-c-set-gt-变量设置标签"><a href="#lt-c-set-gt-变量设置标签" class="headerlink" title="&lt;c:set&gt;变量设置标签"></a><code>&lt;c:set&gt;</code>变量设置标签</h3><p><code>&lt;c:set&gt;</code>标签的作用有以下三个方面：</p>
+<ul>
+<li>创建一个字符串和一个引用该字符串的有界变量</li>
+<li>创建一个引用现存有界对象的有界变量</li>
+<li>设置有界变量的属性</li>
+</ul>
+<blockquote>
+<p>说明：有界变量是指在指定范围内（page、request、seesion和application）有效的变量。</p>
+</blockquote>
+<p>相比使用声明标识插入java代码来进行变量的声明，如<code>&lt;%! 声明变量 %&gt;</code>，<code>&lt;c:set&gt;</code>标签会更方便快捷。<code>&lt;c:set&gt;</code>标签有四种语法格式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;%--第一种语法格式：创建一个有界变量，并用value属性指定一个字符串或现存的有界对象--%&gt;</span><br><span class="line">&lt;c:set value=&quot;value&quot; var=&quot;varName&quot; [scope=&quot;&#123;page|request|session|application&#125;&quot;]/&gt;</span><br><span class="line">&lt;%--例1.1:创建字符串“http://gongchuangsu.github.io”，并将它赋给新创建的页面范围变量domain--%&gt;</span><br><span class="line">&lt;c:set var=&quot;domain&quot; value=&quot;http://gongchuangsu.github.io&quot;/&gt;</span><br><span class="line">&lt;%--例1.2：创建一个引用请求范围的对象position的页面范围变量job--%&gt;</span><br><span class="line">&lt;c:set var=&quot;job&quot; value=&quot;$&#123;requestScope.position&#125;&quot; scope=&quot;page&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;%--第二种语法格式：创建一个有界变量，并用标签体指定一个字符串或现存的有界对象--%&gt;</span><br><span class="line">&lt;c:set var=&quot;varName&quot; [scope=&quot;&#123;page|request|session|application&#125;&quot;]&gt;</span><br><span class="line">	标签体</span><br><span class="line">&lt;/c:set&gt;</span><br><span class="line"></span><br><span class="line">&lt;%--第三种语法格式：设置有界对象的属性值，并通过value属性进行赋值--%&gt;</span><br><span class="line">&lt;c:set target=&quot;target&quot; property=&quot;propertyName&quot; value=&quot;value&quot;/&gt;</span><br><span class="line">&lt;%--例3：将字符串“Beijing”赋予有界对象address的city属性-%&gt;</span><br><span class="line">&lt;c:set target=&quot;$&#123;address&#125;&quot; property=&quot;city&quot; value=&quot;Beijing&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;%--第四种语法格式：设置有界对象的属性值，并通过标签体进行赋值--%&gt;</span><br><span class="line">&lt;c:set target=&quot;target&quot; property=&quot;propertyName&quot;&gt;</span><br><span class="line">	标签体</span><br><span class="line">&lt;/c:set&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参数说明：</p>
+<ul>
+<li>var：要创建的有界变量名。</li>
+<li>value：用于指定一个字符串或现存的有界对象，可以使用EL。</li>
+<li>scope：用于指定变量的作用域，默认为page。</li>
+<li>target：用于指定储存变量值或标签体的目标对象，必须是JavaBean或Map集合对象。</li>
+<li>property：用于指定目标对象存储数据的属性名。</li>
+</ul>
+</blockquote>
+<p><strong>注意</strong>：<code>target</code>属性必须通过EL表达式或JSP表达式来指定JavaBean或Map集合对象，而不能直接指定。</p>
+<h3 id="lt-c-remove-gt-变量移除标签"><a href="#lt-c-remove-gt-变量移除标签" class="headerlink" title="&lt;c:remove&gt;变量移除标签"></a><code>&lt;c:remove&gt;</code>变量移除标签</h3><p><code>&lt;c:remove&gt;</code>标签用于删除有界变量，其语法格式如下;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:remove var=&quot;varName&quot; [scope=&quot;&#123;page|request|session|application&#125;&quot;]/&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参数说明：</p>
+<ul>
+<li>var：要删除的有界变量的名称</li>
+<li>scope：指定要删除的有界变量的范围。如果没有指定有界变量的范围，将分别在page、request、session和application的范围内查找要移除的变量，并移除。</li>
+</ul>
+</blockquote>
+<p><strong>注意</strong>：当指定的要移除的变量不存在时，并不会抛出异常。</p>
+<h3 id="lt-c-catch-gt-捕获异常标签"><a href="#lt-c-catch-gt-捕获异常标签" class="headerlink" title="&lt;c:catch&gt;捕获异常标签"></a><code>&lt;c:catch&gt;</code>捕获异常标签</h3><p><code>&lt;c:catch&gt;</code>标签用于捕获程序中出现的异常，其语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:catch [var=&quot;exception&quot;]&gt;</span><br><span class="line">	// 可能存在异常的代码</span><br><span class="line">&lt;/c:catch&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参数说明：<br>var：可选属性，用于指定存储异常信息的变量。</p>
+</blockquote>
+<h2 id="URL标签"><a href="#URL标签" class="headerlink" title="URL标签"></a>URL标签</h2><h3 id="lt-c-import-gt-导入标签"><a href="#lt-c-import-gt-导入标签" class="headerlink" title="&lt;c:import&gt;导入标签"></a><code>&lt;c:import&gt;</code>导入标签</h3><p><code>&lt;c:import&gt;</code>标签用于导入站内或其他网站的静态或动态文件到Web页面中。与JSP动作标识<code>&lt;jsp:include&gt;</code>相似，但不同的是，<code>&lt;jsp:include&gt;</code>只能导入站内资源。其语法格式有以下两种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;%--第一种语法格式--%&gt;</span><br><span class="line">&lt;c:import url=&quot;url&quot; [context=&quot;context&quot;] [var=&quot;name&quot;] [scope=&quot;scope&quot;] [charEncoding]=&quot;encoding&quot;&gt;</span><br><span class="line">	标签体</span><br><span class="line">&lt;/c:import&gt;</span><br><span class="line"></span><br><span class="line">&lt;%--第二种语法格式--%&gt;</span><br><span class="line">&lt;c:import url=&quot;url&quot; varReader=&quot;name&quot; [context=&quot;context&quot;] [scope=&quot;scope&quot;] [charEncoding]=&quot;encoding&quot;&gt;</span><br><span class="line">	标签体</span><br><span class="line">&lt;/c:import&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参数说明：</p>
+<ul>
+<li>url：用于指定被导入的文件资源的URL地址。</li>
+<li>context：上下文路径。</li>
+<li>var：用于指定存储所引入文本的变量。</li>
+<li>scope：用于指定var属性的作用域。</li>
+<li>varReader：用于指定一个变量名，该变量用于以Reader类型存储被包含文件内容。</li>
+<li>charEncoding：用于指定被导入文件的编码格式，默认为ISO-8859-1。</li>
+</ul>
+</blockquote>
+<p><strong>注意</strong>：如果指定的url属性为null、空或者无效，将抛出<code>javax.servlet.ServletException</code>异常。</p>
+<h3 id="lt-c-url-gt-动态生成URL标签"><a href="#lt-c-url-gt-动态生成URL标签" class="headerlink" title="&lt;c:url&gt;动态生成URL标签"></a><code>&lt;c:url&gt;</code>动态生成URL标签</h3><p><code>&lt;c:url&gt;</code>标签用于将URL格式化一个字符串，并存储在一个变量中，可以与<code>&lt;c:param&gt;</code>标签相结合动态添加URL的参数信息。其语法格式有以下两种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;%--第一种语法格式--%&gt;</span><br><span class="line">&lt;c:url value=&quot;url&quot; [var=&quot;varName&quot;] [scope=&quot;scope&quot;] [context=&quot;context&quot;]/&gt;</span><br><span class="line"></span><br><span class="line">&lt;%--第二种语法格式--%&gt;</span><br><span class="line">&lt;c:url value=&quot;url&quot; [var=&quot;varName&quot;] [scope=&quot;scope&quot;] [context=&quot;context&quot;]&gt;</span><br><span class="line">	&lt;c:param /&gt;</span><br><span class="line">&lt;/c:url&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参数说明：</p>
+<ul>
+<li>value：用于指定将要格式化的URL地址，可以使用EL。</li>
+<li>var：用于指定变量名称，该变量用于保存新生成的URL字符串。</li>
+<li>scope：用指定变量的作用域。</li>
+<li>context：上下文路径。</li>
+</ul>
+</blockquote>
+<h3 id="lt-c-redirect-gt-重定向标签"><a href="#lt-c-redirect-gt-重定向标签" class="headerlink" title="&lt;c:redirect&gt;重定向标签"></a><code>&lt;c:redirect&gt;</code>重定向标签</h3><p><code>&lt;c:redirect&gt;</code>标签通过自动重写URL来将浏览器重定向至一个新的URL。其语法格式有以下两种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;%--第一种语法格式--%&gt;</span><br><span class="line">&lt;c:redirect url=&quot;url&quot; [context=&quot;context&quot;]/&gt;</span><br><span class="line"></span><br><span class="line">&lt;%--第二种语法格式--%&gt;</span><br><span class="line">&lt;c:redirect url=&quot;url&quot; [context=&quot;context&quot;]&gt;</span><br><span class="line">	&lt;c:param/&gt;</span><br><span class="line">&lt;/c:redirect&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参数说明：</p>
+<ul>
+<li>value：用于指定待定向资源的URL，可以使用EL。</li>
+<li>context：上下文路径。</li>
+</ul>
+</blockquote>
+<h3 id="lt-c-param-gt-传递参数标签"><a href="#lt-c-param-gt-传递参数标签" class="headerlink" title="&lt;c:param&gt;传递参数标签"></a><code>&lt;c:param&gt;</code>传递参数标签</h3><p><code>&lt;c:param&gt;</code>标签用于与其他标签组合，以提供参数信息。其语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:param name=&quot;paramName&quot; value=&quot;paramValue&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参数说明：</p>
+<ul>
+<li>name：用于指定参数名，可以使用EL。</li>
+<li>value：用于指定参数值，可以使用EL。</li>
+</ul>
+</blockquote>
+<h2 id="流程控制标签"><a href="#流程控制标签" class="headerlink" title="流程控制标签"></a>流程控制标签</h2><h3 id="lt-c-if-gt-条件判断标签"><a href="#lt-c-if-gt-条件判断标签" class="headerlink" title="&lt;c:if&gt;条件判断标签"></a><code>&lt;c:if&gt;</code>条件判断标签</h3><p><code>&lt;c:if&gt;</code>标签用于根据不同的条件处理不同的业务。其语法格式有以下两种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;%--第一种语法格式--%&gt;</span><br><span class="line">&lt;c:if test=&quot;condition&quot; var=&quot;name&quot; [scope=page|request|session|application]/&gt;</span><br><span class="line"> </span><br><span class="line">&lt;%--第二种语法格式--%&gt;</span><br><span class="line">&lt;c:if test=&quot;condition&quot; var=&quot;name&quot; [scope=&quot;scope&quot;]/&gt;</span><br><span class="line">	标签体</span><br><span class="line">&lt;/c:if&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参数说明：</p>
+<ul>
+<li>test：用于指定条件表达式，可以使用EL。</li>
+<li>var：可选属性，用于指定变量名，用于保存test属性的判断结果。</li>
+<li>scope：用于指定变量的作用域，默认为page。</li>
+</ul>
+</blockquote>
+<h3 id="lt-c-choose-gt-、-lt-c-when-gt-、-lt-c-otherwise-gt-条件选择标签"><a href="#lt-c-choose-gt-、-lt-c-when-gt-、-lt-c-otherwise-gt-条件选择标签" class="headerlink" title="&lt;c:choose&gt;、&lt;c:when&gt;、&lt;c:otherwise&gt;条件选择标签"></a><code>&lt;c:choose&gt;</code>、<code>&lt;c:when&gt;</code>、<code>&lt;c:otherwise&gt;</code>条件选择标签</h3><p><code>&lt;c:choose&gt;</code>标签可以根据不同的条件完成指定的业务逻辑，如果没有符合的条件就执行默认条件的业务逻辑。<code>&lt;c:choose&gt;</code>标签中必须嵌套一个或多个<code>&lt;c:when&gt;</code>标签，并且每一个<code>&lt;c:when&gt;</code>标签都表示一种可以计算和处理的情况。<code>&lt;c:otherwise&gt;</code>标签用于默认的标签块，而且必须放在最后一个<code>&lt;c:when&gt;</code>标签之后。其语法格式如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:choose&gt;</span><br><span class="line">	标签体 &lt;%--由`&lt;c:when&gt;`标签和`&lt;c:otherwise&gt;`标签组成--%&gt;</span><br><span class="line">&lt;/c:choose&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>说明：<code>&lt;c:otherwise&gt;</code>标签体只有在其他的<code>&lt;c:when&gt;</code>标签的条件都不成立时才会被执行；同时，若前面的<code>&lt;c:when&gt;</code>标签的条件成立，则执行该标签体，并退出，而不会去判断下一个<code>&lt;c:when&gt;</code>标签条件。</p>
+</blockquote>
+<h2 id="遍历标签"><a href="#遍历标签" class="headerlink" title="遍历标签"></a>遍历标签</h2><h3 id="lt-c-forEach-gt-循环标签"><a href="#lt-c-forEach-gt-循环标签" class="headerlink" title="&lt;c:forEach&gt;循环标签"></a><code>&lt;c:forEach&gt;</code>循环标签</h3><p><code>&lt;c:forEach&gt;</code>标签可以根据循环条件遍历数组和集合类中所有或部分数据。其语法格式有以下两种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;%--第一种语法格式：固定次数的重复执行标签体--%&gt;</span><br><span class="line">&lt;c:forEach [var=&quot;varName&quot;] begin=&quot;begin&quot; end=&quot;end&quot; step=&quot;step&quot;&gt;</span><br><span class="line">	标签体</span><br><span class="line">&lt;/c:forEach&gt;</span><br><span class="line"> </span><br><span class="line">&lt;%--第二种语法格式：用于遍历对象集合--%&gt;</span><br><span class="line">&lt;c:forEach items=&quot;collection&quot; [var=&quot;varName&quot;] varStatus=&quot;varStatusName&quot; </span><br><span class="line">	begin=&quot;begin&quot; end=&quot;end&quot; step=&quot;step&quot;&gt;</span><br><span class="line">	标签体</span><br><span class="line">&lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参数说明：</p>
+<ul>
+<li>items：用于指定被循环遍历的对象，多用于数组与集合类，可以通过EL进行指定。</li>
+<li>var：用于指定循环体的变量名，用于存储items属性指定的对象的成员。</li>
+<li>begin：用于指定循环的起始位置，可以使用EL。</li>
+<li>end：用于指定循环的终止位置，可以使用EL。</li>
+<li>step：用于指定循环的步长，可以使用EL。</li>
+<li>verStatus：用于指定循环的状态变量，该属性有四个状态变量，如下表所示。</li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">状态变量</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">index</td>
+<td style="text-align:center">Int</td>
+<td style="text-align:left">当前循环的索引值，从0开始</td>
+</tr>
+<tr>
+<td style="text-align:center">count</td>
+<td style="text-align:center">Int</td>
+<td style="text-align:left">当前循环的循环计数，从1开始</td>
+</tr>
+<tr>
+<td style="text-align:center">first</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:left">是否为第一次循环</td>
+</tr>
+<tr>
+<td style="text-align:center">last</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:left">是否为最后一次循环</td>
+</tr>
+</tbody>
+</table>
+<p>例：通过<code>&lt;c:forEach&gt;</code>循环标签显示“1,2,3,4,5,”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:forEach var=&quot;x&quot; begin=&quot;1&quot; end=&quot;5&quot;&gt;</span><br><span class="line">	&lt;c:out value=&quot;$&#123;x&#125;&quot;/&gt;,</span><br><span class="line">&lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure></p>
+<p>例：遍历list集合<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">List&lt;String&gt; list = new ArrayList&lt;String&gt;();</span><br><span class="line">list.add(&quot;A&quot;);</span><br><span class="line">list.add(&quot;B&quot;);</span><br><span class="line">list.add(&quot;C&quot;);</span><br><span class="line">request.setAttribute(&quot;list&quot;,list);</span><br><span class="line">%&gt;</span><br><span class="line">&lt;c:forEach items=&quot;$&#123;requestScope.list&#125;&quot; var=&quot;keyword&quot; varStatus=&quot;id&quot;&gt;</span><br><span class="line">	$&#123;id.index&#125;&amp;nbsp;$&#123;keyword&#125;</span><br><span class="line">&lt;/c:forEach&gt;</span><br><span class="line">&lt;%--</span><br><span class="line">输出：A B C</span><br><span class="line">--%&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：在使用<code>&lt;c:forEach&gt;</code>循环标签时，var属性指定的变量只在循环体内有效，可通过EL直接使用。</p>
+</blockquote>
+<h3 id="lt-c-forTokens-gt-迭代标签"><a href="#lt-c-forTokens-gt-迭代标签" class="headerlink" title="&lt;c:forTokens&gt;迭代标签"></a><code>&lt;c:forTokens&gt;</code>迭代标签</h3><p><code>&lt;c:forTokens&gt;</code>迭代标签用于根据指定的分隔符来分割字符串并迭代输出。其语法格式如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:forTokens items=&quot;Sring&quot; delims=&quot;char&quot; [var=&quot;name&quot;]</span><br><span class="line">	[begin=&quot;begin&quot;] [end=&quot;end&quot;] [step=&quot;step&quot;] [varStatus=&quot;statusName&quot;]&gt;</span><br><span class="line">	标签体</span><br><span class="line">&lt;/c:forTokens&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参数说明：</p>
+<ul>
+<li>items：用于指定要迭代的String对象。</li>
+<li>delims：用于指定分割字符串的分隔符，可以同时有多个分隔符。</li>
+<li>var：用于指定变量名，该变量中保存了分隔后的字符串。</li>
+<li>begin：用于指定迭代开始的位置，索引值从0开始。</li>
+<li>end：用于指定迭代结束的位置。</li>
+<li>step：用于指定迭代的步长，默认步长为1。</li>
+<li>verStatus：用于指定循环的状态变量。</li>
+</ul>
+</blockquote>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>1、<a href="http://www.runoob.com/jsp/jsp-jstl.html" target="_blank" rel="external">菜鸟教程</a><br>2、Java Web 从入门到精通<br>3、Servlet、JSP和Spring MVC初学指南</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[“无法连接到.SQLEXPRESS，用户'sa'登录失败（错误18456）”问题解决方案]]></title>
       <url>GongchuangSu.github.io/2017/03/17/%E5%85%B6%E5%AE%83/%E2%80%9C%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E5%88%B0.SQLEXPRESS%EF%BC%8C%E7%94%A8%E6%88%B7'sa'%E7%99%BB%E5%BD%95%E5%A4%B1%E8%B4%A5%EF%BC%88%E9%94%99%E8%AF%AF18456%EF%BC%89%E2%80%9D%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
       <content type="html"><![CDATA[<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><blockquote>
@@ -5097,18 +5299,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[tags]]></title>
-      <url>GongchuangSu.github.io/tags/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[categories]]></title>
-      <url>GongchuangSu.github.io/categories/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[about]]></title>
       <url>GongchuangSu.github.io/about/index.html</url>
       <content type="html"><![CDATA[<p><img src="http://i.imgur.com/hChnLrh.gif" alt=""></p>
@@ -5118,6 +5308,18 @@
 <h1 id="Contact"><a href="#Contact" class="headerlink" title="Contact"></a>Contact</h1><p><strong>Email</strong>: sgc0515@gmail.com<br><strong>CSDN</strong>: <a href="http://blog.csdn.net/gongchuangsu" target="_blank" rel="external">贱贱的梦想</a><br><strong>GitHub</strong>: <a href="https://github.com/GongchuangSu" target="_blank" rel="external">GongchuangSu</a></p>
 <h1 id="我的阅读书单"><a href="#我的阅读书单" class="headerlink" title="我的阅读书单"></a>我的阅读书单</h1><table width="95%" border="1" cellspacing="0" cellpadding="0" style="margin:0;padding:0;word-break:break-all; word-wrap:break-all; "><br><tr align="center"> <th rowspan="2" width="150">书名</th> <th colspan="2">阅读时间</th> <th rowspan="2" width="30">阅读进度</th> <th rowspan="2">评价</th> </tr> <tr> <th width="80">起始时间</th> <th width="80">终止时间</th> </tr> <tr align="center"> <td><img src="http://i.imgur.com/OIH4pqu.jpg" width="200" height="280" alt="Java编程思想"></td> <td>2016.04.01</td> <td>至今</td> <td>50%</td> <td>经典之作！内容讲的很深刻！但是个人感觉内容太杂，没有条理性，阅读起来可能会迷迷糊糊！</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/wSy2vCw.jpg" width="200" height="280" alt="Effective Java中文版（第2版）"></td> <td>2016.04.01</td> <td>至今</td> <td>5%</td> <td>值得仔细研读！对Java编程思想有深刻的认识！</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/KZw0u5n.jpg" width="200" height="280" alt="java核心技术卷I"></td> <td>2016.04.01</td> <td>至今</td> <td>10 </td> <td>这本要比Java编程思想有条理，内容也比较浅显，适合入门。</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/MYJNv9F.jpg" width="200" height="280" alt="java核心技术卷Ⅱ"></td> <td>待定</td> <td>待定</td> <td>未读</td> <td>待定</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/2Hn8P6J.jpg" width="200" height="280" alt="Java Web从入门到精通"></td> <td>2016.6.15</td> <td>至今</td> <td>80%</td> <td>这本书对Java Web技术进行了系统的介绍，涉及到很多技术，但讲的都是最基本的，要想有更深入的学习，还得进一步的对应地学习。</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/7mtAHB8.jpg" width="200" height="280" alt="Spring实战（第四版）"></td> <td>2016.10.20</td> <td>至今</td> <td>10%</td> <td>还在研读中。。。</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/MCwvAGE.jpg" width="200" height="280" alt="Redis实战"></td> <td>2016.10.20</td> <td>至今</td> <td>10%</td> <td>还在研读中。。。</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/50fSILT.jpg" width="200" height="280" alt="Spring技术内幕：深入解析Spring架构与设计原理（第2版）"></td> <td>2016.6.15</td> <td>至今</td> <td>5%</td> <td>系统的对Spring框架的使用进行了介绍和分析，从原理到应用，逐步实现</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/gWynkNJ.jpg" width="200" height="280" alt="Servlet JSP深入详解 基于Tomcat的Web开发"></td> <td>2016.6.15</td> <td>至今</td> <td>5%</td> <td>学习Servlet和JSP技术很好的一本教材</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/6ianpBn.jpg" width="200" height="280" alt="大话数据结构"></td> <td>2016.3.15</td> <td>至今</td> <td>90%</td> <td>通俗易懂的对数据结构进行了全面的介绍，很好的一本教材！</td> </tr></table>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>GongchuangSu.github.io/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[categories]]></title>
+      <url>GongchuangSu.github.io/categories/index.html</url>
+      <content type="html"></content>
     </entry>
     
   
