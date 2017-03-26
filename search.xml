@@ -4,8 +4,8 @@
   
     
     <entry>
-      <title><![CDATA[JSTL 入门教程（1）]]></title>
-      <url>GongchuangSu.github.io/2017/03/23/Java%20Web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/JSTL%20%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%881%EF%BC%89/</url>
+      <title><![CDATA[JSTL 入门教程]]></title>
+      <url>GongchuangSu.github.io/2017/03/23/Java%20Web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/JSTL%20%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/</url>
       <content type="html"><![CDATA[<p><img src="http://i.imgur.com/T14QopL.jpg" alt=""></p>
 <a id="more"></a>
 <h1 id="JSTL标签库简介"><a href="#JSTL标签库简介" class="headerlink" title="JSTL标签库简介"></a>JSTL标签库简介</h1><p>JSTL(JavaServer Pages Standard Tag Library)是一个JSP标准标签库，用来解决像遍历Map或集合、条件测试、XML处理，数据库访问和数据库操作等常见问题。它由五个功能不同的标签库组成：核心标签库、格式标签库、SQL标签库、XML标签库和函数标签库，其具体信息如下表所示。</p>
@@ -115,7 +115,7 @@
 <blockquote>
 <p>参数说明：</p>
 <ul>
-<li>value：用于指定待定向资源的URL，可以使用EL。</li>
+<li>url：用于指定待定向资源的URL，可以使用EL。</li>
 <li>context：上下文路径。</li>
 </ul>
 </blockquote>
@@ -140,6 +140,8 @@
 <blockquote>
 <p>说明：<code>&lt;c:otherwise&gt;</code>标签体只有在其他的<code>&lt;c:when&gt;</code>标签的条件都不成立时才会被执行；同时，若前面的<code>&lt;c:when&gt;</code>标签的条件成立，则执行该标签体，并退出，而不会去判断下一个<code>&lt;c:when&gt;</code>标签条件。</p>
 </blockquote>
+<p><code>&lt;c:when&gt;</code>标签的语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:when test=&quot;condition&quot;&gt;</span><br><span class="line">	标签体</span><br><span class="line">&lt;/c:when&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>&lt;c:otherwise&gt;</code>标签的语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:otherwise&gt;</span><br><span class="line">	标签体</span><br><span class="line">&lt;/c:otherwise&gt;</span><br></pre></td></tr></table></figure></p>
 <h2 id="遍历标签"><a href="#遍历标签" class="headerlink" title="遍历标签"></a>遍历标签</h2><h3 id="forEach-循环标签"><a href="#forEach-循环标签" class="headerlink" title="forEach 循环标签"></a>forEach 循环标签</h3><p><code>&lt;c:forEach&gt;</code>标签可以根据循环条件遍历数组和集合类中所有或部分数据。其语法格式有以下两种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;%--第一种语法格式：固定次数的重复执行标签体--%&gt;</span><br><span class="line">&lt;c:forEach [var=&quot;varName&quot;] begin=&quot;begin&quot; end=&quot;end&quot; step=&quot;step&quot;&gt;</span><br><span class="line">	标签体</span><br><span class="line">&lt;/c:forEach&gt;</span><br><span class="line"> </span><br><span class="line">&lt;%--第二种语法格式：用于遍历对象集合--%&gt;</span><br><span class="line">&lt;c:forEach items=&quot;collection&quot; [var=&quot;varName&quot;] varStatus=&quot;varStatusName&quot; </span><br><span class="line">	begin=&quot;begin&quot; end=&quot;end&quot; step=&quot;step&quot;&gt;</span><br><span class="line">	标签体</span><br><span class="line">&lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>参数说明：</p>
@@ -201,6 +203,51 @@
 <li>verStatus：用于指定循环的状态变量。</li>
 </ul>
 </blockquote>
+<h1 id="函数标签库"><a href="#函数标签库" class="headerlink" title="函数标签库"></a>函数标签库</h1><p>函数标签库提供了通用的字符串处理函数。</p>
+<table class="reference"><tbody><tr><th>函数</th><th>描述</th></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-function-contains.html" target="_blank">fn:contains()</a></td><td>测试输入的字符串是否包含指定的子串</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-function-containsignoreCase.html" target="_blank">fn:containsIgnoreCase()</a></td><td>测试输入的字符串是否包含指定的子串，大小写不敏感</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-function-endswith.html" target="_blank">fn:endsWith()</a></td><td>测试输入的字符串是否以指定的后缀结尾</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-function-escapexml.html" target="_blank">fn:escapeXml()</a></td><td>跳过可以作为XML标记的字符</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-function-indexof.html" target="_blank">fn:indexOf()</a></td><td>返回指定字符串在输入字符串中出现的位置</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-function-join.html" target="_blank">fn:join()</a></td><td>将数组中的元素合成一个字符串然后输出</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-function-length.html" target="_blank">fn:length()</a></td><td>返回字符串长度</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-function-replace.html" target="_blank">fn:replace()</a></td><td>将输入字符串中指定的位置替换为指定的字符串然后返回</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-function-split.html" target="_blank">fn:split()</a></td><td>将字符串用指定的分隔符分隔然后组成一个子字符串数组并返回</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-function-startswith.html" target="_blank">fn:startsWith()</a></td><td>测试输入字符串是否以指定的前缀开始</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-function-substring.html" target="_blank">fn:substring()</a></td><td>返回字符串的子集</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-function-substringafter.html" target="_blank">fn:substringAfter()</a></td><td>返回字符串在指定子串之后的子集</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-function-substringbefore.html" target="_blank">fn:substringBefore()</a></td><td>返回字符串在指定子串之前的子集</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-function-tolowercase.html" target="_blank">fn:toLowerCase()</a></td><td>将字符串中的字符转为小写</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-function-touppercase.html" target="_blank">fn:toUpperCase()</a></td><td>将字符串中的字符转为大写</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-function-trim.html" target="_blank">fn:trim()</a></td><td>移除首位的空白符</td></tr></tbody></table>
+
+<h1 id="格式标签库"><a href="#格式标签库" class="headerlink" title="格式标签库"></a>格式标签库</h1><p>格式化标签库用来格式化并输出文本、日期、时间、数字等，处理和解决国际化相关的问题。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">标签</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="http://www.runoob.com/jsp/jstl-format-formatnumber-tag.html" target="_blank" rel="external">formatNumber</a></td>
+<td style="text-align:left">用于格式化数字</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://www.runoob.com/jsp/jstl-format-parsenumber-tag.html" target="_blank" rel="external">parseNumber</a></td>
+<td style="text-align:left">用来解析数字，百分数，货币</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://www.runoob.com/jsp/jstl-format-formatdate-tag.html" target="_blank" rel="external">formatDate</a></td>
+<td style="text-align:left">用于格式化日期</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://www.runoob.com/jsp/jstl-format-parsedate-tag.html" target="_blank" rel="external">parseDate</a></td>
+<td style="text-align:left">用于解析日期</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://www.runoob.com/jsp/jstl-format-timezone-tag.html" target="_blank" rel="external">timeZone</a></td>
+<td style="text-align:left">用于指定时区，以供其他标签使用</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://www.runoob.com/jsp/jstl-format-settimezone-tag.html" target="_blank" rel="external">setTimeZone</a></td>
+<td style="text-align:left">用来复制一个时区对象至指定的作用域</td>
+</tr>
+</tbody>
+</table>
+<h1 id="SQL标签库"><a href="#SQL标签库" class="headerlink" title="SQL标签库"></a>SQL标签库</h1><p>SQL标签库提供了基本的访问关系型数据的能力。</p>
+<table class="reference"><tbody><tr><th>标签</th><th>描述</th></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-sql-setdatasource-tag.html" target="_blank">&lt;sql:setDataSource&gt;</a></td><td>指定数据源</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-sql-query-tag.html" target="_blank">&lt;sql:query&gt;</a></td><td>运行SQL查询语句</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-sql-update-tag.html" target="_blank">&lt;sql:update&gt;</a></td><td>运行SQL更新语句</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-sql-param-tag.html" target="_blank">&lt;sql:param&gt;</a></td><td>将SQL语句中的参数设为指定值</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-sql-dateparam-tag.html" target="_blank">&lt;sql:dateParam&gt;</a></td><td>将SQL语句中的日期参数设为指定的java.util.Date&nbsp;对象值</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-sql-transaction-tag.html" target="_blank">&lt;sql:transaction&gt;</a></td><td>在共享数据库连接中提供嵌套的数据库行为元素，将所有语句以一个事务的形式来运行</td></tr></tbody></table>
+
+<h1 id="XML标签库"><a href="#XML标签库" class="headerlink" title="XML标签库"></a>XML标签库</h1><p>XML标签库提供了创建和操作XML文档的标签。</p>
+<table class="reference"><tbody><tr><th>标签</th><th>描述</th></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-xml-out-tag.html" target="_blank">&lt;x:out&gt;</a></td><td>与&lt;%= … &gt;,类似，不过只用于XPath表达式</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-xml-parse-tag.html" target="_blank">&lt;x:parse&gt;</a></td><td>解析 XML 数据</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-xml-set-tag.html" target="_blank">&lt;x:set&gt;</a></td><td>设置XPath表达式</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-xml-if-tag.html" target="_blank">&lt;x:if&gt;</a></td><td>判断XPath表达式，若为真，则执行本体中的内容，否则跳过本体</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-xml-foreach-tag.html" target="_blank">&lt;x:forEach&gt;</a></td><td>迭代XML文档中的节点</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-xml-choose-tag.html" target="_blank">&lt;x:choose&gt;</a></td><td>&lt;x:when&gt;和&lt;x:otherwise&gt;的父标签</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-xml-choose-tag.html" target="_blank">&lt;x:when&gt;</a></td><td>&lt;x:choose&gt;的子标签，用来进行条件判断</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-xml-choose-tag.html" target="_blank">&lt;x:otherwise&gt;</a></td><td>&lt;x:choose&gt;的子标签，当&lt;x:when&gt;判断为false时被执行</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-xml-transform-tag.html" target="_blank">&lt;x:transform&gt;</a></td><td>将XSL转换应用在XML文档中</td></tr><tr><td><a href="http://www.runoob.com/jsp/jstl-xml-param-tag.html" target="_blank">&lt;x:param&gt;</a></td><td>与&lt;x:transform&gt;共同使用，用于设置XSL样式表</td></tr></tbody></table>
+
+<h1 id="JSTL的配置"><a href="#JSTL的配置" class="headerlink" title="JSTL的配置"></a>JSTL的配置</h1><p>在Oracle官方网站下载<a href="http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22javax.servlet.jsp.jstl-api%22" target="_blank" rel="external">JSTL API</a>和<a href="http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22jstl-impl%22" target="_blank" rel="external">JSTL Implementation</a>这两个JAR文件，并将这两个JAR文件复制到应用JSTL的每个应用程序的<code>WEB-INF/lib</code>目录下。</p>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>1、<a href="http://www.runoob.com/jsp/jsp-jstl.html" target="_blank" rel="external">菜鸟教程</a><br>2、Java Web 从入门到精通<br>3、Servlet、JSP和Spring MVC初学指南</p>
 ]]></content>
     </entry>
