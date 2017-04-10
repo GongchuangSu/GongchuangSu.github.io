@@ -61,7 +61,7 @@
 <meta property="og:url" content="GongchuangSu.github.io/2017/04/10/Java Web学习笔记/EL 入门教程/index.html">
 <meta property="og:site_name" content="贱贱的梦想">
 <meta property="og:description" content="EL 简介表达式语言（Expression Language），简称EL，是Java中的一种特殊的通用编程语言，借鉴于JavaScript和XPath。主要作用是在Java Web应用程序嵌入到网页（如JSP）中，用以访问页面的上下文以及不同作用域中的对象 ，取得对象属性的值，或执行简单的运算或判断操作，通常与JSTL一同使用。EL在得到某个数据时，会自动进行数据类型的转换。">
-<meta property="og:updated_time" content="2017-04-10T07:19:00.377Z">
+<meta property="og:updated_time" content="2017-04-10T07:27:29.454Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EL 入门教程">
 <meta name="twitter:description" content="EL 简介表达式语言（Expression Language），简称EL，是Java中的一种特殊的通用编程语言，借鉴于JavaScript和XPath。主要作用是在Java Web应用程序嵌入到网页（如JSP）中，用以访问页面的上下文以及不同作用域中的对象 ，取得对象属性的值，或执行简单的运算或判断操作，通常与JSTL一同使用。EL在得到某个数据时，会自动进行数据类型的转换。">
@@ -298,7 +298,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/2017/04/10/Java Web学习笔记/EL 入门教程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/10/Java Web学习笔记/EL 入门教程/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/10/Java Web学习笔记/EL 入门教程/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -329,13 +329,13 @@
 <a id="more"></a>
 <h1 id="EL-语法"><a href="#EL-语法" class="headerlink" title="EL 语法"></a>EL 语法</h1><p>EL表达式以“${”开始，以“}”作为结束：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;EL表达式&#125;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>注意：由于EL表达式的语法是以“${”开头，所以如果在JSP网页中要显示“${”字符串，必须在前面加上“\”符号，即“\${”或写成“${‘${’}”。</p>
+<p>注意：由于EL表达式的语法是以<code>${</code>开头，所以如果在JSP网页中要显示<code>${</code>字符串，必须在前面加上<code>\</code>符号，即<code>\${</code>或写成<code>${‘${’}</code>。</p>
 </blockquote>
 <h1 id="禁用-EL"><a href="#禁用-EL" class="headerlink" title="禁用 EL"></a>禁用 EL</h1><p>要使用EL表达式，Web服务器必须能够支持Servlet2.4/JSP2.0。由于JSP2.0以前的版本不支持EL，所以为了与低版本的环境兼容，JSP提供了以下三种禁用EL的方法。</p>
 <h2 id="使用斜杠"><a href="#使用斜杠" class="headerlink" title="使用斜杠"></a>使用斜杠</h2><p>最简单的方法就是使用斜杠符号，其语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\$&#123;EL表达式&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="使用page指令"><a href="#使用page指令" class="headerlink" title="使用page指令"></a>使用page指令</h2><p>使用JSP的page指令也可以禁用EL表达式，其语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page isELlgnored=&quot;true&quot;%&gt;</span><br></pre></td></tr></table></figure></p>
 <h2 id="配置web-xml"><a href="#配置web-xml" class="headerlink" title="配置web.xml"></a>配置web.xml</h2><p>在web.xml文件中配置<el-ignored>元素可以实现禁用服务器中的EL。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp-config&gt;</span><br><span class="line">	&lt;jsp-property-group&gt;</span><br><span class="line">		&lt;url-pattern&gt;*.jsp&lt;/url-pattern&gt;</span><br><span class="line">		&lt;el-ignored&gt;true&lt;/el-ignored&gt;</span><br><span class="line">	&lt;/jsp-property-group&gt;</span><br><span class="line">&lt;/jsp-config&gt;</span><br></pre></td></tr></table></figure></el-ignored></p>
-<h2 id="EL-运算符"><a href="#EL-运算符" class="headerlink" title="EL 运算符"></a>EL 运算符</h2><p>EL 提供“.”、“[]”运算符、算术运算符、逻辑运算符、关系运算符、条件运算符以及empty运算符。</p>
+<h1 id="EL-运算符"><a href="#EL-运算符" class="headerlink" title="EL 运算符"></a>EL 运算符</h1><p>EL 提供“.”、“[]”运算符、算术运算符、逻辑运算符、关系运算符、条件运算符以及empty运算符。</p>
 <h2 id="和-运算符"><a href="#和-运算符" class="headerlink" title="[]和.运算符"></a>[]和.运算符</h2><p>EL表达式可以返回任意类型的值。如果EL表达式的结果是一个带有属性的对象，则可以利用[]或者.运算符来访问该属性。其语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;object[&quot;propertyName&quot;]&#125;</span><br><span class="line">$&#123;object.propertyName&#125;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>注意：<br>1、如果<code>propertyName</code>不是有效的Java变量名，只能使用<code>[]</code>运算符。<br>2、当对象的属性名中包括一些特殊的字符（如<code>-</code>或<code>.</code>）时，只能使用<code>[]</code>运算符。</p>
@@ -609,15 +609,21 @@
           
 
 
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2017/04/10/Java Web学习笔记/EL 入门教程/"
-           data-title="EL 入门教程" data-url="GongchuangSu.github.io/2017/04/10/Java Web学习笔记/EL 入门教程/">
-      </div>
-    
-  </div>
+          <% if (page.comments){ %>
+<section id="comment">
+  <h1 class="title"><%= __('comment') %></h1>
 
+  <% if (theme.comment_provider == "facebook") {
+      if (theme.facebook) { %>
+      <%- partial('_partial/facebook_comment', {fbConfig: theme.facebook}) %>
+      <% } %>
+  <% } else if(config.disqus_shortname) { %>
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  <% } %>
+</section>
+<% } %>
 
         </div>
         
@@ -748,7 +754,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#EL-简介"><span class="nav-number">1.</span> <span class="nav-text">EL 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EL-语法"><span class="nav-number">2.</span> <span class="nav-text">EL 语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#禁用-EL"><span class="nav-number">3.</span> <span class="nav-text">禁用 EL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用斜杠"><span class="nav-number">3.1.</span> <span class="nav-text">使用斜杠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用page指令"><span class="nav-number">3.2.</span> <span class="nav-text">使用page指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置web-xml"><span class="nav-number">3.3.</span> <span class="nav-text">配置web.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EL-运算符"><span class="nav-number">3.4.</span> <span class="nav-text">EL 运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和-运算符"><span class="nav-number">3.5.</span> <span class="nav-text">[]和.运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算术运算符"><span class="nav-number">3.6.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">3.7.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系运算符"><span class="nav-number">3.8.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件运算符"><span class="nav-number">3.9.</span> <span class="nav-text">条件运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#empty运算符"><span class="nav-number">3.10.</span> <span class="nav-text">empty运算符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EL-隐式对象"><span class="nav-number">4.</span> <span class="nav-text">EL 隐式对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#initParam"><span class="nav-number">4.1.</span> <span class="nav-text">initParam</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#param-和-paramValues"><span class="nav-number">4.2.</span> <span class="nav-text">param 和 paramValues</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#header-和-headerValues"><span class="nav-number">4.3.</span> <span class="nav-text">header 和 headerValues</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie"><span class="nav-number">4.4.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#applicationScope-sessionScope-requestScope-pageScope"><span class="nav-number">4.5.</span> <span class="nav-text">applicationScope/sessionScope/requestScope/pageScope</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#保留的关键字"><span class="nav-number">5.</span> <span class="nav-text">保留的关键字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#EL-简介"><span class="nav-number">1.</span> <span class="nav-text">EL 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EL-语法"><span class="nav-number">2.</span> <span class="nav-text">EL 语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#禁用-EL"><span class="nav-number">3.</span> <span class="nav-text">禁用 EL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用斜杠"><span class="nav-number">3.1.</span> <span class="nav-text">使用斜杠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用page指令"><span class="nav-number">3.2.</span> <span class="nav-text">使用page指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置web-xml"><span class="nav-number">3.3.</span> <span class="nav-text">配置web.xml</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EL-运算符"><span class="nav-number">4.</span> <span class="nav-text">EL 运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#和-运算符"><span class="nav-number">4.1.</span> <span class="nav-text">[]和.运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算术运算符"><span class="nav-number">4.2.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">4.3.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系运算符"><span class="nav-number">4.4.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件运算符"><span class="nav-number">4.5.</span> <span class="nav-text">条件运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#empty运算符"><span class="nav-number">4.6.</span> <span class="nav-text">empty运算符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EL-隐式对象"><span class="nav-number">5.</span> <span class="nav-text">EL 隐式对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#initParam"><span class="nav-number">5.1.</span> <span class="nav-text">initParam</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#param-和-paramValues"><span class="nav-number">5.2.</span> <span class="nav-text">param 和 paramValues</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#header-和-headerValues"><span class="nav-number">5.3.</span> <span class="nav-text">header 和 headerValues</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie"><span class="nav-number">5.4.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#applicationScope-sessionScope-requestScope-pageScope"><span class="nav-number">5.5.</span> <span class="nav-text">applicationScope/sessionScope/requestScope/pageScope</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#保留的关键字"><span class="nav-number">6.</span> <span class="nav-text">保留的关键字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -1035,28 +1041,30 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"gongchuangsu"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
 
 
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'gongchuangsu';
+      var disqus_identifier = '2017/04/10/Java Web学习笔记/EL 入门教程/';
+      var disqus_title = 'EL 入门教程';
+      var disqus_url = 'GongchuangSu.github.io/2017/04/10/Java Web学习笔记/EL 入门教程/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
 
 
 

@@ -310,7 +310,7 @@ session：在一次会话范围内有效，即从浏览器打开到浏览器关�
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/2016/06/21/Java Web学习笔记/JSP中的四种范围属性/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/21/Java Web学习笔记/JSP中的四种范围属性/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/21/Java Web学习笔记/JSP中的四种范围属性/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -469,15 +469,21 @@ session：在一次会话范围内有效，即从浏览器打开到浏览器关�
           
 
 
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/06/21/Java Web学习笔记/JSP中的四种范围属性/"
-           data-title="JSP中的四种范围属性" data-url="GongchuangSu.github.io/2016/06/21/Java Web学习笔记/JSP中的四种范围属性/">
-      </div>
-    
-  </div>
+          <% if (page.comments){ %>
+<section id="comment">
+  <h1 class="title"><%= __('comment') %></h1>
 
+  <% if (theme.comment_provider == "facebook") {
+      if (theme.facebook) { %>
+      <%- partial('_partial/facebook_comment', {fbConfig: theme.facebook}) %>
+      <% } %>
+  <% } else if(config.disqus_shortname) { %>
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  <% } %>
+</section>
+<% } %>
 
         </div>
         
@@ -895,28 +901,30 @@ session：在一次会话范围内有效，即从浏览器打开到浏览器关�
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"gongchuangsu"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
 
 
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'gongchuangsu';
+      var disqus_identifier = '2016/06/21/Java Web学习笔记/JSP中的四种范围属性/';
+      var disqus_title = 'JSP中的四种范围属性';
+      var disqus_url = 'GongchuangSu.github.io/2016/06/21/Java Web学习笔记/JSP中的四种范围属性/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
 
 
 
