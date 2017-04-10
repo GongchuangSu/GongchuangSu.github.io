@@ -5603,18 +5603,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>GongchuangSu.github.io/categories/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[tags]]></title>
-      <url>GongchuangSu.github.io/tags/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[about]]></title>
       <url>GongchuangSu.github.io/about/index.html</url>
       <content type="html"><![CDATA[<p><img src="http://i.imgur.com/hChnLrh.gif" alt=""></p>
@@ -5624,6 +5612,18 @@
 <h1 id="Contact"><a href="#Contact" class="headerlink" title="Contact"></a>Contact</h1><p><strong>Email</strong>: sgc0515@gmail.com<br><strong>CSDN</strong>: <a href="http://blog.csdn.net/gongchuangsu" target="_blank" rel="external">贱贱的梦想</a><br><strong>GitHub</strong>: <a href="https://github.com/GongchuangSu" target="_blank" rel="external">GongchuangSu</a></p>
 <h1 id="我的阅读书单"><a href="#我的阅读书单" class="headerlink" title="我的阅读书单"></a>我的阅读书单</h1><table width="95%" border="1" cellspacing="0" cellpadding="0" style="margin:0;padding:0;word-break:break-all; word-wrap:break-all; "><br><tr align="center"> <th rowspan="2" width="150">书名</th> <th colspan="2">阅读时间</th> <th rowspan="2" width="30">阅读进度</th> <th rowspan="2">评价</th> </tr> <tr> <th width="80">起始时间</th> <th width="80">终止时间</th> </tr> <tr align="center"> <td><img src="http://i.imgur.com/OIH4pqu.jpg" width="200" height="280" alt="Java编程思想"></td> <td>2016.04.01</td> <td>至今</td> <td>50%</td> <td>经典之作！内容讲的很深刻！但是个人感觉内容太杂，没有条理性，阅读起来可能会迷迷糊糊！</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/wSy2vCw.jpg" width="200" height="280" alt="Effective Java中文版（第2版）"></td> <td>2016.04.01</td> <td>至今</td> <td>5%</td> <td>值得仔细研读！对Java编程思想有深刻的认识！</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/KZw0u5n.jpg" width="200" height="280" alt="java核心技术卷I"></td> <td>2016.04.01</td> <td>至今</td> <td>10 </td> <td>这本要比Java编程思想有条理，内容也比较浅显，适合入门。</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/MYJNv9F.jpg" width="200" height="280" alt="java核心技术卷Ⅱ"></td> <td>待定</td> <td>待定</td> <td>未读</td> <td>待定</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/2Hn8P6J.jpg" width="200" height="280" alt="Java Web从入门到精通"></td> <td>2016.6.15</td> <td>至今</td> <td>80%</td> <td>这本书对Java Web技术进行了系统的介绍，涉及到很多技术，但讲的都是最基本的，要想有更深入的学习，还得进一步的对应地学习。</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/7mtAHB8.jpg" width="200" height="280" alt="Spring实战（第四版）"></td> <td>2016.10.20</td> <td>至今</td> <td>10%</td> <td>还在研读中。。。</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/MCwvAGE.jpg" width="200" height="280" alt="Redis实战"></td> <td>2016.10.20</td> <td>至今</td> <td>10%</td> <td>还在研读中。。。</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/50fSILT.jpg" width="200" height="280" alt="Spring技术内幕：深入解析Spring架构与设计原理（第2版）"></td> <td>2016.6.15</td> <td>至今</td> <td>5%</td> <td>系统的对Spring框架的使用进行了介绍和分析，从原理到应用，逐步实现</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/gWynkNJ.jpg" width="200" height="280" alt="Servlet JSP深入详解 基于Tomcat的Web开发"></td> <td>2016.6.15</td> <td>至今</td> <td>5%</td> <td>学习Servlet和JSP技术很好的一本教材</td> </tr> <tr align="center"> <td><img src="http://i.imgur.com/6ianpBn.jpg" width="200" height="280" alt="大话数据结构"></td> <td>2016.3.15</td> <td>至今</td> <td>90%</td> <td>通俗易懂的对数据结构进行了全面的介绍，很好的一本教材！</td> </tr></table>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[categories]]></title>
+      <url>GongchuangSu.github.io/categories/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>GongchuangSu.github.io/tags/index.html</url>
+      <content type="html"></content>
     </entry>
     
   
