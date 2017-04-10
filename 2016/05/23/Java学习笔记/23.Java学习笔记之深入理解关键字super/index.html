@@ -58,7 +58,7 @@
 <meta name="description" content="为什么需要super考虑这样一个情景，当一个类继承自另一个类，并重写了父类的一个方法，并且想在这个方法中调用父类的这个方法，该如何做呢？当然，我们不能直接调用该方法，因为它会产生递归。这时，我们就需要通过super.方法名来访问父类的该方法。当然，super的存在不仅仅如此。我们知道，当创建一个导出类(即通过继承而来)的对象时，该对象会包含一个基类的子对象。这就需要我们正确的对基类子对象进行初始">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java学习笔记之深入理解关键字super">
-<meta property="og:url" content="GongchuangSu.github.io/2016/05/23/Java学习笔记/23.Java学习笔记之深入理解关键字super/index.html">
+<meta property="og:url" content="http://gongchuangsu.github.io/2016/05/23/Java学习笔记/23.Java学习笔记之深入理解关键字super/index.html">
 <meta property="og:site_name" content="贱贱的梦想">
 <meta property="og:description" content="为什么需要super考虑这样一个情景，当一个类继承自另一个类，并重写了父类的一个方法，并且想在这个方法中调用父类的这个方法，该如何做呢？当然，我们不能直接调用该方法，因为它会产生递归。这时，我们就需要通过super.方法名来访问父类的该方法。当然，super的存在不仅仅如此。我们知道，当创建一个导出类(即通过继承而来)的对象时，该对象会包含一个基类的子对象。这就需要我们正确的对基类子对象进行初始">
 <meta property="og:image" content="http://i.imgur.com/U8GmwAN.png">
@@ -833,7 +833,6 @@
       var disqus_shortname = 'gongchuangsu';
       var disqus_identifier = '2016/05/23/Java学习笔记/23.Java学习笔记之深入理解关键字super/';
       var disqus_title = 'Java学习笔记之深入理解关键字super';
-      var disqus_url = 'GongchuangSu.github.io/2016/05/23/Java学习笔记/23.Java学习笔记之深入理解关键字super/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
