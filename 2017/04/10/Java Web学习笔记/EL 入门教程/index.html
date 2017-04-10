@@ -1,0 +1,1309 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="EL,表达式语言," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="EL 简介表达式语言（Expression Language），简称EL，是Java中的一种特殊的通用编程语言，借鉴于JavaScript和XPath。主要作用是在Java Web应用程序嵌入到网页（如JSP）中，用以访问页面的上下文以及不同作用域中的对象 ，取得对象属性的值，或执行简单的运算或判断操作，通常与JSTL一同使用。EL在得到某个数据时，会自动进行数据类型的转换。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EL 入门教程">
+<meta property="og:url" content="GongchuangSu.github.io/2017/04/10/Java Web学习笔记/EL 入门教程/index.html">
+<meta property="og:site_name" content="贱贱的梦想">
+<meta property="og:description" content="EL 简介表达式语言（Expression Language），简称EL，是Java中的一种特殊的通用编程语言，借鉴于JavaScript和XPath。主要作用是在Java Web应用程序嵌入到网页（如JSP）中，用以访问页面的上下文以及不同作用域中的对象 ，取得对象属性的值，或执行简单的运算或判断操作，通常与JSTL一同使用。EL在得到某个数据时，会自动进行数据类型的转换。">
+<meta property="og:updated_time" content="2017-04-10T07:19:00.377Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EL 入门教程">
+<meta name="twitter:description" content="EL 简介表达式语言（Expression Language），简称EL，是Java中的一种特殊的通用编程语言，借鉴于JavaScript和XPath。主要作用是在Java Web应用程序嵌入到网页（如JSP）中，用以访问页面的上下文以及不同作用域中的对象 ，取得对象属性的值，或执行简单的运算或判断操作，通常与JSTL一同使用。EL在得到某个数据时，会自动进行数据类型的转换。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: 'ROOT'
+    }
+  };
+</script>
+
+  <title> EL 入门教程 | 贱贱的梦想 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ed06c68bea374fddbd50d8820ec27cbd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">贱贱的梦想</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                EL 入门教程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-10T10:05:20+08:00" content="2017-04-10">
+              2017-04-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/10/Java Web学习笔记/EL 入门教程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/10/Java Web学习笔记/EL 入门教程/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/04/10/Java Web学习笔记/EL 入门教程/" class="leancloud_visitors" data-flag-title="EL 入门教程">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-text">阅读次数 </span>             
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="EL-简介"><a href="#EL-简介" class="headerlink" title="EL 简介"></a>EL 简介</h1><p>表达式语言（Expression Language），简称EL，是Java中的一种特殊的通用编程语言，借鉴于JavaScript和XPath。主要作用是在Java Web应用程序嵌入到网页（如JSP）中，用以访问页面的上下文以及不同作用域中的对象 ，取得对象属性的值，或执行简单的运算或判断操作，通常与<a href="http://gongchuangsu.github.io/2017/03/23/Java%20Web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/JSTL%20%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" title="JSTL入门教程" target="_blank" rel="external">JSTL</a>一同使用。EL在得到某个数据时，会自动进行数据类型的转换。</p>
+<a id="more"></a>
+<h1 id="EL-语法"><a href="#EL-语法" class="headerlink" title="EL 语法"></a>EL 语法</h1><p>EL表达式以“${”开始，以“}”作为结束：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;EL表达式&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：由于EL表达式的语法是以“${”开头，所以如果在JSP网页中要显示“${”字符串，必须在前面加上“\”符号，即“\${”或写成“${‘${’}”。</p>
+</blockquote>
+<h1 id="禁用-EL"><a href="#禁用-EL" class="headerlink" title="禁用 EL"></a>禁用 EL</h1><p>要使用EL表达式，Web服务器必须能够支持Servlet2.4/JSP2.0。由于JSP2.0以前的版本不支持EL，所以为了与低版本的环境兼容，JSP提供了以下三种禁用EL的方法。</p>
+<h2 id="使用斜杠"><a href="#使用斜杠" class="headerlink" title="使用斜杠"></a>使用斜杠</h2><p>最简单的方法就是使用斜杠符号，其语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\$&#123;EL表达式&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="使用page指令"><a href="#使用page指令" class="headerlink" title="使用page指令"></a>使用page指令</h2><p>使用JSP的page指令也可以禁用EL表达式，其语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page isELlgnored=&quot;true&quot;%&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="配置web-xml"><a href="#配置web-xml" class="headerlink" title="配置web.xml"></a>配置web.xml</h2><p>在web.xml文件中配置<el-ignored>元素可以实现禁用服务器中的EL。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp-config&gt;</span><br><span class="line">	&lt;jsp-property-group&gt;</span><br><span class="line">		&lt;url-pattern&gt;*.jsp&lt;/url-pattern&gt;</span><br><span class="line">		&lt;el-ignored&gt;true&lt;/el-ignored&gt;</span><br><span class="line">	&lt;/jsp-property-group&gt;</span><br><span class="line">&lt;/jsp-config&gt;</span><br></pre></td></tr></table></figure></el-ignored></p>
+<h2 id="EL-运算符"><a href="#EL-运算符" class="headerlink" title="EL 运算符"></a>EL 运算符</h2><p>EL 提供“.”、“[]”运算符、算术运算符、逻辑运算符、关系运算符、条件运算符以及empty运算符。</p>
+<h2 id="和-运算符"><a href="#和-运算符" class="headerlink" title="[]和.运算符"></a>[]和.运算符</h2><p>EL表达式可以返回任意类型的值。如果EL表达式的结果是一个带有属性的对象，则可以利用[]或者.运算符来访问该属性。其语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;object[&quot;propertyName&quot;]&#125;</span><br><span class="line">$&#123;object.propertyName&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：<br>1、如果<code>propertyName</code>不是有效的Java变量名，只能使用<code>[]</code>运算符。<br>2、当对象的属性名中包括一些特殊的字符（如<code>-</code>或<code>.</code>）时，只能使用<code>[]</code>运算符。</p>
+</blockquote>
+<h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><p>EL提供以下五种算术运算符：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">功能</th>
+<th style="text-align:center">示例</th>
+<th style="text-align:center">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:center">加</td>
+<td style="text-align:center">${1+1}</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">减</td>
+<td style="text-align:center">${2-1}</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">乘</td>
+<td style="text-align:center">${10*10}</td>
+<td style="text-align:center">100</td>
+</tr>
+<tr>
+<td style="text-align:center">/或div</td>
+<td style="text-align:center">除</td>
+<td style="text-align:center">${1/0}或${1 div 0}</td>
+<td style="text-align:center">Infinite</td>
+</tr>
+<tr>
+<td style="text-align:center">%或mod</td>
+<td style="text-align:center">求余</td>
+<td style="text-align:center">${1%0}或${1 mod 0}</td>
+<td style="text-align:center">抛出异常</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：EL的“+”运算符和Java中的“+”运算符不同，它不能实现两个字符串之间的连接；如果使用EL的“+”运算符连接两个可以转换为数值型的字符串，EL则可以自动将这两个字符串转换为数值型，再进行加法运算。</p>
+</blockquote>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>逻辑运算符的条件表达式的值必须是<code>Boolean</code>型或是可以转换为<code>Boolean</code>型的字符串，并且返回的结果也是<code>Boolean</code>型。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&amp;&amp; 或 and</td>
+<td style="text-align:center">与</td>
+</tr>
+<tr>
+<td style="text-align:center">&#124;&#124; 或 or</td>
+<td style="text-align:center">或</td>
+</tr>
+<tr>
+<td style="text-align:center">! 或 not</td>
+<td style="text-align:center">非</td>
+</tr>
+</tbody>
+</table>
+<h2 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h2><p>在EL中提供六种关系运算符，这六种关系运算符不仅可以用来比较整数和浮点数，还可以用来比较字符串，返回的结果为<code>Boolean</code>型。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">== 或 eq</td>
+<td style="text-align:center">等于</td>
+</tr>
+<tr>
+<td style="text-align:center">!= 或 ne</td>
+<td style="text-align:center">不等于</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt; 或 lt</td>
+<td style="text-align:center">小于</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt; 或 gt</td>
+<td style="text-align:center">大于</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;= 或 le</td>
+<td style="text-align:center">小于等于</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;= 或 ge</td>
+<td style="text-align:center">大于等于</td>
+</tr>
+</tbody>
+</table>
+<h2 id="条件运算符"><a href="#条件运算符" class="headerlink" title="条件运算符"></a>条件运算符</h2><p>在EL中进行简单的条件运算，可以通过条件运算符实现，其语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;条件表达式 ? 表达式1 : 表达式2&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>说明：<br>条件表达式：用于指定一个条件表达式，该表达式的值为<code>Boolean</code>型，可以由关系运算符、逻辑运算符和<code>empty</code>运算符组成。如果条件表达式为真，则返回表达式1的值，否则返回表达式2的值。</p>
+</blockquote>
+<h2 id="empty运算符"><a href="#empty运算符" class="headerlink" title="empty运算符"></a>empty运算符</h2><p><code>empty</code>运算符用来检查某一个值是否为<code>null</code>或<code>empty</code>，其语法格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;empty X&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果X为null，或者说X是一个长度为0的字符串，那么该表达式将返回true，如果X是一个空Map、空数组、或空集合，它们将返回true，否则返回false。</p>
+<h1 id="EL-隐式对象"><a href="#EL-隐式对象" class="headerlink" title="EL 隐式对象"></a>EL 隐式对象</h1><p>在JSP页面中，可以利用JSP脚本来访问JSP隐式对象。但是，在免脚本的JSP页面中，则不可能访问这些隐式对象。EL允许通过提供一组自己的隐式对象来访问不同的对象。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">对象</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">pageContext</td>
+<td style="text-align:left">页面上下文对象，它包含了所有其他的<a href="http://gongchuangsu.github.io/2016/06/21/Java%20Web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/JSP%E4%B8%AD%E7%9A%84%E4%B9%9D%E5%A4%A7%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/" title="JSP中的九大内置对象" target="_blank" rel="external">JSP隐式对象</a></td>
+</tr>
+<tr>
+<td style="text-align:left">initParam</td>
+<td style="text-align:left">用于获取Web应用初始化参数的值</td>
+</tr>
+<tr>
+<td style="text-align:left">param</td>
+<td style="text-align:left">用于获取请求参数的值，应用在参数值只有一个的情况</td>
+</tr>
+<tr>
+<td style="text-align:left">paramValues</td>
+<td style="text-align:left">用于获取请求参数，应用在参数值有多个的情况</td>
+</tr>
+<tr>
+<td style="text-align:left">header</td>
+<td style="text-align:left">用于获取HTTP请求的header值</td>
+</tr>
+<tr>
+<td style="text-align:left">headerValues</td>
+<td style="text-align:left">用于获取HTTP请求的header值</td>
+</tr>
+<tr>
+<td style="text-align:left">cookie</td>
+<td style="text-align:left">用于访问由请求设置的cookie</td>
+</tr>
+<tr>
+<td style="text-align:left">applicationScope</td>
+<td style="text-align:left">用于返回包含application范围内的属性值的集合，返回值为java.util.Map对象</td>
+</tr>
+<tr>
+<td style="text-align:left">sessionScope</td>
+<td style="text-align:left">用于返回包含session范围内的属性值的集合，返回值为java.util.Map对象</td>
+</tr>
+<tr>
+<td style="text-align:left">requestScope</td>
+<td style="text-align:left">用于返回包含request范围内的属性值的集合，返回值为java.util.Map对象</td>
+</tr>
+<tr>
+<td style="text-align:left">pageScope</td>
+<td style="text-align:left">用于返回包含page范围内的属性值的集合，返回值为java.util.Map对象</td>
+</tr>
+</tbody>
+</table>
+<h2 id="initParam"><a href="#initParam" class="headerlink" title="initParam"></a>initParam</h2><p>initParam对象用于获取Web应用初始化参数的值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// web.xml文件中设置一个初始化参数</span><br><span class="line">&lt;context-param&gt;</span><br><span class="line">	&lt;param-name&gt;domain&lt;/param-name&gt;</span><br><span class="line">	&lt;param-value&gt;http://gongchuangsu.github.io&lt;/param-value&gt;</span><br><span class="line">&lt;/context-param&gt;</span><br><span class="line"></span><br><span class="line">// 应用EL获取初始化参数</span><br><span class="line">$&#123;initParam.domain&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="param-和-paramValues"><a href="#param-和-paramValues" class="headerlink" title="param 和 paramValues"></a>param 和 paramValues</h2><p>param对象用于获取请求参数的值，应用在参数值只有一个的情况，返回的结果为字符串。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 通过一个输入表单设置一个请求参数</span><br><span class="line">&lt;input name=&quot;username&quot; value=&quot;gongchuangsu&quot; type=&quot;text&quot;&gt;</span><br><span class="line"></span><br><span class="line">// 应用EL获取请求参数</span><br><span class="line">$&#123;param.username&#125;</span><br></pre></td></tr></table></figure></p>
+<p>paramValues对象用于获取请求参数，应用在参数值有多个的情况，返回的结果为数组。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 通过复选框表单设置请求参数</span><br><span class="line">&lt;input name=&quot;favorite&quot; value=&quot;看书&quot; type=&quot;checkbox&quot;&gt;</span><br><span class="line">&lt;input name=&quot;favorite&quot; value=&quot;慢跑&quot; type=&quot;checkbox&quot;&gt;</span><br><span class="line">&lt;input name=&quot;favorite&quot; value=&quot;游泳&quot; type=&quot;checkbox&quot;&gt;</span><br><span class="line">&lt;input name=&quot;favorite&quot; value=&quot;登山&quot; type=&quot;checkbox&quot;&gt;</span><br><span class="line"></span><br><span class="line">// 应用EL获取请求参数</span><br><span class="line">爱好为：$&#123;paramValues.name[0]&#125;$&#123;paramValues.name[1]&#125;$&#123;paramValues.name[2]&#125;$&#123;paramValues.name[3]&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：在应用<code>param</code>和<code>paramValues</code>对象时，如果指定的参数不存在，则返回空的字符串，而不是返回<code>null</code>。</p>
+</blockquote>
+<h2 id="header-和-headerValues"><a href="#header-和-headerValues" class="headerlink" title="header 和 headerValues"></a>header 和 headerValues</h2><p>header对象用于获取HTTP请求的header值，当同一个header拥有多个不同的值的情况时，就必须使用headerValues对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 应用EL表达式获取HTTP请求的header的connection属性</span><br><span class="line">$&#123;header.connection&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>cookie对象用于访问由请求设置的cookie。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 通过response对象设置cookie对象</span><br><span class="line">&lt;%</span><br><span class="line">	Cookie cookie = new Cookie(&quot;username&quot;,&quot;gongchuangsu&quot;);</span><br><span class="line">	response.addCookie(cookie);</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">// 应用EL获取cookie对象的值</span><br><span class="line">$&#123;cookie.username.value&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="applicationScope-sessionScope-requestScope-pageScope"><a href="#applicationScope-sessionScope-requestScope-pageScope" class="headerlink" title="applicationScope/sessionScope/requestScope/pageScope"></a>applicationScope/sessionScope/requestScope/pageScope</h2><p>applicationScope对象用于返回包含application范围内的属性值的集合，返回值为java.util.Map对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 定义application范围内的属性</span><br><span class="line">&lt;%</span><br><span class="line">	application.setAttribute(&quot;username&quot;,&quot;gongchuangsu&quot;);</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">// 应用EL获取application范围内的属性值</span><br><span class="line">$&#123;applicationScope.username&#125;</span><br></pre></td></tr></table></figure></p>
+<p>还可以访问JavaBean的属性值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 定义一个JavaBean</span><br><span class="line">&lt;jsp:useBean id=&quot;user&quot; scope=&quot;application&quot; class=&quot;...&quot;&gt;</span><br><span class="line">	&lt;jsp:setProperty name=&quot;user&quot; property=&quot;name&quot; value=&quot;gongchuangsu&quot;/&gt;</span><br><span class="line">&lt;/jsp:useBean&gt;</span><br><span class="line"></span><br><span class="line">// 应用EL获取JavaBean实例的name属性</span><br><span class="line">$&#123;applicationScope.user.name&#125;</span><br></pre></td></tr></table></figure></p>
+<p>sessionScope对象、requestScope对象、pageScope对象与applicationScope对象用法同理。</p>
+<h1 id="保留的关键字"><a href="#保留的关键字" class="headerlink" title="保留的关键字"></a>保留的关键字</h1><p>EL中保留的关键字如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">and</td>
+<td style="text-align:center">eq</td>
+<td style="text-align:center">gt</td>
+</tr>
+<tr>
+<td style="text-align:center">instanceof</td>
+<td style="text-align:center">div</td>
+<td style="text-align:center">or</td>
+</tr>
+<tr>
+<td style="text-align:center">le</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">empty</td>
+</tr>
+<tr>
+<td style="text-align:center">not</td>
+<td style="text-align:center">lt</td>
+<td style="text-align:center">ge</td>
+</tr>
+</tbody>
+</table>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>1、Java Web 从入门到精通<br>2、Servlet、JSP和Spring MVC初学指南</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/EL/" rel="tag">#EL</a>
+          
+            <a href="/tags/表达式语言/" rel="tag">#表达式语言</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/23/Java Web学习笔记/JSTL 入门教程/" rel="next" title="JSTL 入门教程">
+                <i class="fa fa-chevron-left"></i> JSTL 入门教程
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/04/10/Java Web学习笔记/EL 入门教程/"
+           data-title="EL 入门教程" data-url="GongchuangSu.github.io/2017/04/10/Java Web学习笔记/EL 入门教程/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Gongchuang Su" />
+          <p class="site-author-name" itemprop="name">Gongchuang Su</p>
+          <p class="site-description motion-element" itemprop="description">Stay Hungry, Stay Foolish.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">79</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">123</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/GongchuangSu" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/gongchuangsu" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> CSDN
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" target="_blank">MacTalk</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://mindhacks.cn/" target="_blank">Mind Hacks</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.qiuchengjia.cn/" target="_blank">戎码人生</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://gaohueric.github.io/" target="_blank">GaoHu's BLOG</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#EL-简介"><span class="nav-number">1.</span> <span class="nav-text">EL 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EL-语法"><span class="nav-number">2.</span> <span class="nav-text">EL 语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#禁用-EL"><span class="nav-number">3.</span> <span class="nav-text">禁用 EL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用斜杠"><span class="nav-number">3.1.</span> <span class="nav-text">使用斜杠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用page指令"><span class="nav-number">3.2.</span> <span class="nav-text">使用page指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置web-xml"><span class="nav-number">3.3.</span> <span class="nav-text">配置web.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EL-运算符"><span class="nav-number">3.4.</span> <span class="nav-text">EL 运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和-运算符"><span class="nav-number">3.5.</span> <span class="nav-text">[]和.运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算术运算符"><span class="nav-number">3.6.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">3.7.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系运算符"><span class="nav-number">3.8.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件运算符"><span class="nav-number">3.9.</span> <span class="nav-text">条件运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#empty运算符"><span class="nav-number">3.10.</span> <span class="nav-text">empty运算符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EL-隐式对象"><span class="nav-number">4.</span> <span class="nav-text">EL 隐式对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#initParam"><span class="nav-number">4.1.</span> <span class="nav-text">initParam</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#param-和-paramValues"><span class="nav-number">4.2.</span> <span class="nav-text">param 和 paramValues</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#header-和-headerValues"><span class="nav-number">4.3.</span> <span class="nav-text">header 和 headerValues</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie"><span class="nav-number">4.4.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#applicationScope-sessionScope-requestScope-pageScope"><span class="nav-number">4.5.</span> <span class="nav-text">applicationScope/sessionScope/requestScope/pageScope</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#保留的关键字"><span class="nav-number">5.</span> <span class="nav-text">保留的关键字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gongchuang Su</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+		
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gongchuangsu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("YNAqO4Guiyi9lFpJmPo6DIJF-gzGzoHsz", "AVRJEYpDPTwtz3peAJVymqeP");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = $(document.getElementById(url)).text() + ': 0';
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
+
+
+
+  
+</body>
+</html>
